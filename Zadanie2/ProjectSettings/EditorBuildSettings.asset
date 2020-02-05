@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/StartScreenPlaceHolder.unity
+    guid: 3f72f429e47432f4cbbc8e79fcee7359
   m_configObjects: {}
