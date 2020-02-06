@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Conteiner : MonoBehaviour
 {
-    public enum ColorType { RED, YELLOW , GREEN, BLUE}
+    public enum ColorType { RED, YELLOW , BLUE, GREEN}
     [SerializeField]
     private ColorType _conteinerColor;
 
@@ -35,5 +35,10 @@ public class Conteiner : MonoBehaviour
             Debug.Log("Brak gema");
         }
         
+    }
+
+    private void OnMouseDown()
+    {
+        PrototypeManager.Instance.CurrentConteiner(_conteinerColor);
     }
 }

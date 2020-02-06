@@ -22,10 +22,6 @@ public class PrototypeManager : MonoBehaviour
         Instance = this;
     }
 
-    private void Start()
-    {
-        CurrentConteiner(Conteiner.ColorType.YELLOW);
-    }
     public IEnumerator ResetGame()
     {
         yield return new WaitForSeconds(_resetTime);
@@ -34,44 +30,29 @@ public class PrototypeManager : MonoBehaviour
 
     public void CurrentConteiner(Conteiner.ColorType color)
     {
-        GameObject first = _containers[0];
-        switch (color)
+        List<int> randomIntList = new List<int> {0, 1, 2 ,3};      
+        //selected container
+        int first = (int) color;
+        //remove selectedcontainer from random list
+        randomIntList.RemoveAt(first);
+
+        Queue<int> queueConteiners = new Queue<int>();
+
+        queueConteiners.Enqueue(first);
+        //randomize conatiners
+        int counter = randomIntList.Count;
+        for (int i = 0; i < counter; i++)
         {
-            case Conteiner.ColorType.RED:
-                first = _containers[0];
-                break;
-            case Conteiner.ColorType.YELLOW:
-                first = _containers[1];
-                break;
-            case Conteiner.ColorType.BLUE:
-                first = _containers[2];
-                break;
-            case Conteiner.ColorType.GREEN:
-                first = _containers[3];
-                break;
+            int random = Random.Range(0, randomIntList.Count);
+            queueConteiners.Enqueue(randomIntList[random]);
+            randomIntList.Remove(randomIntList[random]);
         }
 
-        float positionY = first.transform.position.y;
-        float positionZ = first.transform.position.z;
-        //first container change position
-        first.transform.position = new Vector3(_containersPositions[0], positionY, positionZ);
-        //rest of containers
-        List<int> randomIntList = new List<int> { 1, 2, 3 };
-        int[] randomArray = new int[randomIntList.Count];
-        
-        //randomize containers order
-        for(int i = 0; i < randomArray.Length; i++)
-        {          
-                int random = Random.Range(0, randomIntList.Count);
-                randomArray[i] = randomIntList[random];
-                randomIntList.Remove(randomIntList[random]);          
-        }
-        
         //set conainers on positions
-        for(int i = 1; i < randomArray.Length; i++)
+        for (int i = 0; i < _containers.Length; i++)
         {
-            _containers[i].transform.position = new Vector3(_containersPositions[randomArray[i-1]], positionY, positionZ);
-        }
+            _containers[queueConteiners.Dequeue()].transform.position = new Vector3(_containersPositions[i], -3, 0);
+        }        
 
     }
 }
