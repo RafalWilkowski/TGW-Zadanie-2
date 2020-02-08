@@ -490,10 +490,10 @@ AreaEffector2D:
     m_Bits: 4294967295
   m_UseGlobalAngle: 0
   m_ForceAngle: 0
-  m_ForceMagnitude: 5
+  m_ForceMagnitude: 20
   m_ForceVariation: 0
   m_ForceTarget: 0
-  m_Drag: 2
+  m_Drag: 8
   m_AngularDrag: 0
 --- !u!61 &209469936
 BoxCollider2D:
@@ -1305,8 +1305,8 @@ MonoBehaviour:
   - {fileID: 648561665011705133, guid: 166ac9aae01a78245bfdac610b0b278f, type: 3}
   _maxY: {fileID: 1605919669}
   _minY: {fileID: 898345721}
-  _spawnRateMin: 1.25
-  _spawnRateMax: 2
+  _spawnRateMin: 0.5
+  _spawnRateMax: 1
 --- !u!1 &2049059236
 GameObject:
   m_ObjectHideFlags: 0

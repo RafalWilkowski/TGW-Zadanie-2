@@ -8,6 +8,7 @@ public class Gem : MonoBehaviour
     [SerializeField]
     //private Cona
     Conteiner.ColorType _gemColor;
+	[SerializeField] float targetGravityScale = 5;
 
     private void Start()
     {
@@ -17,7 +18,7 @@ public class Gem : MonoBehaviour
     {
         if(collision.transform.parent.name == "ConveroyBelt")
         {
-            rb2D.gravityScale = 1f;
+            rb2D.gravityScale = targetGravityScale;
         }
     }
 
