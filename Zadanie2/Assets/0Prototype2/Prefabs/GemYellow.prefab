@@ -92,5 +92,11 @@ PrefabInstance:
       propertyPath: _gemColor
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 3097957816079542478, guid: 6534c33c77b68444aa6404995e8e5f20,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 2062024452953577000, guid: 6534c33c77b68444aa6404995e8e5f20, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 6534c33c77b68444aa6404995e8e5f20, type: 3}

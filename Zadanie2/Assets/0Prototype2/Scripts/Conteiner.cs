@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class Conteiner : MonoBehaviour
 {
-    public enum ColorType { RED, YELLOW , BLUE, GREEN}
+    public enum ColorType { RED, YELLOW , BLUE, GREEN, NONE}
     [SerializeField]
     private ColorType _conteinerColor;
 
     private Score score;
+	public ColorType ContainerColor { get => _conteinerColor; }
 
     private void Start()
     {
@@ -22,7 +23,8 @@ public class Conteiner : MonoBehaviour
         {
             if(_conteinerColor == gem.GetGemColor())
             {
-                score.AddScore();              
+                score.AddScore();
+				PrototypeManager.Instance.CheckForCombo(gem);
             }
             else
             {
