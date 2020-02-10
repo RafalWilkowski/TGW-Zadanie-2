@@ -28,7 +28,7 @@ public class PrototypeManager : MonoBehaviour
 	[SerializeField]
 	private float _resetTime;
 
-	private Conteiner.ColorType lastGemColor = Conteiner.ColorType.NONE;
+	private ColorType lastGemColor = ColorType.NONE;
 
 	private void Awake()
 	{
@@ -41,7 +41,7 @@ public class PrototypeManager : MonoBehaviour
 		SceneManager.LoadScene(0);
 	}
 
-	public void CurrentConteiner(Conteiner.ColorType color)
+	public void CurrentConteiner(ColorType color)
 	{
 		if (shouldRandomizeContainers)
 		{
@@ -53,7 +53,7 @@ public class PrototypeManager : MonoBehaviour
 		}
 	}
 
-	void RandomizeContainersOrder(Conteiner.ColorType color)
+	void RandomizeContainersOrder(ColorType color)
 	{
 		List<int> randomIntList = new List<int> { 0, 1, 2, 3 };
 		//selected container
@@ -80,7 +80,7 @@ public class PrototypeManager : MonoBehaviour
 		}
 	}
 
-	void PushContainers(Conteiner.ColorType color)
+	void PushContainers(ColorType color)
 	{
 		Conteiner selectedContainer = null;
 		foreach (Conteiner c in _containers)

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Conteiner : MonoBehaviour
 {
-    public enum ColorType { RED, YELLOW , BLUE, GREEN, NONE}
+   
     [SerializeField]
     private ColorType _conteinerColor;
 
@@ -21,7 +21,7 @@ public class Conteiner : MonoBehaviour
         Gem gem = collision.GetComponentInParent<Gem>();
         if(gem != null)
         {
-            if(_conteinerColor == gem.GetGemColor())
+            if(gem.GetGemColor().HasFlag(_conteinerColor))
             {
                 score.AddScore();
 				PrototypeManager.Instance.CheckForCombo(gem);
@@ -44,3 +44,5 @@ public class Conteiner : MonoBehaviour
         PrototypeManager.Instance.CurrentConteiner(_conteinerColor);
     }
 }
+[System.Flags]
+public enum ColorType {NONE = 0, RED = 1, YELLOW=2, BLUE= 4, GREEN = 8}

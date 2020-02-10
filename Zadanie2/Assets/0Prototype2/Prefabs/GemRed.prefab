@@ -154,7 +154,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pokeVelocityComponent: 9
-  _gemColor: 0
+  _gemColor: 1
   targetGravityScale: 5
   colliderInactivityTime: 0.3
 --- !u!50 &2160942349215830974

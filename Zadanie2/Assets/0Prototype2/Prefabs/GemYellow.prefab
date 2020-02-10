@@ -90,7 +90,7 @@ PrefabInstance:
     - target: {fileID: 2160942349215830973, guid: 6534c33c77b68444aa6404995e8e5f20,
         type: 3}
       propertyPath: _gemColor
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3097957816079542478, guid: 6534c33c77b68444aa6404995e8e5f20,
         type: 3}

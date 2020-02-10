@@ -10,7 +10,7 @@ public class Gem : MonoBehaviour
 	[SerializeField] float pokeVelocityComponent = 10f;
 	[SerializeField]
 	//private Cona
-	Conteiner.ColorType _gemColor;
+	ColorType _gemColor;
 	[SerializeField] float targetGravityScale = 5;
 	[SerializeField] float colliderInactivityTime = 0.7f;
 
@@ -38,7 +38,7 @@ public class Gem : MonoBehaviour
 			rb2D.drag = initialDrag;
 		}
 	}
-	public Conteiner.ColorType GetGemColor()
+	public ColorType GetGemColor()
 	{
 		return _gemColor;
 	}
