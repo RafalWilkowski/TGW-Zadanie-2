@@ -1,0 +1,1648 @@
+fileFormatVersion: 2
+guid: 654060b0839cdbd4bbc58e17980dd7cf
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -2599105516170553035
+    second: round-stone-lot-png-clip-art_0
+  - first:
+      213: 7784460557444594162
+    second: round-stone-lot-png-clip-art_1
+  - first:
+      213: -1916824840134139908
+    second: round-stone-lot-png-clip-art_2
+  - first:
+      213: 1772350702722388432
+    second: round-stone-lot-png-clip-art_3
+  - first:
+      213: 8932584608884302021
+    second: round-stone-lot-png-clip-art_4
+  - first:
+      213: 1902733075209742747
+    second: round-stone-lot-png-clip-art_5
+  - first:
+      213: 6976295358131266227
+    second: round-stone-lot-png-clip-art_6
+  - first:
+      213: -8950349106457130466
+    second: round-stone-lot-png-clip-art_7
+  - first:
+      213: 7147977527553662019
+    second: round-stone-lot-png-clip-art_8
+  - first:
+      213: -5520705781205656805
+    second: round-stone-lot-png-clip-art_9
+  - first:
+      213: -6876106462377725114
+    second: round-stone-lot-png-clip-art_10
+  - first:
+      213: -5433194875854253196
+    second: round-stone-lot-png-clip-art_11
+  - first:
+      213: -4084598927030515384
+    second: round-stone-lot-png-clip-art_12
+  - first:
+      213: 4124719173731892633
+    second: round-stone-lot-png-clip-art_13
+  - first:
+      213: 3388071436217296184
+    second: round-stone-lot-png-clip-art_14
+  - first:
+      213: -7321909847874752180
+    second: round-stone-lot-png-clip-art_15
+  - first:
+      213: -7277795652078582051
+    second: round-stone-lot-png-clip-art_16
+  - first:
+      213: -4026155011549884197
+    second: round-stone-lot-png-clip-art_17
+  - first:
+      213: 2507635131406113623
+    second: round-stone-lot-png-clip-art_18
+  - first:
+      213: 3085469506495919811
+    second: round-stone-lot-png-clip-art_19
+  - first:
+      213: -6917565158100733016
+    second: round-stone-lot-png-clip-art_20
+  - first:
+      213: -7915506511455667240
+    second: round-stone-lot-png-clip-art_21
+  - first:
+      213: 1544691493285274636
+    second: round-stone-lot-png-clip-art_22
+  - first:
+      213: 6799239433171525182
+    second: round-stone-lot-png-clip-art_23
+  - first:
+      213: -5630444319189961968
+    second: round-stone-lot-png-clip-art_24
+  - first:
+      213: 1101346621068099977
+    second: round-stone-lot-png-clip-art_25
+  - first:
+      213: 5676387272031021921
+    second: round-stone-lot-png-clip-art_26
+  - first:
+      213: -5802295298661472
+    second: round-stone-lot-png-clip-art_27
+  - first:
+      213: 7093731451561548036
+    second: round-stone-lot-png-clip-art_28
+  - first:
+      213: -6329325831445539039
+    second: round-stone-lot-png-clip-art_29
+  - first:
+      213: 8388820393288141669
+    second: round-stone-lot-png-clip-art_30
+  - first:
+      213: 6507753396494521342
+    second: round-stone-lot-png-clip-art_31
+  - first:
+      213: -216637785965341670
+    second: round-stone-lot-png-clip-art_32
+  - first:
+      213: -7593221577583901518
+    second: round-stone-lot-png-clip-art_33
+  - first:
+      213: -6117448957909694946
+    second: round-stone-lot-png-clip-art_34
+  - first:
+      213: -1693267552228354888
+    second: round-stone-lot-png-clip-art_35
+  - first:
+      213: 7056225595402188503
+    second: round-stone-lot-png-clip-art_36
+  - first:
+      213: -3040639706033485058
+    second: round-stone-lot-png-clip-art_37
+  - first:
+      213: 530581397499879190
+    second: round-stone-lot-png-clip-art_38
+  - first:
+      213: 3882374463842058196
+    second: round-stone-lot-png-clip-art_39
+  - first:
+      213: 2730414939437669524
+    second: round-stone-lot-png-clip-art_40
+  - first:
+      213: -1097969899632214507
+    second: round-stone-lot-png-clip-art_41
+  - first:
+      213: -5277046071933106977
+    second: round-stone-lot-png-clip-art_42
+  - first:
+      213: -7085405770649252715
+    second: round-stone-lot-png-clip-art_43
+  - first:
+      213: -866746872236102822
+    second: round-stone-lot-png-clip-art_44
+  - first:
+      213: 9222417448094850558
+    second: round-stone-lot-png-clip-art_45
+  - first:
+      213: -6431317549712104820
+    second: round-stone-lot-png-clip-art_46
+  - first:
+      213: 8736887634131134396
+    second: round-stone-lot-png-clip-art_47
+  - first:
+      213: 1665136409101231895
+    second: round-stone-lot-png-clip-art_48
+  - first:
+      213: -3201018074265758087
+    second: round-stone-lot-png-clip-art_49
+  - first:
+      213: 7046201076648689003
+    second: round-stone-lot-png-clip-art_50
+  - first:
+      213: -1829499708995025759
+    second: round-stone-lot-png-clip-art_51
+  - first:
+      213: -7853357418927198607
+    second: round-stone-lot-png-clip-art_52
+  - first:
+      213: 5899837309601671230
+    second: round-stone-lot-png-clip-art_53
+  - first:
+      213: -5329780026204640041
+    second: round-stone-lot-png-clip-art_54
+  - first:
+      213: 8186554279301408470
+    second: round-stone-lot-png-clip-art_55
+  - first:
+      213: -2457091750959026222
+    second: round-stone-lot-png-clip-art_56
+  - first:
+      213: -4630033680128225372
+    second: round-stone-lot-png-clip-art_57
+  - first:
+      213: -7996124762144976978
+    second: round-stone-lot-png-clip-art_58
+  - first:
+      213: 2644119472523298578
+    second: round-stone-lot-png-clip-art_59
+  - first:
+      213: -715210896855541124
+    second: round-stone-lot-png-clip-art_60
+  - first:
+      213: -1030326745547737769
+    second: round-stone-lot-png-clip-art_61
+  - first:
+      213: 4485917838460082708
+    second: round-stone-lot-png-clip-art_62
+  - first:
+      213: -5338073843398786832
+    second: round-stone-lot-png-clip-art_63
+  externalObjects: {}
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 2
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: round-stone-lot-png-clip-art_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 797
+        width: 113
+        height: 113
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9edd7d9b321998847884dac5b74ecbc0
+      internalID: -2599105516170553035
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: round-stone-lot-png-clip-art_1
+      rect:
+        serializedVersion: 2
+        x: 113
+        y: 797
+        width: 113
+        height: 113
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2af5d9046db6696459da43d6a1af6a01
+      internalID: 7784460557444594162
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: round-stone-lot-png-clip-art_2
+      rect:
+        serializedVersion: 2
+        x: 226
+        y: 797
+        width: 113
+        height: 113
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c43ca9132ef6b784f888f15719289452
+      internalID: -1916824840134139908
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: round-stone-lot-png-clip-art_3
+      rect:
+        serializedVersion: 2
+        x: 339
+        y: 797
+        width: 113
+        height: 113
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 393e99ad47383c544aa3ab9a90bdb3d4
+      internalID: 1772350702722388432
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: round-stone-lot-png-clip-art_4
+      rect:
+        serializedVersion: 2
+        x: 452
+        y: 797
+        width: 113
+        height: 113
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 323cd6fa631607a46b160fd4414f6cac
+      internalID: 8932584608884302021
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: round-stone-lot-png-clip-art_5
+      rect:
+        serializedVersion: 2
+        x: 565
+        y: 797
+        width: 113
+        height: 113
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 96eeb69329209a44a86b293999daf8d8
+      internalID: 1902733075209742747
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: round-stone-lot-png-clip-art_6
+      rect:
+        serializedVersion: 2
+        x: 678
+        y: 797
+        width: 113
+        height: 113
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c9d2f9e457e3db64ca0081f39195b85e
+      internalID: 6976295358131266227
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: round-stone-lot-png-clip-art_7
+      rect:
+        serializedVersion: 2
+        x: 791
+        y: 797
+        width: 113
+        height: 113
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d7cb56bb80e346043b4811e418ef57e5
+      internalID: -8950349106457130466
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: round-stone-lot-png-clip-art_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 684
+        width: 113
+        height: 113
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d6f6d18858b2fd48876fa8d66e28fb9
+      internalID: 7147977527553662019
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: round-stone-lot-png-clip-art_9
+      rect:
+        serializedVersion: 2
+        x: 113
+        y: 684
+        width: 113
+        height: 113
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b15e6e90cedfae84f959518c9a281d4a
+      internalID: -5520705781205656805
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: round-stone-lot-png-clip-art_10
+      rect:
+        serializedVersion: 2
+        x: 226
+        y: 684
+        width: 113
+        height: 113
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 148648ee888954e42a0f288a2b56d729
+      internalID: -6876106462377725114
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: round-stone-lot-png-clip-art_11
+      rect:
+        serializedVersion: 2
+        x: 339
+        y: 684
+        width: 113
+        height: 113
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f1d7a345c732c443a0e1e446c610e2d
+      internalID: -5433194875854253196
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: round-stone-lot-png-clip-art_12
+      rect:
+        serializedVersion: 2
+        x: 452
+        y: 684
+        width: 113
+        height: 113
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 24df19cbc2bdfd14d95d819d46a12ca2
+      internalID: -4084598927030515384
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: round-stone-lot-png-clip-art_13
+      rect:
+        serializedVersion: 2
+        x: 565
+        y: 684
+        width: 113
+        height: 113
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f93aafb32ccfd842a68b5e6f326f68c
+      internalID: 4124719173731892633
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: round-stone-lot-png-clip-art_14
+      rect:
+        serializedVersion: 2
+        x: 678
+        y: 684
+        width: 113
+        height: 113
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba8117d446a267243aab64af2ec608a7
+      internalID: 3388071436217296184
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: round-stone-lot-png-clip-art_15
+      rect:
+        serializedVersion: 2
+        x: 791
+        y: 684
+        width: 113
+        height: 113
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a6b15efbfe4d294bb46eeff81a025d6
+      internalID: -7321909847874752180
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: round-stone-lot-png-clip-art_16
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 571
+        width: 113
+        height: 113
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e7dee8fc0b498846a06cd10b7efdf66
+      internalID: -7277795652078582051
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: round-stone-lot-png-clip-art_17
+      rect:
+        serializedVersion: 2
+        x: 113
+        y: 571
+        width: 113
+        height: 113
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 607d6886c61cdb641a01331c8a5e0157
+      internalID: -4026155011549884197
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: round-stone-lot-png-clip-art_18
+      rect:
+        serializedVersion: 2
+        x: 226
+        y: 571
+        width: 113
+        height: 113
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eb2e4c2bbee57db46a672e45db0627a8
+      internalID: 2507635131406113623
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: round-stone-lot-png-clip-art_19
+      rect:
+        serializedVersion: 2
+        x: 339
+        y: 571
+        width: 113
+        height: 113
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab35097a86fd2e647883060dc06062a6
+      internalID: 3085469506495919811
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: round-stone-lot-png-clip-art_20
+      rect:
+        serializedVersion: 2
+        x: 452
+        y: 571
+        width: 113
+        height: 113
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f0c1ad7d3438dd541b2c6454285807ba
+      internalID: -6917565158100733016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: round-stone-lot-png-clip-art_21
+      rect:
+        serializedVersion: 2
+        x: 565
+        y: 571
+        width: 113
+        height: 113
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1593efcd76dda6c4b9dc42695480ad97
+      internalID: -7915506511455667240
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: round-stone-lot-png-clip-art_22
+      rect:
+        serializedVersion: 2
+        x: 678
+        y: 571
+        width: 113
+        height: 113
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 19f73c6de90da2a4fb5d06b6adfd0779
+      internalID: 1544691493285274636
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: round-stone-lot-png-clip-art_23
+      rect:
+        serializedVersion: 2
+        x: 791
+        y: 571
+        width: 113
+        height: 113
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b4f1367543a5c9e48abc99f831c8c672
+      internalID: 6799239433171525182
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: round-stone-lot-png-clip-art_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 458
+        width: 113
+        height: 113
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8aa20c661f857b847a2622e10261c0f4
+      internalID: -5630444319189961968
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: round-stone-lot-png-clip-art_25
+      rect:
+        serializedVersion: 2
+        x: 113
+        y: 458
+        width: 113
+        height: 113
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c04288f6da65b4e41997b19289becbdc
+      internalID: 1101346621068099977
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: round-stone-lot-png-clip-art_26
+      rect:
+        serializedVersion: 2
+        x: 226
+        y: 458
+        width: 113
+        height: 113
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 93b42e61caebbd3489a332c72974ea60
+      internalID: 5676387272031021921
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: round-stone-lot-png-clip-art_27
+      rect:
+        serializedVersion: 2
+        x: 339
+        y: 458
+        width: 113
+        height: 113
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 56cbd2bfc4e4b774d8903d48676ccad0
+      internalID: -5802295298661472
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: round-stone-lot-png-clip-art_28
+      rect:
+        serializedVersion: 2
+        x: 452
+        y: 458
+        width: 113
+        height: 113
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c30e00e85c7c4f74d9961d71fbee3bc3
+      internalID: 7093731451561548036
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: round-stone-lot-png-clip-art_29
+      rect:
+        serializedVersion: 2
+        x: 565
+        y: 458
+        width: 113
+        height: 113
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e5fd2d62910d8948bab306130b65aeb
+      internalID: -6329325831445539039
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: round-stone-lot-png-clip-art_30
+      rect:
+        serializedVersion: 2
+        x: 678
+        y: 458
+        width: 113
+        height: 113
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 26d733889395e9d45bbe192c80d51dd4
+      internalID: 8388820393288141669
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: round-stone-lot-png-clip-art_31
+      rect:
+        serializedVersion: 2
+        x: 791
+        y: 458
+        width: 113
+        height: 113
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 917df2166e0e7d8439ee7f8932e853a4
+      internalID: 6507753396494521342
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: round-stone-lot-png-clip-art_32
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 345
+        width: 113
+        height: 113
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1b521c93ffcdf6148ada729e566dd640
+      internalID: -216637785965341670
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: round-stone-lot-png-clip-art_33
+      rect:
+        serializedVersion: 2
+        x: 113
+        y: 345
+        width: 113
+        height: 113
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 259a4c6b8cdf8a440be53ae096766714
+      internalID: -7593221577583901518
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: round-stone-lot-png-clip-art_34
+      rect:
+        serializedVersion: 2
+        x: 226
+        y: 345
+        width: 113
+        height: 113
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5b3cb8b564220494b8f18f28d034d6ee
+      internalID: -6117448957909694946
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: round-stone-lot-png-clip-art_35
+      rect:
+        serializedVersion: 2
+        x: 339
+        y: 345
+        width: 113
+        height: 113
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a01651af751a3854c94f6afaff6dde67
+      internalID: -1693267552228354888
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: round-stone-lot-png-clip-art_36
+      rect:
+        serializedVersion: 2
+        x: 452
+        y: 345
+        width: 113
+        height: 113
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3e377e052414d6e42a41d5c85b83fe47
+      internalID: 7056225595402188503
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: round-stone-lot-png-clip-art_37
+      rect:
+        serializedVersion: 2
+        x: 565
+        y: 345
+        width: 113
+        height: 113
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d67e1646734170a4fb2669b7059f19a2
+      internalID: -3040639706033485058
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: round-stone-lot-png-clip-art_38
+      rect:
+        serializedVersion: 2
+        x: 678
+        y: 345
+        width: 113
+        height: 113
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d59c90f870b6b4468b95d9a4e4293df
+      internalID: 530581397499879190
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: round-stone-lot-png-clip-art_39
+      rect:
+        serializedVersion: 2
+        x: 791
+        y: 345
+        width: 113
+        height: 113
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d4655ecda7ee3c64f9d90331fd5bfee8
+      internalID: 3882374463842058196
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: round-stone-lot-png-clip-art_40
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 232
+        width: 113
+        height: 113
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 59888db6d63a2914491c988c66a7cd38
+      internalID: 2730414939437669524
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: round-stone-lot-png-clip-art_41
+      rect:
+        serializedVersion: 2
+        x: 113
+        y: 232
+        width: 113
+        height: 113
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0f56e9d251a958545ac0968c2be46255
+      internalID: -1097969899632214507
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: round-stone-lot-png-clip-art_42
+      rect:
+        serializedVersion: 2
+        x: 226
+        y: 232
+        width: 113
+        height: 113
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc38466d63325a946b70e6a695e2185a
+      internalID: -5277046071933106977
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: round-stone-lot-png-clip-art_43
+      rect:
+        serializedVersion: 2
+        x: 339
+        y: 232
+        width: 113
+        height: 113
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 84b40ee8de537fe4d92f29ff9295fd9e
+      internalID: -7085405770649252715
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: round-stone-lot-png-clip-art_44
+      rect:
+        serializedVersion: 2
+        x: 452
+        y: 232
+        width: 113
+        height: 113
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 35f64e4b807af96458277f717f474083
+      internalID: -866746872236102822
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: round-stone-lot-png-clip-art_45
+      rect:
+        serializedVersion: 2
+        x: 565
+        y: 232
+        width: 113
+        height: 113
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 740791be4e1a39c4d81e0f288d5a269c
+      internalID: 9222417448094850558
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: round-stone-lot-png-clip-art_46
+      rect:
+        serializedVersion: 2
+        x: 678
+        y: 232
+        width: 113
+        height: 113
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 63ed15965b748544098cd33a1127796d
+      internalID: -6431317549712104820
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: round-stone-lot-png-clip-art_47
+      rect:
+        serializedVersion: 2
+        x: 791
+        y: 232
+        width: 113
+        height: 113
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9e245deda0f2b8a4689ba7a7d3ca2d0a
+      internalID: 8736887634131134396
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: round-stone-lot-png-clip-art_48
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 119
+        width: 113
+        height: 113
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b3dbb6d613c7e74fb49057782b79725
+      internalID: 1665136409101231895
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: round-stone-lot-png-clip-art_49
+      rect:
+        serializedVersion: 2
+        x: 113
+        y: 119
+        width: 113
+        height: 113
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 151a54584d8ec5e42893f865190aa893
+      internalID: -3201018074265758087
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: round-stone-lot-png-clip-art_50
+      rect:
+        serializedVersion: 2
+        x: 226
+        y: 119
+        width: 113
+        height: 113
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 14198cd8df65588449f750721ded684c
+      internalID: 7046201076648689003
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: round-stone-lot-png-clip-art_51
+      rect:
+        serializedVersion: 2
+        x: 339
+        y: 119
+        width: 113
+        height: 113
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d2f2365113d90d4682a795f7e4575ec
+      internalID: -1829499708995025759
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: round-stone-lot-png-clip-art_52
+      rect:
+        serializedVersion: 2
+        x: 452
+        y: 119
+        width: 113
+        height: 113
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a78662539875c78488da41224b5afd1b
+      internalID: -7853357418927198607
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: round-stone-lot-png-clip-art_53
+      rect:
+        serializedVersion: 2
+        x: 565
+        y: 119
+        width: 113
+        height: 113
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 606227e5848dd0649b19515f09378b2a
+      internalID: 5899837309601671230
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: round-stone-lot-png-clip-art_54
+      rect:
+        serializedVersion: 2
+        x: 678
+        y: 119
+        width: 113
+        height: 113
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a91c6ed86f2f8bd47b68ef55944eea9e
+      internalID: -5329780026204640041
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: round-stone-lot-png-clip-art_55
+      rect:
+        serializedVersion: 2
+        x: 791
+        y: 119
+        width: 113
+        height: 113
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 716ffd840fe35214b8616938151ecce7
+      internalID: 8186554279301408470
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: round-stone-lot-png-clip-art_56
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 6
+        width: 113
+        height: 113
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6280578b42368b545ae196083cb3d51b
+      internalID: -2457091750959026222
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: round-stone-lot-png-clip-art_57
+      rect:
+        serializedVersion: 2
+        x: 113
+        y: 6
+        width: 113
+        height: 113
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 268da3489b79ca64fba098d4051e62cc
+      internalID: -4630033680128225372
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: round-stone-lot-png-clip-art_58
+      rect:
+        serializedVersion: 2
+        x: 226
+        y: 6
+        width: 113
+        height: 113
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de7eccedbb217624db5ed4289dcf635d
+      internalID: -7996124762144976978
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: round-stone-lot-png-clip-art_59
+      rect:
+        serializedVersion: 2
+        x: 339
+        y: 6
+        width: 113
+        height: 113
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 601ea47d472ad0d409b96e45e13c4952
+      internalID: 2644119472523298578
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: round-stone-lot-png-clip-art_60
+      rect:
+        serializedVersion: 2
+        x: 452
+        y: 6
+        width: 113
+        height: 113
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f068cc58c16bcd74a836a9095d66298f
+      internalID: -715210896855541124
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: round-stone-lot-png-clip-art_61
+      rect:
+        serializedVersion: 2
+        x: 565
+        y: 6
+        width: 113
+        height: 113
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a30dec6b37b8e824da5aa1dcac16a04f
+      internalID: -1030326745547737769
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: round-stone-lot-png-clip-art_62
+      rect:
+        serializedVersion: 2
+        x: 678
+        y: 6
+        width: 113
+        height: 113
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 53ff6b5319c246a41806493adeca3cf3
+      internalID: 4485917838460082708
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: round-stone-lot-png-clip-art_63
+      rect:
+        serializedVersion: 2
+        x: 791
+        y: 6
+        width: 113
+        height: 113
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f7c5ed648376654ea81dfe9a60d9971
+      internalID: -5338073843398786832
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: a7e737e47ab11ff44a7c100a852b0a35
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
