@@ -154,6 +154,7 @@ MonoBehaviour:
   - {fileID: 4901328586735950890, guid: 40ecfd6d396988d4391946a9000310d8, type: 3}
   - {fileID: 5648610331102043772, guid: 6412319b50dd2a34a87e59e2f50883d4, type: 3}
   - {fileID: 3980116552032382069, guid: 93b8adac7fed809498f9b6f8188688f7, type: 3}
+  - {fileID: 1508113958698976559, guid: 67d81224160f425438b3be21cf51034f, type: 3}
   trashSpawnRate: 1
 --- !u!4 &159683387
 Transform:
