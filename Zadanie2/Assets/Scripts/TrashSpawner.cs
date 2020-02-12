@@ -35,8 +35,8 @@ public class TrashSpawner : MonoBehaviour
         {
             spawnCooldown = Time.time + trashSpawnRate;
             specialPackage += Random.Range(20, 40);
-            float randY = Random.Range(-2, 2);
-            Vector3 spawnPoint = new Vector3(-8, randY, -1.5f);
+            float randY = Random.Range(-1, 1);
+            Vector3 spawnPoint = new Vector3(transform.position.x, transform.position.y - randY, -1.5f);
 
             if (specialPackage > 100)
             {
