@@ -6,7 +6,7 @@ public class TrashSpawner : MonoBehaviour
 {
     public static TrashSpawner Instance;
     public enum ObjectColor { RED, YELLOW,GREEN,BLUE}
-
+	[SerializeField] float spawnXPosition = -6, spawnYPositonMax = 1f, spawnYPositionMin = -1f;
 
     [SerializeField]
     private GameObject[] prefabs;
@@ -35,8 +35,8 @@ public class TrashSpawner : MonoBehaviour
         {
             spawnCooldown = Time.time + trashSpawnRate;
             specialPackage += Random.Range(20, 40);
-            float randY = Random.Range(-2, 2);
-            Vector3 spawnPoint = new Vector3(-8, randY, -1.5f);
+            float randY = Random.Range(spawnYPositionMin, spawnYPositonMax);
+            Vector3 spawnPoint = new Vector3(spawnXPosition, randY, -1.5f);
 
             if (specialPackage > 100)
             {
