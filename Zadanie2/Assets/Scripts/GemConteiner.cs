@@ -5,7 +5,7 @@ using UnityEngine;
 public class GemConteiner : MonoBehaviour , IInteractable
 {
 
-    public void Interact()
+    public void Interact(int fingerID)
     {
         GemSpawner.Instance.Boom(transform.position);
         Destroy(this.gameObject);
