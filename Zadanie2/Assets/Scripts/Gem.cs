@@ -26,7 +26,7 @@ public class Gem : MonoBehaviour , IInteractable
         {
             TouchDetector.onFingerMovedDic.Remove(_touchID);
             TouchDetector.onFingerReleasedDic.Remove(_touchID);
-            Destroy(this.gameObject);
+            GemPool.Instance.ReturnToPool(this);
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)

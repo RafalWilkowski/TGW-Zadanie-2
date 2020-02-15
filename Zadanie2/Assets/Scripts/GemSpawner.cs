@@ -41,12 +41,16 @@ public class GemSpawner : MonoBehaviour
             if (specialPackage > 100)
             {
                 specialPackage = 0;
-                Instantiate(prefabs[prefabs.Length - 1], spawnPoint, Quaternion.identity);
+                //Instantiate(prefabs[prefabs.Length - 1], spawnPoint, Quaternion.identity);
+                var gemConteiner = StonePool.Instance.Get();
+                gemConteiner.transform.position = spawnPoint;
             }
             else
             {
-                int rand = Random.Range(0, prefabs.Length - 1);
-                Instantiate(prefabs[rand], spawnPoint, Quaternion.identity);
+                //int rand = Random.Range(0, prefabs.Length - 1);
+                //Instantiate(prefabs[rand], spawnPoint, Quaternion.identity);
+                var gem = GemPool.Instance.Get();
+                gem.transform.position = spawnPoint;
             }
         }
     }
