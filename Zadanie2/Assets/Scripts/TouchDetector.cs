@@ -33,12 +33,16 @@ public class TouchDetector : MonoBehaviour
                         if (interactable != null)
                         {
                             interactable.Interact(touchID);
+                            if (onFingerMovedDic.ContainsKey(touchID))
+                            {
+                                onFingerMovedDic[touchID]?.Invoke(touchScreenToWorldPosition);
+                            }
+                           
                         }
                         else
                         {
                             Debug.Log("Didnt hit anything");
-                        }
-                       
+                        }                      
                     }
 
                     
