@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Trash : MonoBehaviour
+public class Gem : MonoBehaviour
 {
     [SerializeField]
-    private TrashSpawner.ObjectColor objectColor;
+    private GemSpawner.ObjectColor objectColor;
 
     private BoxCollider2D boxCollider2D;
     private Rigidbody2D rb2D;
@@ -31,7 +31,7 @@ public class Trash : MonoBehaviour
         Conteiner conteiner = collision.gameObject.GetComponent<Conteiner>();
         if (conteiner != null)
         {
-            TrashSpawner.ObjectColor conteinerColor = conteiner.GetObjectColor();
+            GemSpawner.ObjectColor conteinerColor = conteiner.GetObjectColor();
             if (objectColor == conteinerColor)
             {
                 onGoodContainer = true;
@@ -48,7 +48,7 @@ public class Trash : MonoBehaviour
         Conteiner conteiner = collision.gameObject.GetComponent<Conteiner>();
         if (conteiner != null)
         {
-            TrashSpawner.ObjectColor conteinerColor = conteiner.GetObjectColor();
+            GemSpawner.ObjectColor conteinerColor = conteiner.GetObjectColor();
             if (objectColor == conteinerColor)
             {
                 onGoodContainer = false;
