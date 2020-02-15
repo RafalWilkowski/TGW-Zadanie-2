@@ -10,6 +10,7 @@ public class Gem : MonoBehaviour , IInteractable
     private BoxCollider2D boxCollider2D;
     private Rigidbody2D rb2D;
 
+    private int _touchID;
     private bool onGoodContainer = false;
     // Start is called before the first frame update
     void Start()
@@ -23,8 +24,8 @@ public class Gem : MonoBehaviour , IInteractable
     {
         if(transform.position.x > 8.5f)
         {
-            TouchDetector.onFingerMoved -= OnFingerPositionChanged;
-            TouchDetector.onFingerReleased -= OnFingerReleased;
+            TouchDetector.onFingerMovedDic.Remove(_touchID);
+            TouchDetector.onFingerReleasedDic.Remove(_touchID);
             Destroy(this.gameObject);
         }
     }
@@ -78,11 +79,12 @@ public class Gem : MonoBehaviour , IInteractable
         }
     }
     */
-    public void Interact()
+    public void Interact(int touchID)
     {
+        _touchID = touchID;
         // subscribe to touchdetector
-        TouchDetector.onFingerMoved += OnFingerPositionChanged;
-        TouchDetector.onFingerReleased += OnFingerReleased;
+        TouchDetector.onFingerMovedDic.Add(_touchID, OnFingerPositionChanged);
+        TouchDetector.onFingerReleasedDic.Add(_touchID, OnFingerReleased);
     }
 
     private void OnFingerPositionChanged(Vector2 position)
@@ -102,8 +104,12 @@ public class Gem : MonoBehaviour , IInteractable
         }
 
         // unsubscribe from touchdetector
+        TouchDetector.onFingerMovedDic.Remove(_touchID);
+        TouchDetector.onFingerReleasedDic.Remove(_touchID);
+        /*
         TouchDetector.onFingerMoved -= OnFingerPositionChanged;
         TouchDetector.onFingerReleased -= OnFingerReleased;
+        */
     }
 
 }
