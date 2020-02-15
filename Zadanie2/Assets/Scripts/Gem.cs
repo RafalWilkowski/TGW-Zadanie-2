@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Trash : MonoBehaviour
+public class Gem : MonoBehaviour , IInteractable
 {
     [SerializeField]
-    private TrashSpawner.ObjectColor objectColor;
+    private GemSpawner.ObjectColor objectColor;
 
     private BoxCollider2D boxCollider2D;
     private Rigidbody2D rb2D;
@@ -23,6 +23,8 @@ public class Trash : MonoBehaviour
     {
         if(transform.position.x > 8.5f)
         {
+            TouchDetector.onFingerMoved -= OnFingerPositionChanged;
+            TouchDetector.onFingerReleased -= OnFingerReleased;
             Destroy(this.gameObject);
         }
     }
@@ -31,40 +33,33 @@ public class Trash : MonoBehaviour
         Conteiner conteiner = collision.gameObject.GetComponent<Conteiner>();
         if (conteiner != null)
         {
-            TrashSpawner.ObjectColor conteinerColor = conteiner.GetObjectColor();
+            GemSpawner.ObjectColor conteinerColor = conteiner.GetObjectColor();
             if (objectColor == conteinerColor)
             {
                 onGoodContainer = true;
                 print("match colors!");
             }
         }
-        else
-        {
-            print("brak ObjectColoru!!!!");
-        }
+
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
         Conteiner conteiner = collision.gameObject.GetComponent<Conteiner>();
         if (conteiner != null)
         {
-            TrashSpawner.ObjectColor conteinerColor = conteiner.GetObjectColor();
+            GemSpawner.ObjectColor conteinerColor = conteiner.GetObjectColor();
             if (objectColor == conteinerColor)
             {
                 onGoodContainer = false;
                 print("wyjscie!");
             }
         }
-        else
-        {
-            print("brak ObjectColoru!!!!");
-        }
     }
 
-    private void OnMouseDrag()
+   /* private void OnMouseDrag()
     {
         //boxCollider2D.enabled = false;
-        rb2D.velocity = Vector2.zero;
+        //rb2D.velocity = Vector2.zero;
         float x = Camera.main.ScreenToWorldPoint(Input.mousePosition).x;
         float y = Camera.main.ScreenToWorldPoint(Input.mousePosition).y;
         transform.position = new Vector3(x, y, transform.position.z);
@@ -82,4 +77,33 @@ public class Trash : MonoBehaviour
 
         }
     }
+    */
+    public void Interact()
+    {
+        // subscribe to touchdetector
+        TouchDetector.onFingerMoved += OnFingerPositionChanged;
+        TouchDetector.onFingerReleased += OnFingerReleased;
+    }
+
+    private void OnFingerPositionChanged(Vector2 position)
+    {
+        rb2D.velocity = Vector2.zero;
+        rb2D.freezeRotation = true;
+        transform.position = new Vector3(position.x, position.y, transform.position.z);
+    }
+    private void OnFingerReleased(Vector2 lastPosition)
+    {
+        OnFingerPositionChanged(lastPosition);
+
+        if (onGoodContainer)
+        {
+            UIManager.Instance.AddScore();
+            Destroy(this.gameObject);
+        }
+
+        // unsubscribe from touchdetector
+        TouchDetector.onFingerMoved -= OnFingerPositionChanged;
+        TouchDetector.onFingerReleased -= OnFingerReleased;
+    }
+
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 public class Conteiner : MonoBehaviour
 {
     [SerializeField]
-    private TrashSpawner.ObjectColor objectColor;
+    private GemSpawner.ObjectColor objectColor;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,7 +18,7 @@ public class Conteiner : MonoBehaviour
         
     }
 
-    public TrashSpawner.ObjectColor GetObjectColor()
+    public GemSpawner.ObjectColor GetObjectColor()
     {
         return objectColor;
     }

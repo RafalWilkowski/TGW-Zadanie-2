@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TrashSpawner : MonoBehaviour
+public class GemSpawner : MonoBehaviour
 {
-    public static TrashSpawner Instance;
+    public static GemSpawner Instance;
     public enum ObjectColor { RED, YELLOW,GREEN,BLUE}
 
 
