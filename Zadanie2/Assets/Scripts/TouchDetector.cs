@@ -9,6 +9,8 @@ public class TouchDetector : MonoBehaviour
     public static Dictionary<int, Action<Vector2>> onFingerReleasedDic = new Dictionary<int, Action<Vector2>>();
 
     public LayerMask _layerToDetect;
+    [SerializeField]
+    private float _tapSize = 0.25f;
 
     // Update is called once per frame
     void Update()
@@ -25,25 +27,46 @@ public class TouchDetector : MonoBehaviour
                     Vector3 rayOrigin = new Vector3(touchScreenToWorldPosition.x, touchScreenToWorldPosition.y, Camera.main.transform.position.z);
                     Ray ray = new Ray(rayOrigin, Vector3.forward);
                     // get collider info
-                    RaycastHit2D hitInfo = Physics2D.Raycast(ray.origin, ray.direction, Mathf.Infinity, _layerToDetect);
-
-                    if (hitInfo.collider != null)
+                    RaycastHit2D[] hitInfos = Physics2D.CircleCastAll(rayOrigin, _tapSize, Vector3.forward, Mathf.Infinity, _layerToDetect);//Physics2D.Raycast(ray.origin, ray.direction, Mathf.Infinity, _layerToDetect);
+                    RaycastHit2D closestHitObject;
+                    
+                    if(hitInfos.Length > 0)
                     {
-                        IInteractable interactable = hitInfo.collider.GetComponent<IInteractable>();
-                        if (interactable != null)
+                        //findingg closest gem to touch point
+                        closestHitObject = hitInfos[0];
+                        float closestDistance = Vector2.Distance(touchScreenToWorldPosition, closestHitObject.collider.transform.position);
+                        foreach (RaycastHit2D hit in hitInfos)
                         {
-                            interactable.Interact(touchID);
-                            if (onFingerMovedDic.ContainsKey(touchID))
+                            float distance = Vector2.Distance(touchScreenToWorldPosition, hit.collider.transform.position);
+                            if(distance < closestDistance)
                             {
-                                onFingerMovedDic[touchID]?.Invoke(touchScreenToWorldPosition);
+                                closestDistance = distance;
+                                closestHitObject = hit;
                             }
-                           
                         }
-                        else
+                        // checking if object is interactable
+                        if (closestHitObject.collider != null)
                         {
-                            Debug.Log("Didnt hit anything");
-                        }                      
+                            IInteractable interactable = closestHitObject.collider.GetComponent<IInteractable>();
+                            if (interactable != null)
+                            {
+                                interactable.Interact(touchID);
+                                if (onFingerMovedDic.ContainsKey(touchID))
+                                {
+                                    onFingerMovedDic[touchID]?.Invoke(touchScreenToWorldPosition);
+                                }
+
+                            }
+                            else
+                            {
+                                Debug.Log("Didnt hit anything");
+                            }
+                        }
                     }
+
+                    
+
+                   
 
                     
                 }
