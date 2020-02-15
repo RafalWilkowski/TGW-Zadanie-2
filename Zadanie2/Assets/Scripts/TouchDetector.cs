@@ -27,7 +27,7 @@ public class TouchDetector : MonoBehaviour
                     Vector3 rayOrigin = new Vector3(touchScreenToWorldPosition.x, touchScreenToWorldPosition.y, Camera.main.transform.position.z);
                     Ray ray = new Ray(rayOrigin, Vector3.forward);
                     // get collider info
-                    RaycastHit2D[] hitInfos = Physics2D.CircleCastAll(rayOrigin, _tapSize, Vector3.forward, Mathf.Infinity, _layerToDetect);//Physics2D.Raycast(ray.origin, ray.direction, Mathf.Infinity, _layerToDetect);
+                    RaycastHit2D[] hitInfos = Physics2D.CircleCastAll(rayOrigin, _tapSize, Vector3.forward, Mathf.Infinity, _layerToDetect);
                     RaycastHit2D closestHitObject;
                     
                     if(hitInfos.Length > 0)
@@ -35,13 +35,17 @@ public class TouchDetector : MonoBehaviour
                         //findingg closest gem to touch point
                         closestHitObject = hitInfos[0];
                         float closestDistance = Vector2.Distance(touchScreenToWorldPosition, closestHitObject.collider.transform.position);
-                        foreach (RaycastHit2D hit in hitInfos)
+                        // if there are more than 2 objects
+                        if(hitInfos.Length > 1)
                         {
-                            float distance = Vector2.Distance(touchScreenToWorldPosition, hit.collider.transform.position);
-                            if(distance < closestDistance)
+                            for(int i = 1; i < hitInfos.Length; i++)
                             {
-                                closestDistance = distance;
-                                closestHitObject = hit;
+                                float distance = Vector2.Distance(touchScreenToWorldPosition, hitInfos[i].collider.transform.position);
+                                if (distance < closestDistance)
+                                {
+                                    closestDistance = distance;
+                                    closestHitObject = hitInfos[i];
+                                }
                             }
                         }
                         // checking if object is interactable
@@ -62,14 +66,9 @@ public class TouchDetector : MonoBehaviour
                                 Debug.Log("Didnt hit anything");
                             }
                         }
-                    }
-
-                    
-
-                   
-
-                    
+                    }           
                 }
+
                 if (onFingerMovedDic.ContainsKey(touchID))
                 {
                     if (touch.phase == TouchPhase.Stationary)
