@@ -1,64 +1,87 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class GemSpawner : MonoBehaviour
 {
     public static GemSpawner Instance;
-    public enum ObjectColor { RED, YELLOW,GREEN,BLUE}
-
 
     [SerializeField]
-    private GameObject[] prefabs;
+    private float _trashSpawnRate = 1f;
+    private float _spawnCooldown = 0;
+
+    private int _specialPackage = 0;
 
     [SerializeField]
-    private float trashSpawnRate = 1f;
-    private float spawnCooldown = 0;
+    private GemSprite[] gemSprites;
 
-    private int specialPackage = 0;
+    private Dictionary<int, Sprite> gemSpritesDic = new Dictionary<int, Sprite>();
 
     private void Awake()
     {
         Instance = this;
     }
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        
+        //copying gemsprites array to dictionary
+        foreach(GemSprite gemSprite in gemSprites)
+        {
+            gemSpritesDic.Add(gemSprite.id, gemSprite.sprite);
+        }
     }
-
     // Update is called once per frame
     void Update()
     {
 
-        if(spawnCooldown <= Time.time)
+        if(_spawnCooldown <= Time.time)
         {
-            spawnCooldown = Time.time + trashSpawnRate;
-            specialPackage += Random.Range(20, 40);
-            float randY = Random.Range(-1, 1);
+            _spawnCooldown = Time.time + _trashSpawnRate;
+            _specialPackage += UnityEngine.Random.Range(0, 20);
+            float randY = UnityEngine.Random.Range(-1, 1);
             Vector3 spawnPoint = new Vector3(transform.position.x, transform.position.y - randY, -1.5f);
 
-            if (specialPackage > 100)
+            if (_specialPackage > 100)
             {
-                specialPackage = 0;
-                Instantiate(prefabs[prefabs.Length - 1], spawnPoint, Quaternion.identity);
+                _specialPackage = 0;
+                //Instantiate(prefabs[prefabs.Length - 1], spawnPoint, Quaternion.identity);
+                var gemConteiner = StonePool.Instance.GetObjectFromPool();
+                gemConteiner.transform.position = spawnPoint;
             }
             else
             {
-                int rand = Random.Range(0, prefabs.Length - 1);
-                Instantiate(prefabs[rand], spawnPoint, Quaternion.identity);
+                SpawnGem(spawnPoint);
             }
         }
     }
 
-    public void Boom(Vector3 position)
+    private void SpawnGem(Vector3 spawnPoint)
     {
-        int quantity = Random.Range(0, prefabs.Length + 1);
+        //randomize gems colors
+        Array colorsArray = Enum.GetValues(typeof(ObjectColor));       
+        int rand = UnityEngine.Random.Range(0, colorsArray.Length);
+        ObjectColor colorType = (ObjectColor)colorsArray.GetValue(rand);
+        
+        // get gem from pool and initalize it
+        var gem = GemPool.Instance.GetObjectFromPool();
+        Sprite spriteType = gemSpritesDic[(int)colorType];
+        gem.Init(colorType, spawnPoint,spriteType);
+    }
+    public void StoneBreak(Vector3 position)
+    {
+        /*int quantity = UnityEngine.Random.Range(0, _prefabs.Length + 1);
         print("Ilość:" + quantity.ToString());
         for (int i = 0; i < quantity; i++)
         {
-            int rand = Random.Range(0, prefabs.Length-2);
-            Instantiate(prefabs[rand], position, Quaternion.identity);
-        }
+            int rand = UnityEngine.Random.Range(0, _prefabs.Length-2);
+            Instantiate(_prefabs[rand], position, Quaternion.identity);
+        }*/
     }
+}
+
+[Serializable]
+public struct GemSprite
+{
+    public int id;
+    public Sprite sprite;
 }

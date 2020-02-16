@@ -5,18 +5,22 @@ using UnityEngine;
 public class Gem : MonoBehaviour , IInteractable
 {
     [SerializeField]
-    private GemSpawner.ObjectColor objectColor;
+    private ObjectColor objectColor;
 
     private BoxCollider2D boxCollider2D;
     private Rigidbody2D rb2D;
+    private SpriteRenderer _sprite;
 
     private int _touchID;
     private bool onGoodContainer = false;
+    
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
+        _sprite = GetComponentInChildren<SpriteRenderer>();
         boxCollider2D = GetComponent<BoxCollider2D>();
         rb2D = GetComponent<Rigidbody2D>();
+       
     }
 
     // Update is called once per frame
@@ -26,16 +30,22 @@ public class Gem : MonoBehaviour , IInteractable
         {
             TouchDetector.onFingerMovedDic.Remove(_touchID);
             TouchDetector.onFingerReleasedDic.Remove(_touchID);
-            Destroy(this.gameObject);
+            GemPool.Instance.ReturnToPool(this);
         }
+    }
+    public void Init(ObjectColor color, Vector3 position, Sprite sprite)
+    {
+        objectColor = color;
+        transform.position = position;
+        _sprite.sprite = sprite;
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Conteiner conteiner = collision.gameObject.GetComponent<Conteiner>();
         if (conteiner != null)
         {
-            GemSpawner.ObjectColor conteinerColor = conteiner.GetObjectColor();
-            if (objectColor == conteinerColor)
+            ObjectColor conteinerColor = conteiner.GetObjectColor();
+            if (objectColor.HasFlag(conteinerColor))
             {
                 onGoodContainer = true;
                 print("match colors!");
@@ -43,13 +53,14 @@ public class Gem : MonoBehaviour , IInteractable
         }
 
     }
+
     private void OnTriggerExit2D(Collider2D collision)
     {
         Conteiner conteiner = collision.gameObject.GetComponent<Conteiner>();
         if (conteiner != null)
         {
-            GemSpawner.ObjectColor conteinerColor = conteiner.GetObjectColor();
-            if (objectColor == conteinerColor)
+            ObjectColor conteinerColor = conteiner.GetObjectColor();
+            if (objectColor.HasFlag(conteinerColor))
             {
                 onGoodContainer = false;
                 print("wyjscie!");
