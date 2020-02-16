@@ -15,7 +15,7 @@ public abstract class GenericObjectPool<T> : MonoBehaviour where T:Component
         Instance = this;
     }
 
-    public T Get()
+    public T GetObjectFromPool()
     {
         if (objects.Count == 0)
         {

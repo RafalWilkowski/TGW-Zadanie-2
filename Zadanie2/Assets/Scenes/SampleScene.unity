@@ -182,13 +182,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3775b9dc5b467849a5e7b2aee757853, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefabs:
-  - {fileID: 8326612205991940137, guid: c3d506336e879ec4f88305fa27c888ad, type: 3}
-  - {fileID: 4901328586735950890, guid: 40ecfd6d396988d4391946a9000310d8, type: 3}
-  - {fileID: 5648610331102043772, guid: 6412319b50dd2a34a87e59e2f50883d4, type: 3}
-  - {fileID: 3980116552032382069, guid: 93b8adac7fed809498f9b6f8188688f7, type: 3}
-  - {fileID: 1508113958698976559, guid: 67d81224160f425438b3be21cf51034f, type: 3}
-  trashSpawnRate: 1
+  _trashSpawnRate: 1
+  gemSprites:
+  - id: 1
+    sprite: {fileID: 21300000, guid: 773c764c8aa78d845bf9ba632b957fa0, type: 3}
+  - id: 2
+    sprite: {fileID: 21300000, guid: 7dddd316f65b8584ab11ef9ca3b76906, type: 3}
+  - id: 4
+    sprite: {fileID: 21300000, guid: 62041e5ce3dbcaf4cb78f6375b263516, type: 3}
+  - id: 8
+    sprite: {fileID: 21300000, guid: 2fe528775b2267747972ab230c87365e, type: 3}
 --- !u!4 &159683387
 Transform:
   m_ObjectHideFlags: 0

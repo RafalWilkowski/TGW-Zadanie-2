@@ -9,14 +9,18 @@ public class Gem : MonoBehaviour , IInteractable
 
     private BoxCollider2D boxCollider2D;
     private Rigidbody2D rb2D;
+    private SpriteRenderer _sprite;
 
     private int _touchID;
     private bool onGoodContainer = false;
+    
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
+        _sprite = GetComponentInChildren<SpriteRenderer>();
         boxCollider2D = GetComponent<BoxCollider2D>();
         rb2D = GetComponent<Rigidbody2D>();
+       
     }
 
     // Update is called once per frame
@@ -28,6 +32,12 @@ public class Gem : MonoBehaviour , IInteractable
             TouchDetector.onFingerReleasedDic.Remove(_touchID);
             GemPool.Instance.ReturnToPool(this);
         }
+    }
+    public void Init(ObjectColor color, Vector3 position, Sprite sprite)
+    {
+        objectColor = color;
+        transform.position = position;
+        _sprite.sprite = sprite;
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -43,6 +53,7 @@ public class Gem : MonoBehaviour , IInteractable
         }
 
     }
+
     private void OnTriggerExit2D(Collider2D collision)
     {
         Conteiner conteiner = collision.gameObject.GetComponent<Conteiner>();

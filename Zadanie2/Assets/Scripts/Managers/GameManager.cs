@@ -17,4 +17,4 @@ public class GameManager : MonoBehaviour
     }
 }
 [System.Flags]
-public enum ObjectColor { NONE = 0, RED = 1, YELLOW = 2, GREEN = 4, BLUE = 8 }
+public enum ObjectColor { RED = 1, YELLOW = 2, GREEN = 4, BLUE = 8 }
