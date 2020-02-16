@@ -2,10 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Conteiner : MonoBehaviour
+public class GameManager : MonoBehaviour
 {
-    [SerializeField]
-    private ObjectColor objectColor;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,9 +15,6 @@ public class Conteiner : MonoBehaviour
     {
         
     }
-
-    public ObjectColor GetObjectColor()
-    {
-        return objectColor;
-    }
 }
+[System.Flags]
+public enum ObjectColor { NONE = 0, RED = 1, YELLOW = 2, GREEN = 4, BLUE = 8 }

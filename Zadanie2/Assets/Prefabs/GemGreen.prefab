@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4901328586735950888}
   - component: {fileID: 4901328586735950891}
   m_Layer: 8
-  m_Name: TrashGreen
+  m_Name: GemGreen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -93,7 +93,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9031166f5c2598b4aac65d3593a9d9f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectColor: 2
+  objectColor: 4
 --- !u!1 &4901328587705482711
 GameObject:
   m_ObjectHideFlags: 0
@@ -150,6 +150,7 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0

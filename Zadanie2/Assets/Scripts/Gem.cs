@@ -5,7 +5,7 @@ using UnityEngine;
 public class Gem : MonoBehaviour , IInteractable
 {
     [SerializeField]
-    private GemSpawner.ObjectColor objectColor;
+    private ObjectColor objectColor;
 
     private BoxCollider2D boxCollider2D;
     private Rigidbody2D rb2D;
@@ -34,8 +34,8 @@ public class Gem : MonoBehaviour , IInteractable
         Conteiner conteiner = collision.gameObject.GetComponent<Conteiner>();
         if (conteiner != null)
         {
-            GemSpawner.ObjectColor conteinerColor = conteiner.GetObjectColor();
-            if (objectColor == conteinerColor)
+            ObjectColor conteinerColor = conteiner.GetObjectColor();
+            if (objectColor.HasFlag(conteinerColor))
             {
                 onGoodContainer = true;
                 print("match colors!");
@@ -48,8 +48,8 @@ public class Gem : MonoBehaviour , IInteractable
         Conteiner conteiner = collision.gameObject.GetComponent<Conteiner>();
         if (conteiner != null)
         {
-            GemSpawner.ObjectColor conteinerColor = conteiner.GetObjectColor();
-            if (objectColor == conteinerColor)
+            ObjectColor conteinerColor = conteiner.GetObjectColor();
+            if (objectColor.HasFlag(conteinerColor))
             {
                 onGoodContainer = false;
                 print("wyjscie!");

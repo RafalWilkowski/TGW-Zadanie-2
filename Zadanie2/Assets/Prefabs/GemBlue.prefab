@@ -56,6 +56,7 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -92,7 +93,7 @@ GameObject:
   - component: {fileID: 8326612205991940139}
   - component: {fileID: 8326612205991940138}
   m_Layer: 8
-  m_Name: TrashBlue
+  m_Name: GemBlue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -172,4 +173,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9031166f5c2598b4aac65d3593a9d9f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectColor: 3
+  objectColor: 8
