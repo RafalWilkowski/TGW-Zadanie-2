@@ -28,8 +28,6 @@ public class Gem : MonoBehaviour , IInteractable
     {
         if(transform.position.x > 8.5f)
         {
-            TouchDetector.onFingerMovedDic.Remove(_touchID);
-            TouchDetector.onFingerReleasedDic.Remove(_touchID);
             GemPool.Instance.ReturnToPool(this);
         }
     }
