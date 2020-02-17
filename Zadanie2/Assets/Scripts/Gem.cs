@@ -5,7 +5,7 @@ using UnityEngine;
 public class Gem : MonoBehaviour , IInteractable
 {
     [SerializeField]
-    private ObjectColor objectColor;
+    private ObjectColor _objectColor;
 
     private BoxCollider2D boxCollider2D;
     private Rigidbody2D rb2D;
@@ -33,18 +33,19 @@ public class Gem : MonoBehaviour , IInteractable
     }
     public void Init(ObjectColor color, Vector3 position, Sprite sprite)
     {
-        objectColor = color;
+        _objectColor = color;
         transform.position = position;
         _sprite.sprite = sprite;
     }
-    private void OnTriggerEnter2D(Collider2D collision)
+    /*private void OnTriggerEnter2D(Collider2D collision)
     {
         Conteiner conteiner = collision.gameObject.GetComponent<Conteiner>();
         if (conteiner != null)
         {
-            ObjectColor conteinerColor = conteiner.GetObjectColor();
+            ObjectColor conteinerColor = conteiner.ObjectColor;
             if (objectColor.HasFlag(conteinerColor))
             {
+               // conteiner.OnColorMatch
                 onGoodContainer = true;
                 print("match colors!");
             }
@@ -57,14 +58,14 @@ public class Gem : MonoBehaviour , IInteractable
         Conteiner conteiner = collision.gameObject.GetComponent<Conteiner>();
         if (conteiner != null)
         {
-            ObjectColor conteinerColor = conteiner.GetObjectColor();
+            ObjectColor conteinerColor = conteiner.ObjectColor;
             if (objectColor.HasFlag(conteinerColor))
             {
                 onGoodContainer = false;
                 print("wyjscie!");
             }
         }
-    }
+    }*/
 
    /* private void OnMouseDrag()
     {
@@ -106,19 +107,43 @@ public class Gem : MonoBehaviour , IInteractable
     {
         OnFingerPositionChanged(lastPosition);
 
-        if (onGoodContainer)
+        if (IsAboveGoodContainer())
         {
-            UIManager.Instance.AddScore();
-            Destroy(this.gameObject);
+            Debug.Log("match");
+            //need to change logic to container
+            //GameManager.Instance._scoreManager.AddScore();
+            GemPool.Instance.ReturnToPool(this);
         }
 
         // unsubscribe from touchdetector
         TouchDetector.onFingerMovedDic.Remove(_touchID);
         TouchDetector.onFingerReleasedDic.Remove(_touchID);
-        /*
-        TouchDetector.onFingerMoved -= OnFingerPositionChanged;
-        TouchDetector.onFingerReleased -= OnFingerReleased;
-        */
+
+    }
+
+    private bool IsAboveGoodContainer()
+    {
+        ContactFilter2D filter = new ContactFilter2D();
+        filter.layerMask = gameObject.layer;
+        filter.useTriggers = true;
+        List<Collider2D> results = new List<Collider2D>();
+        boxCollider2D.OverlapCollider(filter,results);
+
+        foreach(Collider2D collider in results)
+        {
+            Conteiner container = collider.GetComponent<Conteiner>();
+            if(container != null)
+            {
+                if (_objectColor.HasFlag(container.ObjectColor))
+                {
+                    container.OnColorMatch?.Invoke();
+                    return true; 
+                }
+                
+            }
+           
+        }
+        return false;
     }
 
 }

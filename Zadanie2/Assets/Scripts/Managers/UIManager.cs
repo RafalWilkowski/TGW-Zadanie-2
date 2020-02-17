@@ -5,27 +5,12 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-    public static UIManager Instance;
-
     [SerializeField]
-    private Text score;
-
-    private int scoreCounter = 0;
-
-    private void Awake()
-    {
-        Instance = this;
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
-        score.text = scoreCounter.ToString();
-    }
+    private Text _score;
 
     // Update is called once per frame
-    public void AddScore()
+    public void UpdateScore(int currentScore)
     {
-        scoreCounter++;
-        score.text = scoreCounter.ToString();
+        _score.text = currentScore.ToString();
     }
 }

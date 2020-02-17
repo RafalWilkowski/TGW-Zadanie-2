@@ -448,7 +448,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a068ff91d56e0743a4a73ab23a39c93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectColor: 8
 --- !u!61 &160859344
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -484,6 +483,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 161233776}
+  - component: {fileID: 161233777}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -505,6 +505,21 @@ Transform:
   m_Father: {fileID: 348985924}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &161233777
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 161233775}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7e9b06641f908c42acbcc72efc5943b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _uiManager: {fileID: 905628268}
+  _scoreManager:
+    baseGemScore: 1000
 --- !u!1 &209311357
 GameObject:
   m_ObjectHideFlags: 0
@@ -978,7 +993,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a068ff91d56e0743a4a73ab23a39c93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectColor: 4
 --- !u!61 &407163662
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1604,7 +1618,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &627430934
 Transform:
   m_ObjectHideFlags: 0
@@ -1981,7 +1995,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a068ff91d56e0743a4a73ab23a39c93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectColor: 1
 --- !u!1 &905628266
 GameObject:
   m_ObjectHideFlags: 0
@@ -2025,7 +2038,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b427ea88d8b99c648af200464343735e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  score: {fileID: 646097434}
+  _score: {fileID: 646097434}
 --- !u!1 &930195979
 GameObject:
   m_ObjectHideFlags: 0
@@ -4077,7 +4090,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 450, y: -116.9}
+  m_AnchoredPosition: {x: 450, y: -116.8999}
   m_SizeDelta: {x: 900, y: 33.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1740796153
@@ -4420,7 +4433,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a068ff91d56e0743a4a73ab23a39c93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectColor: 2
 --- !u!61 &1961549699
 BoxCollider2D:
   m_ObjectHideFlags: 0
