@@ -12,7 +12,6 @@ public class Gem : MonoBehaviour , IInteractable
     private SpriteRenderer _sprite;
 
     private int _touchID;
-    private bool onGoodContainer = false;
     
     // Start is called before the first frame update
     void Awake()
@@ -109,9 +108,6 @@ public class Gem : MonoBehaviour , IInteractable
 
         if (IsAboveGoodContainer())
         {
-            Debug.Log("match");
-            //need to change logic to container
-            //GameManager.Instance._scoreManager.AddScore();
             GemPool.Instance.ReturnToPool(this);
         }
 
@@ -136,7 +132,7 @@ public class Gem : MonoBehaviour , IInteractable
             {
                 if (_objectColor.HasFlag(container.ObjectColor))
                 {
-                    container.OnColorMatch?.Invoke();
+                    container.OnColorMatch?.Invoke(container.ObjectColor);
                     return true; 
                 }
                 

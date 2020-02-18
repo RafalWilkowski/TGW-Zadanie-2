@@ -33,7 +33,6 @@ public class GemSpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         if(_spawnCooldown <= Time.time)
         {
             _spawnCooldown = Time.time + _trashSpawnRate;
@@ -43,8 +42,7 @@ public class GemSpawner : MonoBehaviour
 
             if (_specialPackage > 100)
             {
-                _specialPackage = 0;
-                //Instantiate(prefabs[prefabs.Length - 1], spawnPoint, Quaternion.identity);
+                _specialPackage = 0;             
                 var gemConteiner = StonePool.Instance.GetObjectFromPool();
                 gemConteiner.transform.position = spawnPoint;
             }
@@ -59,7 +57,7 @@ public class GemSpawner : MonoBehaviour
     {
         //randomize gems colors
         Array colorsArray = Enum.GetValues(typeof(ObjectColor));       
-        int rand = UnityEngine.Random.Range(0, colorsArray.Length);
+        int rand = UnityEngine.Random.Range(1, colorsArray.Length);
         ObjectColor colorType = (ObjectColor)colorsArray.GetValue(rand);
         
         // get gem from pool and initalize it

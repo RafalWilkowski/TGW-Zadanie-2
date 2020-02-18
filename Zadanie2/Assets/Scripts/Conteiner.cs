@@ -5,8 +5,9 @@ using System;
 
 public class Conteiner : MonoBehaviour
 {
-    public Action OnColorMatch;
+    public Action<ObjectColor> OnColorMatch;
 
+    [field: SerializeField]
     public ObjectColor ObjectColor { get; private set; }
 
 }

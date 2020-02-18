@@ -21,8 +21,11 @@ public class GameManager : MonoBehaviour
         Conteiner[] containersOnGame = FindObjectsOfType<Conteiner>();
         foreach(Conteiner container in containersOnGame)
         {
-            container.OnColorMatch += AddScore;
+            container.OnColorMatch += _scoreManager.CheckForCombo;
         }
+
+        _scoreManager.OnScoreChange += _uiManager.UpdateScore;
+        _scoreManager.OnComboChange += _uiManager.UpdateCombo;
     }
     public void AddScore()
     {
@@ -33,15 +36,33 @@ public class GameManager : MonoBehaviour
     [System.Serializable]
     private class ScoreManager
     {
+        public Action<int> OnScoreChange;
+        public Action<int> OnComboChange;
+
         [SerializeField]
-        private int baseGemScore = 1000;
+        private int _baseGemScore = 1000;
+        [SerializeField]
+        private int _baseComboScore = 500;
+        [SerializeField]
+        private float _comboFactor = 0.25f;
+
         public int CurrentScore { get ; private set ; }
-        private int newScore = 0;
         public int Combo { get; private set; }
+        private ObjectColor _lastGemColor = ObjectColor.NONE;
 
         public void AddScore()
         {
-            CurrentScore += baseGemScore;
+            CurrentScore += _baseGemScore  + (int)(_baseComboScore * _comboFactor * Combo);
+            OnScoreChange?.Invoke(CurrentScore);
+        }
+
+        public void CheckForCombo(ObjectColor color)
+        {
+            bool result = color == _lastGemColor;
+            _lastGemColor = color;
+            Combo = result ? Combo + 1 : 0;
+            OnComboChange?.Invoke(Combo);
+            AddScore();        
         }
 
     }
@@ -50,4 +71,4 @@ public class GameManager : MonoBehaviour
 
 
 [System.Flags]
-public enum ObjectColor { RED = 1, YELLOW = 2, GREEN = 4, BLUE = 8 }
+public enum ObjectColor { NONE = 0, RED = 1, YELLOW = 2, GREEN = 4, BLUE = 8 }

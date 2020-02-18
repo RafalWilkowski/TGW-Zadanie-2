@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class GemConteiner : MonoBehaviour , IInteractable
 {
-
     public void Interact(int fingerID)
     {
+        //TODO change to delegate
         GemSpawner.Instance.StoneBreak(transform.position);
-        Destroy(this.gameObject);
+        StonePool.Instance.ReturnToPool(this);
     }
 }
