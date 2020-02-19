@@ -24,7 +24,8 @@ public class GameManager : MonoBehaviour
         _scoreManager.OnMainScoreChange += _uiManager.UpdateScore;
         //update UI comboStripe
         ComboStripe comboStripe = FindObjectOfType<ComboStripe>();
-        
+        comboStripe.OnTimeout += _scoreManager.BreakCombo;
+        comboStripe.OnTimeout += _uiManager.GlideNewScore;
         // container callback
         Conteiner.OnColorMatch += _scoreManager.CheckForCombo;
         Conteiner.OnColorMatched += comboStripe.UpdateTime;
@@ -66,26 +67,36 @@ public class GameManager : MonoBehaviour
         }
 
         public void CheckForCombo(ObjectColor color)
-        {
-            
-            bool combo = color == _lastGemColor;
-            _lastGemColor = color;
+        {            
+            bool combo = color == _lastGemColor;           
             if (combo)
             {
                 Combo++;
-    
+               
             }
             else
             {
-                Combo = 0;
-                _scoreToAdd = NewScore;
-                NewScore = 0;
+                if(_lastGemColor != ObjectColor.NONE)
+                {
+                    ComboStripe comboStripe = FindObjectOfType<ComboStripe>();
+                    comboStripe.OnTimeout?.Invoke();
+                }
+                
             }
-            //Combo = combo ? Combo + 1 : 0;
+            AddNewScore();
+
+            _lastGemColor = color;
+
             OnComboChange?.Invoke(Combo, color);
-            AddNewScore();        
+
         }
 
+        public void BreakCombo()
+        {
+            Combo = 0;
+            _scoreToAdd = NewScore;
+            NewScore = 0;
+        }
     }
 }
 
