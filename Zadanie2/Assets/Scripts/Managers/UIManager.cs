@@ -47,30 +47,15 @@ public class UIManager : MonoBehaviour
     }
     public void UpdateCombo(int currentCombo, ObjectColor color)
     {
-        _combo.text = currentCombo.ToString();
-
-        if (currentCombo == 0)
-        {
-            if (!_firstGem) {
-                _currentNewScore.GetComponent<Animator>().Play("score_glide");              
-                FlipNewScoresText();               
-                UpdateNewScorePanelColor(color);
-            }
-            else
-            {
-                
-                
-                UpdateNewScorePanelColor(color);
-                _firstGem = false;
-            }
-            
-        }
-        else
-        {
-            UpdateNewScorePanelColor(color);
-        }
+        _combo.text = currentCombo.ToString();       
         _currentNewScore.GetComponent<Animator>().Play("score_anim");
+    }
 
+    public void GlideNewScore()
+    {
+        _currentNewScore.GetComponent<Animator>().Play("score_glide");
+        FlipNewScoresText();
+        _combo.text = 0.ToString();
     }
     private void UpdateNewScorePanelColor(ObjectColor color)
     {
