@@ -31,13 +31,14 @@ public class UIManager : MonoBehaviour
         _newScore1.text = 0.ToString();
         _newScore2.text = 0.ToString();
         _currentNewScore = _newScore1;
-       // _currentNewScore.GetComponent<Animator>().SetTrigger("ShowScore");
+        _newScore2.GetComponent<Animator>().Play("score_hidden");
         _combo.text = 0.ToString();
     }
-
+    //public void SendComboScore(int cuu)
     public void UpdateScore(int currentScore)
     {
         _mainScore.text = currentScore.ToString();
+        _mainScore.GetComponent<Animator>().Play("score_anim");
     }
 
     public void UpdateNewScore(int newScore)

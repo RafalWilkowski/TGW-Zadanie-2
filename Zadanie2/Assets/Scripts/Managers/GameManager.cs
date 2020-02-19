@@ -18,27 +18,33 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        // container callback
         Conteiner[] containersOnGame = FindObjectsOfType<Conteiner>();
         foreach(Conteiner container in containersOnGame)
         {
             container.OnColorMatch += _scoreManager.CheckForCombo;
         }
 
+        //update UI callbacks
         _scoreManager.OnComboChange += _uiManager.UpdateCombo;
-        _scoreManager.OnScoreChange += _uiManager.UpdateNewScore;
+        _scoreManager.OnNewScoreChange += _uiManager.UpdateNewScore;
+        _scoreManager.OnMainScoreChange += _uiManager.UpdateScore;
+
+        //adding newScore to mainScore callback
+        NewScoreText [] newScores = FindObjectsOfType<NewScoreText>();
+        foreach(NewScoreText newScoreText in newScores)
+        {
+            newScoreText.OnGlideFinished += _scoreManager.AddMainScore;
+        }
         
-    }
-    public void AddScore()
-    {
-        _scoreManager.AddScore();
-        _uiManager.UpdateScore(_scoreManager.CurrentScore);
     }
 
     [System.Serializable]
     private class ScoreManager
     {
-        public Action<int> OnScoreChange;
+        public Action<int> OnNewScoreChange;
         public Action<int,ObjectColor> OnComboChange;
+        public Action<int> OnMainScoreChange;
 
         [SerializeField]
         private int _baseGemScore = 1000;
@@ -49,13 +55,20 @@ public class GameManager : MonoBehaviour
 
         public int CurrentScore { get ; private set ; }
         public int NewScore { get; private set; }
+        private int _scoreToAdd = 0;
         public int Combo { get; private set; }
         private ObjectColor _lastGemColor = ObjectColor.NONE;
 
-        public void AddScore()
+        public void AddMainScore()
+        {
+            CurrentScore += _scoreToAdd;
+            _scoreToAdd = 0;
+            OnMainScoreChange?.Invoke(CurrentScore);
+        }
+        public void AddNewScore()
         {
             NewScore += _baseGemScore  + (int)(_baseComboScore * _comboFactor * Combo);
-            OnScoreChange?.Invoke(NewScore);
+            OnNewScoreChange?.Invoke(NewScore);
         }
 
         public void CheckForCombo(ObjectColor color)
@@ -70,10 +83,12 @@ public class GameManager : MonoBehaviour
             else
             {
                 Combo = 0;
+                _scoreToAdd = NewScore;
+                NewScore = 0;
             }
             //Combo = combo ? Combo + 1 : 0;
             OnComboChange?.Invoke(Combo, color);
-            AddScore();        
+            AddNewScore();        
         }
 
     }

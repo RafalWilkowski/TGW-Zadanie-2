@@ -363,6 +363,7 @@ GameObject:
   - component: {fileID: 159388456}
   - component: {fileID: 159388455}
   - component: {fileID: 159388458}
+  - component: {fileID: 159388459}
   m_Layer: 5
   m_Name: NewScoreValue2
   m_TagString: Untagged
@@ -468,6 +469,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &159388459
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 159388453}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c98a35258bde37a44abd3edc90ee8545, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &159683385
 GameObject:
   m_ObjectHideFlags: 0
@@ -2926,6 +2939,7 @@ GameObject:
   - component: {fileID: 1217576891}
   - component: {fileID: 1217576890}
   - component: {fileID: 1217576893}
+  - component: {fileID: 1217576894}
   m_Layer: 5
   m_Name: NewScoreValue1
   m_TagString: Untagged
@@ -3031,6 +3045,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1217576894
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1217576888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c98a35258bde37a44abd3edc90ee8545, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1241127272
 GameObject:
   m_ObjectHideFlags: 0
