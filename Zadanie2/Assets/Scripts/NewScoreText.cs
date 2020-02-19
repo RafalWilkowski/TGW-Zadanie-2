@@ -5,7 +5,7 @@ using System;
 
 public class NewScoreText : MonoBehaviour
 {
-    public Action OnGlideFinished;
+    public static Action OnGlideFinished;
 
     public void OnGlideEnded()
     {
