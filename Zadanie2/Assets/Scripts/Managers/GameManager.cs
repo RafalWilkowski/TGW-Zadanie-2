@@ -18,17 +18,22 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        //update UI callbacks
+        _scoreManager.OnComboChange += _uiManager.UpdateCombo;
+        _scoreManager.OnNewScoreChange += _uiManager.UpdateNewScore;
+        _scoreManager.OnMainScoreChange += _uiManager.UpdateScore;
+        //update UI comboStripe
+        ComboStripe comboStripe = FindObjectOfType<ComboStripe>();
+        
         // container callback
         Conteiner[] containersOnGame = FindObjectsOfType<Conteiner>();
         foreach(Conteiner container in containersOnGame)
         {
             container.OnColorMatch += _scoreManager.CheckForCombo;
+            container.OnColorMatched += comboStripe.UpdateTime;
         }
 
-        //update UI callbacks
-        _scoreManager.OnComboChange += _uiManager.UpdateCombo;
-        _scoreManager.OnNewScoreChange += _uiManager.UpdateNewScore;
-        _scoreManager.OnMainScoreChange += _uiManager.UpdateScore;
+        
 
         //adding newScore to mainScore callback
         NewScoreText [] newScores = FindObjectsOfType<NewScoreText>();
@@ -73,6 +78,7 @@ public class GameManager : MonoBehaviour
 
         public void CheckForCombo(ObjectColor color)
         {
+            
             bool combo = color == _lastGemColor;
             _lastGemColor = color;
             if (combo)
