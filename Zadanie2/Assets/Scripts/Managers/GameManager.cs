@@ -26,22 +26,11 @@ public class GameManager : MonoBehaviour
         ComboStripe comboStripe = FindObjectOfType<ComboStripe>();
         
         // container callback
-        Conteiner[] containersOnGame = FindObjectsOfType<Conteiner>();
-        foreach(Conteiner container in containersOnGame)
-        {
-            container.OnColorMatch += _scoreManager.CheckForCombo;
-            container.OnColorMatched += comboStripe.UpdateTime;
-        }
-
+        Conteiner.OnColorMatch += _scoreManager.CheckForCombo;
+        Conteiner.OnColorMatched += comboStripe.UpdateTime;
         
-
-        //adding newScore to mainScore callback
-        NewScoreText [] newScores = FindObjectsOfType<NewScoreText>();
-        foreach(NewScoreText newScoreText in newScores)
-        {
-            newScoreText.OnGlideFinished += _scoreManager.AddMainScore;
-        }
-        
+        //adding newScore to mainScore callback        
+        NewScoreText.OnGlideFinished += _scoreManager.AddMainScore;                   
     }
 
     [System.Serializable]
