@@ -31,8 +31,10 @@ public class UIManager : MonoBehaviour
         _newScore1.text = 0.ToString();
         _newScore2.text = 0.ToString();
         _currentNewScore = _newScore1;
+        _newScore1.GetComponent<Animator>().Play("score_hidden");
         _newScore2.GetComponent<Animator>().Play("score_hidden");
         _combo.text = 0.ToString();
+        _combo.GetComponent<Animator>().Play("score_hidden");
     }
     //public void SendComboScore(int cuu)
     public void UpdateScore(int currentScore)
@@ -47,18 +49,30 @@ public class UIManager : MonoBehaviour
     }
     public void UpdateCombo(int currentCombo, ObjectColor color)
     {
-        _combo.text = currentCombo.ToString();
+        if (currentCombo != 0)
+        {
+            _combo.GetComponent<Animator>().Play("score_anim");
+            _combo.text = "COMBO x " + (currentCombo + 1).ToString();
+        } 
+        else _combo.text = "" ;
+
         UpdateNewScorePanelColor(color);       
-        _currentNewScore.GetComponent<Animator>().Play("score_anim");
+        //_currentNewScore.GetComponent<Animator>().Play("score_anim");
 
     }
     public void GlideNewScore()
     {
-        _currentNewScore.GetComponent<Animator>().Play("score_glide");
+        if(_currentNewScore.text != "0" && GameManager.Instance._scoreManager.Combo != 0) _currentNewScore.GetComponent<Animator>().Play("score_glide");
+
         FlipNewScoresText();
-        _combo.text = 0.ToString();
+        
+        //_combo.text = 0.ToString();
     }
-        private void UpdateNewScorePanelColor(ObjectColor color)
+    public void HideCombo()
+    {
+        _combo.GetComponent<Animator>().Play("score_hidden");
+    }
+    private void UpdateNewScorePanelColor(ObjectColor color)
     {
         Color32 colorToDraw = new Color32();
         foreach (GemColors gemColor in colors)

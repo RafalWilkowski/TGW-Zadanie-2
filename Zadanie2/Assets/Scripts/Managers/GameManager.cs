@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private UIManager _uiManager;
     [SerializeField]
-    private ScoreManager _scoreManager;
+    public ScoreManager _scoreManager;
 
     private void Awake()
     {
@@ -23,19 +23,22 @@ public class GameManager : MonoBehaviour
         _scoreManager.OnNewScoreChange += _uiManager.UpdateNewScore;
         _scoreManager.OnMainScoreChange += _uiManager.UpdateScore;
         //update UI comboStripe      
-        ComboStripe.OnTimeout += _scoreManager.BreakCombo;
+        
         ComboStripe.OnTimeout += _uiManager.GlideNewScore;
+        ComboStripe.OnTimeout += _scoreManager.BreakCombo;
+
         // container callback
         Conteiner.OnColorMatch += _scoreManager.CheckForCombo;
         ComboStripe comboStripe = FindObjectOfType<ComboStripe>();
         Conteiner.OnColorMatched += comboStripe.UpdateTime;
         
         //adding newScore to mainScore callback        
-        NewScoreText.OnGlideFinished += _scoreManager.AddMainScore;                   
+        NewScoreText.OnGlideFinished += _scoreManager.AddMainScore;
+        NewScoreText.OnGlideFinished += _uiManager.HideCombo;
     }
 
     [System.Serializable]
-    private class ScoreManager
+    public class ScoreManager
     {
         public Action<int> OnNewScoreChange;
         public Action<int,ObjectColor> OnComboChange;
@@ -58,7 +61,7 @@ public class GameManager : MonoBehaviour
         public void AddMainScore()
         {
             CurrentScore += _scoreToAdd;
-            _scoreToAdd = 0;
+            //_scoreToAdd = 0;
             OnMainScoreChange?.Invoke(CurrentScore);
         }
         public void AddNewScore()
@@ -74,6 +77,11 @@ public class GameManager : MonoBehaviour
             if (combo && !_comboBreakedByTimeout)
             {
                 Combo++;
+                AddNewScore();
+
+                _lastGemColor = color;
+
+                OnComboChange?.Invoke(Combo, color);
                
             }
             else
@@ -81,16 +89,20 @@ public class GameManager : MonoBehaviour
                 if (!_comboBreakedByTimeout)//if(_lastGemColor != ObjectColor.NONE || !_comboBreaked)
                 {
                     ComboStripe.OnTimeout?.Invoke();
-                    
+                    //_scoreToAdd = NewScore;
                 }
                 _comboBreakedByTimeout = false;
+                //AddNewScore();
+                CurrentScore += 100;
+                OnMainScoreChange?.Invoke(CurrentScore);
+                //NewScore = 0;
+                AddMainScore();
+                _lastGemColor = color;
+
+               // OnComboChange?.Invoke(Combo, color);
             }
             
-            AddNewScore();
-
-            _lastGemColor = color;
-
-            OnComboChange?.Invoke(Combo, color);
+           
 
         }
 
