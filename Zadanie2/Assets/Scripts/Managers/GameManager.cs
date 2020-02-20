@@ -22,12 +22,12 @@ public class GameManager : MonoBehaviour
         _scoreManager.OnComboChange += _uiManager.UpdateCombo;
         _scoreManager.OnNewScoreChange += _uiManager.UpdateNewScore;
         _scoreManager.OnMainScoreChange += _uiManager.UpdateScore;
-        //update UI comboStripe
-        ComboStripe comboStripe = FindObjectOfType<ComboStripe>();
-        comboStripe.OnTimeout += _scoreManager.BreakCombo;
-        comboStripe.OnTimeout += _uiManager.GlideNewScore;
+        //update UI comboStripe      
+        ComboStripe.OnTimeout += _scoreManager.BreakCombo;
+        ComboStripe.OnTimeout += _uiManager.GlideNewScore;
         // container callback
         Conteiner.OnColorMatch += _scoreManager.CheckForCombo;
+        ComboStripe comboStripe = FindObjectOfType<ComboStripe>();
         Conteiner.OnColorMatched += comboStripe.UpdateTime;
         
         //adding newScore to mainScore callback        
@@ -52,6 +52,7 @@ public class GameManager : MonoBehaviour
         public int NewScore { get; private set; }
         private int _scoreToAdd = 0;
         public int Combo { get; private set; }
+        private bool _comboBreakedByTimeout = true;
         private ObjectColor _lastGemColor = ObjectColor.NONE;
 
         public void AddMainScore()
@@ -68,21 +69,23 @@ public class GameManager : MonoBehaviour
 
         public void CheckForCombo(ObjectColor color)
         {            
-            bool combo = color == _lastGemColor;           
-            if (combo)
+            bool combo = color == _lastGemColor;    
+            
+            if (combo && !_comboBreakedByTimeout)
             {
                 Combo++;
                
             }
             else
             {
-                if(_lastGemColor != ObjectColor.NONE)
+                if (!_comboBreakedByTimeout)//if(_lastGemColor != ObjectColor.NONE || !_comboBreaked)
                 {
-                    ComboStripe comboStripe = FindObjectOfType<ComboStripe>();
-                    comboStripe.OnTimeout?.Invoke();
+                    ComboStripe.OnTimeout?.Invoke();
+                    
                 }
-                
+                _comboBreakedByTimeout = false;
             }
+            
             AddNewScore();
 
             _lastGemColor = color;
@@ -93,6 +96,7 @@ public class GameManager : MonoBehaviour
 
         public void BreakCombo()
         {
+            _comboBreakedByTimeout = true;
             Combo = 0;
             _scoreToAdd = NewScore;
             NewScore = 0;

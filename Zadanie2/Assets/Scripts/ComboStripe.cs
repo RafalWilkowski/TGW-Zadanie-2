@@ -6,7 +6,7 @@ using System;
 
 public class ComboStripe : MonoBehaviour
 {
-    public Action OnTimeout;
+    public static Action OnTimeout;
 
     [SerializeField]
     private float _firstTimeToAdd;
