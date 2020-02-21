@@ -7,6 +7,8 @@ public class TouchDetector : MonoBehaviour
 {
     public static Dictionary<int, Action<Vector2>> onFingerMovedDic = new Dictionary<int, Action<Vector2>>();
     public static Dictionary<int, Action<Vector2>> onFingerReleasedDic = new Dictionary<int, Action<Vector2>>();
+    public static Dictionary<int, Action> onSwipeDic = new Dictionary<int, Action>();
+    private Dictionary<int, Vector2> _swipePointPosition = new Dictionary<int, Vector2>();
 
     public LayerMask _layerToDetect;
     [SerializeField]
@@ -59,6 +61,10 @@ public class TouchDetector : MonoBehaviour
                                 {
                                     onFingerMovedDic[touchID]?.Invoke(touchScreenToWorldPosition);
                                 }
+                                else if (onSwipeDic.ContainsKey(touchID))
+                                {
+                                    _swipePointPosition.Add(touchID, touch.position);
+                                }
 
                             }
                             else
@@ -85,7 +91,20 @@ public class TouchDetector : MonoBehaviour
                         onFingerReleasedDic[touchID]?.Invoke(touchScreenToWorldPosition);
                     }
                 }
-                
+                else if (onSwipeDic.ContainsKey(touchID))
+                {
+                    //check for swipe up
+                    if(onSwipeDic[touchID] != null)
+                    {
+                        Vector2 startPosition = _swipePointPosition[touchID];
+                        if (startPosition.y < touch.position.y) onSwipeDic[touchID].Invoke();
+                        //remove dictionary and vector of swipe
+                        onSwipeDic.Remove(touchID);
+                        _swipePointPosition.Remove(touchID);
+                    }
+                    
+                }
+
             }
             /*Touch touch = Input.GetTouch(0);            
             // touch position to world
