@@ -86,24 +86,15 @@ public class GameManager : MonoBehaviour
             }
             else
             {
-                if (!_comboBreakedByTimeout)//if(_lastGemColor != ObjectColor.NONE || !_comboBreaked)
+                if (!_comboBreakedByTimeout)
                 {
                     ComboStripe.OnTimeout?.Invoke();
-                    //_scoreToAdd = NewScore;
                 }
                 _comboBreakedByTimeout = false;
-                //AddNewScore();
                 CurrentScore += 100;
-                OnMainScoreChange?.Invoke(CurrentScore);
-                //NewScore = 0;
                 AddMainScore();
                 _lastGemColor = color;
-
-               // OnComboChange?.Invoke(Combo, color);
-            }
-            
-           
-
+            }                    
         }
 
         public void BreakCombo()

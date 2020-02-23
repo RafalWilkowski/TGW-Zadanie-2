@@ -2408,9 +2408,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _mainScore: {fileID: 646097434}
+  _mainScoreAnim: {fileID: 646097437}
   _newScore1: {fileID: 1217576891}
+  _newScore1Anim: {fileID: 1217576893}
   _newScore2: {fileID: 159388456}
+  _newScore2Anim: {fileID: 159388458}
   _combo: {fileID: 1362836978}
+  _comboAnim: {fileID: 1362836981}
   colors:
   - id: 0
     color:
