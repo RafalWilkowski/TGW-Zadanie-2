@@ -31,7 +31,6 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
-        Time.timeScale = 0.15f;
         ResetValues();
     }
 

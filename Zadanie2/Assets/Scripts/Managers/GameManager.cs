@@ -31,9 +31,9 @@ public class GameManager : MonoBehaviour
         Conteiner.OnColorMatch += _scoreManager.CheckForCombo;
         ComboStripe comboStripe = FindObjectOfType<ComboStripe>();
         Conteiner.OnColorMatched += comboStripe.UpdateTime;
-        
+
         //adding newScore to mainScore callback        
-        NewScoreText.OnGlideFinished += _scoreManager.AddMainScore;
+        NewScoreText.OnGlideFinished += _scoreManager.ScoreGlidedToMainScore;
         NewScoreText.OnGlideFinished += _uiManager.HideCombo;
     }
 
@@ -53,20 +53,20 @@ public class GameManager : MonoBehaviour
 
         public int CurrentScore { get ; private set ; }
         public int NewScore { get; private set; }
+        private Queue<int> _scoreToAddQueue = new Queue<int>();
         private int _scoreToAdd = 0;
         public int Combo { get; private set; }
         private bool _comboBreakedByTimeout = true;
         private ObjectColor _lastGemColor = ObjectColor.NONE;
 
-        public void AddMainScore()
+        public void AddMainScore(int scoreToAdd)
         {
-            CurrentScore += _scoreToAdd;
-            //_scoreToAdd = 0;
+            CurrentScore += scoreToAdd;
             OnMainScoreChange?.Invoke(CurrentScore);
         }
         public void AddNewScore()
         {
-            NewScore += _baseGemScore  + (int)(_baseComboScore * _comboFactor * Combo);
+            NewScore += _baseGemScore + (int)(_baseComboScore * _comboFactor * Combo);
             OnNewScoreChange?.Invoke(NewScore);
         }
 
@@ -78,21 +78,17 @@ public class GameManager : MonoBehaviour
             {
                 Combo++;
                 AddNewScore();
-
                 _lastGemColor = color;
-
-                OnComboChange?.Invoke(Combo, color);
-               
+                OnComboChange?.Invoke(Combo, color);              
             }
             else
-            {
+            {             
                 if (!_comboBreakedByTimeout)
                 {
                     ComboStripe.OnTimeout?.Invoke();
                 }
                 _comboBreakedByTimeout = false;
-                CurrentScore += 100;
-                AddMainScore();
+                AddMainScore(_baseGemScore);
                 _lastGemColor = color;
             }                    
         }
@@ -101,8 +97,19 @@ public class GameManager : MonoBehaviour
         {
             _comboBreakedByTimeout = true;
             Combo = 0;
-            _scoreToAdd = NewScore;
-            NewScore = 0;
+            if (NewScore != 0)
+            {
+                _scoreToAddQueue.Enqueue(NewScore);
+                
+                NewScore = 0;
+            }
+        }
+
+        public void ScoreGlidedToMainScore()
+        {
+            int scoreGlided = _scoreToAddQueue.Dequeue();
+            Debug.Log(_scoreToAddQueue.Count);
+            AddMainScore(scoreGlided);
         }
     }
 }
