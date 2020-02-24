@@ -38,11 +38,11 @@ public class ComboStripe : MonoBehaviour
         }       
     }
 
-    public void UpdateTime()
+    public void UpdateTime(bool reset)
     {
-        if (!_timeRunning)
+        if (!_timeRunning || reset)
         {
-            _slider.value += 2;
+            _slider.value = 2;
         }
         else
         {

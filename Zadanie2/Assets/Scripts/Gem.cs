@@ -134,7 +134,6 @@ public class Gem : MonoBehaviour , IInteractable
                 if (_objectColor.HasFlag(container.ObjectColor))
                 {
                     Conteiner.OnColorMatch?.Invoke(container.ObjectColor);
-                    Conteiner.OnColorMatched?.Invoke();
                     return true; 
                 }
                 
