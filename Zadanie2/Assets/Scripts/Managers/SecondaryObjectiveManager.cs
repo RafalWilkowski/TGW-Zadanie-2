@@ -15,7 +15,7 @@ public class SecondaryObjectiveManager : MonoBehaviour
 	[SerializeField] float extraTimeToCompletePerCapacity = 2.5f;
 	float objectiveTimer;
 	Slider objectiveTimeSlider;
-	int totalObjectives = 0;
+	int totalObjectives = 1;
 	int secondaryObjectiveLevel = 1;
 	int totalCapacity = 3;
 	int maxSockets = 3;

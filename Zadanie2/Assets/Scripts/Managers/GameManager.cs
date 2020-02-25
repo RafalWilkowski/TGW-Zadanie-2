@@ -63,11 +63,7 @@ public class GameManager : MonoBehaviour
             CurrentScore += scoreToAdd;
             OnMainScoreChange?.Invoke(CurrentScore);
         }
-		public void AddMainScore(int score)
-		{
-			CurrentScore += score;
-			OnMainScoreChange?.Invoke(CurrentScore);
-		}
+		
         public void AddNewScore()
         {
             NewScore += _baseGemScore + (int)(_baseComboScore * _comboFactor * Combo);
