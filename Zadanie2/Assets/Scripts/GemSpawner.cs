@@ -52,7 +52,7 @@ public class GemSpawner : MonoBehaviour
               _specialPackage = 0;             
               var gemConteiner = StonePool.Instance.GetObjectFromPool();
               gemConteiner.transform.position = spawnPoint;
-              gemConteiner.OnBreak += StoneBreak;
+              if(gemConteiner.OnBreak == null) gemConteiner.OnBreak += StoneBreak;
             }
             else
             {
