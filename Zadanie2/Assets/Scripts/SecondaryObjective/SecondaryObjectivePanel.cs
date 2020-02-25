@@ -14,7 +14,7 @@ public class SecondaryObjectivePanel : MonoBehaviour
 
 	IEnumerator WaitToSubscribe()
 	{
-		while (!GameManager.Instance && !SecondaryObjectiveManager.Instance)
+		while (!GameManager.Instance || !SecondaryObjectiveManager.Instance)
 		{
 			yield return new WaitForEndOfFrame();
 		}
