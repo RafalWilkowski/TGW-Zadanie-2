@@ -9,6 +9,6 @@ public class Conteiner : MonoBehaviour
     public static Action OnColorMatched;
 
     [field: SerializeField]
-    public ObjectColor ObjectColor { get; private set; }
+    public ObjectColor ObjectColor { get; protected set; }
 
 }

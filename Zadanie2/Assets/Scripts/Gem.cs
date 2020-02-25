@@ -138,9 +138,15 @@ public class Gem : MonoBehaviour , IInteractable
                 }
                 
             }
+			SecondaryObjectiveSocket socket = collider.GetComponent<SecondaryObjectiveSocket>();
+			if (socket && _objectColor.HasFlag(socket.SocketColor) && !socket.IsFull)
+			{
+				socket.InstallGem(this);
+			}
            
         }
         return false;
     }
 
+	public ObjectColor GemColor { get => _objectColor; }
 }
