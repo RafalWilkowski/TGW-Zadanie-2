@@ -98,6 +98,7 @@ public class Gem : MonoBehaviour , IInteractable
 
     private void OnFingerPositionChanged(Vector2 position)
     {
+        rb2D.position = position;
         rb2D.velocity = Vector2.zero;
         rb2D.freezeRotation = true;
         transform.position = new Vector3(position.x, position.y, transform.position.z);
@@ -133,7 +134,6 @@ public class Gem : MonoBehaviour , IInteractable
                 if (_objectColor.HasFlag(container.ObjectColor))
                 {
                     Conteiner.OnColorMatch?.Invoke(container.ObjectColor);
-                    Conteiner.OnColorMatched?.Invoke();
                     return true; 
                 }
                 

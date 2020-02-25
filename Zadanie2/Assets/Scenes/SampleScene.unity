@@ -546,7 +546,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3775b9dc5b467849a5e7b2aee757853, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _trashSpawnRate: 1
+  _gemSpawnRate: 1
+  _wagiPrawdopodobienstwa:
+  - 13
+  - 8
+  - 5
+  - 3
+  - 2
+  - 1
+  - 1
   gemSprites:
   - id: 1
     sprite: {fileID: 21300000, guid: 773c764c8aa78d845bf9ba632b957fa0, type: 3}
@@ -2456,9 +2464,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _mainScore: {fileID: 646097434}
+  _mainScoreAnim: {fileID: 646097437}
   _newScore1: {fileID: 1217576891}
+  _newScore1Anim: {fileID: 1217576893}
   _newScore2: {fileID: 159388456}
+  _newScore2Anim: {fileID: 159388458}
   _combo: {fileID: 1362836978}
+  _comboAnim: {fileID: 1362836981}
   colors:
   - id: 0
     color:
