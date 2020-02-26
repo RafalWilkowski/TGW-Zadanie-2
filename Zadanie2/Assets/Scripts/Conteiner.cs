@@ -1,25 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class Conteiner : MonoBehaviour
 {
-    [SerializeField]
-    private ObjectColor objectColor;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public static Action<ObjectColor> OnColorMatch;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    [field: SerializeField]
+    public ObjectColor ObjectColor { get; protected set; }
 
-    public ObjectColor GetObjectColor()
-    {
-        return objectColor;
-    }
 }
