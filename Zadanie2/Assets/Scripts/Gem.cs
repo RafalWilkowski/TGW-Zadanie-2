@@ -20,7 +20,7 @@ public class Gem : MonoBehaviour , IInteractable
     private bool _unmatched = false;
     #endregion
 
-    private BoxCollider2D boxCollider2D;
+    private BoxCollider2D _boxCollider2D;
     private Rigidbody2D rb2D;
     private SpriteRenderer _sprite;
 
@@ -30,7 +30,7 @@ public class Gem : MonoBehaviour , IInteractable
     void Awake()
     {
         _sprite = GetComponentInChildren<SpriteRenderer>();
-        boxCollider2D = GetComponent<BoxCollider2D>();
+        _boxCollider2D = GetComponent<BoxCollider2D>();
         rb2D = GetComponent<Rigidbody2D>();
         _audio = GetComponent<AudioSource>();
     }
@@ -50,11 +50,13 @@ public class Gem : MonoBehaviour , IInteractable
         _objectColor = color;
         transform.position = position;
         _sprite.sprite = sprite;
+        _boxCollider2D.enabled = true;
     }
    
     public void Interact(int touchID)
     {
         _touchID = touchID;
+        _boxCollider2D.isTrigger = true;
         // subscribe to touchdetector
         TouchDetector.onFingerMovedDic.Add(_touchID, OnFingerPositionChanged);
         TouchDetector.onFingerReleasedDic.Add(_touchID, OnFingerReleased);
@@ -72,6 +74,7 @@ public class Gem : MonoBehaviour , IInteractable
     }
     private void OnFingerReleased(Vector2 lastPosition)
     {
+        _boxCollider2D.isTrigger = false;
         OnFingerPositionChanged(lastPosition);
         _unmatched = false;
         if (IsAboveGoodContainer())
@@ -79,6 +82,7 @@ public class Gem : MonoBehaviour , IInteractable
             ChangeClipAndPlay(_matchSound);
             //TODO change to some globals
             _sprite.gameObject.SetActive(false);
+            _boxCollider2D.enabled = false;
             StartCoroutine(ReturnToPoolAfterSound());
         }
         else if(_unmatched)
@@ -111,7 +115,7 @@ public class Gem : MonoBehaviour , IInteractable
         filter.layerMask = gameObject.layer;
         filter.useTriggers = true;
         List<Collider2D> results = new List<Collider2D>();
-        boxCollider2D.OverlapCollider(filter,results);
+        _boxCollider2D.OverlapCollider(filter,results);
 
         foreach(Collider2D collider in results)
         {
