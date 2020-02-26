@@ -11,7 +11,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -3131964963440402395, guid: a802bf849476ac645937f4e3cb1bfef6,
     type: 2}
-  m_audioClip: {fileID: 8300000, guid: 55319b74de4a04a279fe970aa6e41270, type: 3}
+  m_audioClip: {fileID: 8300000, guid: f3b6556f4cdfd42c1b52b4567e3b8f35, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -133,22 +133,22 @@ PrefabInstance:
         type: 3}
       propertyPath: _liftingAudios.Array.data[0]
       value: 
-      objectReference: {fileID: 8300000, guid: 55319b74de4a04a279fe970aa6e41270, type: 3}
+      objectReference: {fileID: 8300000, guid: f3b6556f4cdfd42c1b52b4567e3b8f35, type: 3}
     - target: {fileID: 8326612205991940138, guid: c3d506336e879ec4f88305fa27c888ad,
         type: 3}
       propertyPath: _liftingAudios.Array.data[1]
       value: 
-      objectReference: {fileID: 8300000, guid: f40c98a7188e24125b94427e467a47df, type: 3}
+      objectReference: {fileID: 8300000, guid: 5c446bc035e274e00b1544dd14c55dcd, type: 3}
     - target: {fileID: 8326612205991940138, guid: c3d506336e879ec4f88305fa27c888ad,
         type: 3}
       propertyPath: _liftingAudios.Array.data[2]
       value: 
-      objectReference: {fileID: 8300000, guid: 60cda4dbd954b4354bb71516e2739d33, type: 3}
+      objectReference: {fileID: 8300000, guid: 3c438facba02e4fe0ac297ab548cec4f, type: 3}
     - target: {fileID: 8326612205991940138, guid: c3d506336e879ec4f88305fa27c888ad,
         type: 3}
       propertyPath: _liftingAudios.Array.data[3]
       value: 
-      objectReference: {fileID: 8300000, guid: c753d57f86d1f4302a3597ec0d57bede, type: 3}
+      objectReference: {fileID: 8300000, guid: 735101355668b4b11b0ed923c6817a2c, type: 3}
     - target: {fileID: 8326612205991940138, guid: c3d506336e879ec4f88305fa27c888ad,
         type: 3}
       propertyPath: _matchedSound
@@ -158,17 +158,17 @@ PrefabInstance:
         type: 3}
       propertyPath: _neutrallySound
       value: 
-      objectReference: {fileID: 8300000, guid: 7dc0454a999fb4153b24cec19afe5785, type: 3}
+      objectReference: {fileID: 8300000, guid: db66b113f7e604c559870d253f6e0ebe, type: 3}
     - target: {fileID: 8326612205991940138, guid: c3d506336e879ec4f88305fa27c888ad,
         type: 3}
       propertyPath: _wrongMatchSound
       value: 
-      objectReference: {fileID: 8300000, guid: 871880cd019a74ef39acc9f2e3aa26f5, type: 3}
+      objectReference: {fileID: 8300000, guid: 8b5e56bbc8aa74edd894ce2503f08b68, type: 3}
     - target: {fileID: 8326612205991940138, guid: c3d506336e879ec4f88305fa27c888ad,
         type: 3}
       propertyPath: _matchSound
       value: 
-      objectReference: {fileID: 8300000, guid: d475a1ef308d647468d2f1f63f990253, type: 3}
+      objectReference: {fileID: 8300000, guid: b57c5effae51c48bea182078c10b9d01, type: 3}
     - target: {fileID: 8326612205991940149, guid: c3d506336e879ec4f88305fa27c888ad,
         type: 3}
       propertyPath: m_LocalPosition.x
