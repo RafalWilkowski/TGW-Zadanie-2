@@ -36,7 +36,7 @@ public class SecondaryObjectiveSocket : MonoBehaviour
 			socketGemRenderer.fillAmount = (float)socketedGems / gemCapacity;
 		}
 		OnGemInstalled?.Invoke(gem, this);
-		Destroy(gem.gameObject);
+        //GemPool.Instance.ReturnToPool(gem);
 	}
 
 	public void InitializeGemSocket(int capacity, ObjectColor color)

@@ -7,6 +7,19 @@ public class Gem : MonoBehaviour , IInteractable
     [SerializeField]
     private ObjectColor _objectColor;
 
+    #region SOUNDS
+    private AudioSource _audio;
+    [SerializeField]
+    private AudioClip[] _liftingAudios;
+    [SerializeField]
+    private AudioClip _matchSound;
+    [SerializeField]
+    private AudioClip _wrongMatchSound;
+    [SerializeField]
+    private AudioClip _neutrallySound;
+    private bool _unmatched = false;
+    #endregion
+
     private BoxCollider2D boxCollider2D;
     private Rigidbody2D rb2D;
     private SpriteRenderer _sprite;
@@ -19,7 +32,7 @@ public class Gem : MonoBehaviour , IInteractable
         _sprite = GetComponentInChildren<SpriteRenderer>();
         boxCollider2D = GetComponent<BoxCollider2D>();
         rb2D = GetComponent<Rigidbody2D>();
-       
+        _audio = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -32,68 +45,22 @@ public class Gem : MonoBehaviour , IInteractable
     }
     public void Init(ObjectColor color, Vector3 position, Sprite sprite)
     {
+        //TODOchange after gobals
+        _sprite.gameObject.SetActive(true);
         _objectColor = color;
         transform.position = position;
         _sprite.sprite = sprite;
     }
-    /*private void OnTriggerEnter2D(Collider2D collision)
-    {
-        Conteiner conteiner = collision.gameObject.GetComponent<Conteiner>();
-        if (conteiner != null)
-        {
-            ObjectColor conteinerColor = conteiner.ObjectColor;
-            if (objectColor.HasFlag(conteinerColor))
-            {
-               // conteiner.OnColorMatch
-                onGoodContainer = true;
-                print("match colors!");
-            }
-        }
-
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        Conteiner conteiner = collision.gameObject.GetComponent<Conteiner>();
-        if (conteiner != null)
-        {
-            ObjectColor conteinerColor = conteiner.ObjectColor;
-            if (objectColor.HasFlag(conteinerColor))
-            {
-                onGoodContainer = false;
-                print("wyjscie!");
-            }
-        }
-    }*/
-
-   /* private void OnMouseDrag()
-    {
-        //boxCollider2D.enabled = false;
-        //rb2D.velocity = Vector2.zero;
-        float x = Camera.main.ScreenToWorldPoint(Input.mousePosition).x;
-        float y = Camera.main.ScreenToWorldPoint(Input.mousePosition).y;
-        transform.position = new Vector3(x, y, transform.position.z);
-    }
-
-    private void OnMouseUpAsButton()
-    {
-        if (onGoodContainer)
-        {
-            UIManager.Instance.AddScore();
-            Destroy(this.gameObject);
-        }
-        else
-        {
-
-        }
-    }
-    */
+   
     public void Interact(int touchID)
     {
         _touchID = touchID;
         // subscribe to touchdetector
         TouchDetector.onFingerMovedDic.Add(_touchID, OnFingerPositionChanged);
         TouchDetector.onFingerReleasedDic.Add(_touchID, OnFingerReleased);
+        // play random liffting sounds
+        int randomInt = Random.Range(0, _liftingAudios.Length);
+        ChangeClipAndPlay(_liftingAudios[randomInt]);
     }
 
     private void OnFingerPositionChanged(Vector2 position)
@@ -106,18 +73,38 @@ public class Gem : MonoBehaviour , IInteractable
     private void OnFingerReleased(Vector2 lastPosition)
     {
         OnFingerPositionChanged(lastPosition);
-
+        _unmatched = false;
         if (IsAboveGoodContainer())
         {
-            GemPool.Instance.ReturnToPool(this);
+            ChangeClipAndPlay(_matchSound);
+            //TODO change to some globals
+            _sprite.gameObject.SetActive(false);
+            StartCoroutine(ReturnToPoolAfterSound());
         }
-
+        else if(_unmatched)
+        {
+            ChangeClipAndPlay(_wrongMatchSound);
+        }
+        else
+        {
+            ChangeClipAndPlay(_neutrallySound);
+        }
+        
+    
         // unsubscribe from touchdetector
         TouchDetector.onFingerMovedDic.Remove(_touchID);
         TouchDetector.onFingerReleasedDic.Remove(_touchID);
 
     }
 
+    private IEnumerator ReturnToPoolAfterSound()
+    {
+        while (_audio.isPlaying)
+        {
+            yield return null;
+        }
+        GemPool.Instance.ReturnToPool(this);
+    }
     private bool IsAboveGoodContainer()
     {
         ContactFilter2D filter = new ContactFilter2D();
@@ -134,18 +121,37 @@ public class Gem : MonoBehaviour , IInteractable
                 if (_objectColor.HasFlag(container.ObjectColor))
                 {
                     Conteiner.OnColorMatch?.Invoke(container.ObjectColor);
-                    return true; 
+                    _unmatched = false;
+                    return true;
+                }
+                else
+                {
+                    _unmatched = true;
                 }
                 
             }
 			SecondaryObjectiveSocket socket = collider.GetComponent<SecondaryObjectiveSocket>();
-			if (socket && _objectColor.HasFlag(socket.SocketColor) && !socket.IsFull)
+			if (socket != null)
 			{
-				socket.InstallGem(this);
-			}
-           
+                if(_objectColor.HasFlag(socket.SocketColor) && !socket.IsFull)
+                {
+                    socket.InstallGem(this);
+                    _unmatched = false;
+                    return true;
+                }
+                else
+                {
+                    _unmatched = true;
+                }
+            }                     
         }
         return false;
+    }
+
+    private void ChangeClipAndPlay(AudioClip clip)
+    {
+        _audio.clip = clip;
+        _audio.Play();
     }
 
 	public ObjectColor GemColor { get => _objectColor; }

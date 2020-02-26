@@ -2781,7 +2781,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7331db33f585ed4ba81a8af76611b3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  emergenceScoreStep: 5000
+  emergenceScoreStep: 1000
   completionScore: 2000
   baseTimeToComplete: 10
   extraTimeToCompletePerCapacity: 2.5
