@@ -13,6 +13,7 @@ public class GemSpawner : MonoBehaviour
     private float _spawnCooldown = 0;
 
     private int _specialPackage = 0;
+    private int _dynamiteSpawnCounter = 0;
 
     [SerializeField]
     private GemSprite[] gemSprites;
@@ -38,6 +39,7 @@ public class GemSpawner : MonoBehaviour
         {
             _spawnCooldown = Time.time + _gemSpawnRate;
             _specialPackage += UnityEngine.Random.Range(20, 50);
+            _dynamiteSpawnCounter += UnityEngine.Random.Range(10, 40);
             float randY = UnityEngine.Random.Range(-1, 1);
             Vector3 spawnPoint = new Vector3(transform.position.x, transform.position.y - randY, -1.5f);
 
@@ -47,6 +49,12 @@ public class GemSpawner : MonoBehaviour
               var gemConteiner = StonePool.Instance.GetObjectFromPool();
               gemConteiner.transform.position = spawnPoint;
               if(gemConteiner.OnBreak == null) gemConteiner.OnBreak += SpawnGems;
+            }
+            else if(_dynamiteSpawnCounter> 100)
+            {
+              _dynamiteSpawnCounter = 0;
+              var dynamite = DynamitePool.Instance.GetObjectFromPool();
+              dynamite.transform.position = spawnPoint;
             }
             else
             {
