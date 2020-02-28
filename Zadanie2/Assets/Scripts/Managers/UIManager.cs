@@ -28,6 +28,10 @@ public class UIManager : MonoBehaviour
     private Animator _comboAnim;
     [SerializeField]
     private GemColors[] colors;
+    [SerializeField]
+    private Canvas gameOverPanel;
+    [SerializeField]
+    private Text _finalText;
 
     private void Start()
     {
@@ -110,6 +114,12 @@ public class UIManager : MonoBehaviour
             _currentNewScoreAnim = _newScore1Anim;
         }
         _currentNewScore.gameObject.transform.SetSiblingIndex(3);
+    }
+
+    public void ActivateGameOverPanel(int finalScore)
+    {
+        gameOverPanel.gameObject.SetActive(true);
+        _finalText.text = "GAME OVER \n \n YOUR SCORE IS : " + finalScore;
     }
 }
 

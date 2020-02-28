@@ -5,13 +5,19 @@ using System;
 
 public class TouchDetector : MonoBehaviour
 {
-    public static Dictionary<int, Action<Vector2>> onFingerMovedDic = new Dictionary<int, Action<Vector2>>();
-    public static Dictionary<int, Action<Vector2>> onFingerReleasedDic = new Dictionary<int, Action<Vector2>>();
+    public static TouchDetector Instance;
+
+    public Dictionary<int, Action<Vector2>> onFingerMovedDic = new Dictionary<int, Action<Vector2>>();
+    public Dictionary<int, Action<Vector2>> onFingerReleasedDic = new Dictionary<int, Action<Vector2>>();
 
     public LayerMask _layerToDetect;
     [SerializeField]
     private float _tapSize = 0.25f;
 
+    private void Awake()
+    {
+        Instance = this;
+    }
     // Update is called once per frame
     void Update()
     {

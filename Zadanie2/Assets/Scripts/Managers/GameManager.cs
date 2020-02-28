@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using System;
 
 public class GameManager : MonoBehaviour
@@ -13,7 +14,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        Instance = this;
+       Instance = this;
     }
 
     private void Start()
@@ -33,6 +34,38 @@ public class GameManager : MonoBehaviour
         //adding newScore to mainScore callback        
         NewScoreText.OnGlideFinished += _scoreManager.ScoreGlidedToMainScore;
         NewScoreText.OnGlideFinished += _uiManager.HideCombo;
+    }
+
+    public void GameOver()
+    {
+        _uiManager.ActivateGameOverPanel(_scoreManager.CurrentScore);
+        Time.timeScale = 0;       
+    }
+
+    public void LoadStartLevel()
+    {
+        Time.timeScale = 1;
+        OnDestroyScene();
+        SceneManager.LoadScene(0);
+       
+    }
+    private void OnDestroyScene()
+    {
+        //update UI callbacks
+        _scoreManager.OnComboChange -= _uiManager.UpdateCombo;
+        _scoreManager.OnNewScoreChange -= _uiManager.UpdateNewScore;
+        _scoreManager.OnMainScoreChange -= _uiManager.UpdateScore;
+        //update UI comboStripe             
+        ComboStripe.OnTimeout -= _uiManager.GlideNewScore;
+        ComboStripe.OnTimeout -= _scoreManager.BreakCombo;
+        // UpdateTime combostripe
+        ComboStripe comboStripe = FindObjectOfType<ComboStripe>();
+        _scoreManager.OnTimeUpdate -= comboStripe.UpdateTime;
+        // container callback
+        Conteiner.OnColorMatch -= _scoreManager.CheckForCombo;
+        //adding newScore to mainScore callback        
+        NewScoreText.OnGlideFinished -= _scoreManager.ScoreGlidedToMainScore;
+        NewScoreText.OnGlideFinished -= _uiManager.HideCombo;
     }
 
     [System.Serializable]
@@ -115,6 +148,7 @@ public class GameManager : MonoBehaviour
             int scoreGlided = _scoreToAddQueue.Dequeue();
             AddMainScore(scoreGlided);
         }
+        
     }
 }
 

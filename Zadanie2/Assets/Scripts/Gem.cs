@@ -58,8 +58,8 @@ public class Gem : MonoBehaviour , IInteractable
         _touchID = touchID;
         _boxCollider2D.isTrigger = true;
         // subscribe to touchdetector
-        TouchDetector.onFingerMovedDic.Add(_touchID, OnFingerPositionChanged);
-        TouchDetector.onFingerReleasedDic.Add(_touchID, OnFingerReleased);
+        TouchDetector.Instance.onFingerMovedDic.Add(_touchID, OnFingerPositionChanged);
+        TouchDetector.Instance.onFingerReleasedDic.Add(_touchID, OnFingerReleased);
         // play random liffting sounds
         int randomInt = Random.Range(0, _liftingAudios.Length);
         ChangeClipAndPlay(_liftingAudios[randomInt]);
@@ -96,8 +96,8 @@ public class Gem : MonoBehaviour , IInteractable
         
     
         // unsubscribe from touchdetector
-        TouchDetector.onFingerMovedDic.Remove(_touchID);
-        TouchDetector.onFingerReleasedDic.Remove(_touchID);
+        TouchDetector.Instance.onFingerMovedDic.Remove(_touchID);
+        TouchDetector.Instance.onFingerReleasedDic.Remove(_touchID);
 
     }
 

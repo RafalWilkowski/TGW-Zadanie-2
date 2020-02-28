@@ -13,17 +13,8 @@ public class AudioManager : MonoBehaviour
 
     private void Awake()
     {
-        if(Instance == null)
-        {
-            Instance = this;
-        }
-        else
-        {
-            Debug.Log("More than one AudioManager!!!!");
-            Destroy(this.gameObject);
-        }
+        Instance = this;
     }
-    // Start is called before the first frame update
 
     public void ToggleSound()
     {
