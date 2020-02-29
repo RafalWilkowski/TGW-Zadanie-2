@@ -116,10 +116,18 @@ public class UIManager : MonoBehaviour
         _currentNewScore.gameObject.transform.SetSiblingIndex(3);
     }
 
-    public void ActivateGameOverPanel(int finalScore)
+    public void ActivateGameOverPanel(int finalScore, bool newHiscore)
     {
         gameOverPanel.gameObject.SetActive(true);
-        _finalText.text = "GAME OVER \n \n YOUR SCORE IS : " + finalScore;
+        if (newHiscore)
+        {
+            _finalText.text = "GAME OVER \n \n NEW HIGHSCORE IS : " + finalScore;
+        }
+        else
+        {
+            _finalText.text = "GAME OVER \n \n YOUR SCORE IS : " + finalScore;
+        }
+        
     }
 }
 

@@ -38,7 +38,17 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
-        _uiManager.ActivateGameOverPanel(_scoreManager.CurrentScore);
+        //save highscore
+        int currentHighScore = PlayerPrefs.GetInt("Hiscore");
+        int currentGameScore = _scoreManager.CurrentScore;
+        bool newHiscore = false;
+        if (currentHighScore < currentGameScore)
+        {
+            //save new highscore
+            PlayerPrefs.SetInt("Hiscore", currentGameScore);
+            newHiscore = true;
+        }
+        _uiManager.ActivateGameOverPanel(currentGameScore,newHiscore);
         Time.timeScale = 0;       
     }
 

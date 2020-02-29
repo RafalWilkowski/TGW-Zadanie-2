@@ -2,12 +2,27 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class UIStartManager : MonoBehaviour
 {
     [SerializeField]
     private GameObject creditsCanvas;
+    [SerializeField]
+    private Text _hiscore;
 
+    private void Awake()
+    {
+        if (PlayerPrefs.HasKey("Hiscore"))
+        {
+            int hiscore = PlayerPrefs.GetInt("Hiscore");
+            _hiscore.text = "Highscore: " + hiscore;
+        }
+        else
+        {
+            PlayerPrefs.SetInt("Hiscore", 0);
+        }
+    }
     public void StartGame()
     {
         SceneManager.LoadScene(1);
