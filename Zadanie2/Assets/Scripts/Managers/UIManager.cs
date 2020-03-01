@@ -121,11 +121,11 @@ public class UIManager : MonoBehaviour
         gameOverPanel.gameObject.SetActive(true);
         if (newHiscore)
         {
-            _finalText.text = "GAME OVER \n \n NEW HIGHSCORE IS : " + finalScore;
+            _finalText.text = "NEW HIGHSCORE IS : " + finalScore;
         }
         else
         {
-            _finalText.text = "GAME OVER \n \n YOUR SCORE IS : " + finalScore;
+            _finalText.text = "YOUR SCORE IS : " + finalScore;
         }
         
     }

@@ -7,6 +7,9 @@ public class Gem : MonoBehaviour , IInteractable
     [SerializeField]
     private ObjectColor _objectColor;
 
+	[SerializeField]
+	ParticleSystem tapParticles, holdParticles;
+
     #region SOUNDS
     private AudioSource _audio;
     [SerializeField]
@@ -33,10 +36,12 @@ public class Gem : MonoBehaviour , IInteractable
         _boxCollider2D = GetComponent<BoxCollider2D>();
         rb2D = GetComponent<Rigidbody2D>();
         _audio = GetComponent<AudioSource>();
-    }
+		
 
-    // Update is called once per frame
-    void Update()
+	}
+
+	// Update is called once per frame
+	void Update()
     {
         if(transform.position.x > 8.5f)
         {
@@ -51,7 +56,25 @@ public class Gem : MonoBehaviour , IInteractable
         transform.position = position;
         _sprite.sprite = sprite;
         _boxCollider2D.enabled = true;
-    }
+
+		if (tapParticles)
+		{
+			ParticleSystem.MainModule main = tapParticles.main;
+			main.loop = false;
+			main.playOnAwake = false;
+			main.startColor = Color.Lerp(_objectColor.GetColor(), Color.white, 0.6f);
+			tapParticles.Stop();
+		}
+		if (holdParticles)
+		{
+			ParticleSystem.MainModule main = holdParticles.main;
+			main.loop = true;
+			main.playOnAwake = false;
+			Color col = _objectColor.GetColor();
+			main.startColor = Color.Lerp(_objectColor.GetColor(), Color.white, 0.6f);
+			holdParticles.Stop();
+		}
+	}
    
     public void Interact(int touchID)
     {
@@ -63,6 +86,8 @@ public class Gem : MonoBehaviour , IInteractable
         // play random liffting sounds
         int randomInt = Random.Range(0, _liftingAudios.Length);
         ChangeClipAndPlay(_liftingAudios[randomInt]);
+		
+		if (holdParticles) holdParticles.Play();
     }
 
     private void OnFingerPositionChanged(Vector2 position)
@@ -98,6 +123,7 @@ public class Gem : MonoBehaviour , IInteractable
         // unsubscribe from touchdetector
         TouchDetector.Instance.onFingerMovedDic.Remove(_touchID);
         TouchDetector.Instance.onFingerReleasedDic.Remove(_touchID);
+		if (holdParticles) holdParticles.Stop(true, ParticleSystemStopBehavior.StopEmitting);
 
     }
 
@@ -125,7 +151,8 @@ public class Gem : MonoBehaviour , IInteractable
                 if (_objectColor.HasFlag(container.ObjectColor))
                 {
                     Conteiner.OnColorMatch?.Invoke(container.ObjectColor);
-                    _unmatched = false;
+					if (tapParticles) tapParticles.Play();
+					_unmatched = false;
                     return true;
                 }
                 else
@@ -140,7 +167,8 @@ public class Gem : MonoBehaviour , IInteractable
                 if(_objectColor.HasFlag(socket.SocketColor) && !socket.IsFull)
                 {
                     socket.InstallGem(this);
-                    _unmatched = false;
+					if (tapParticles) tapParticles.Play();
+					_unmatched = false;
                     return true;
                 }
                 else

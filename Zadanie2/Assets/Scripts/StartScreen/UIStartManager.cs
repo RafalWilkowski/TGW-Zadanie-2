@@ -16,7 +16,7 @@ public class UIStartManager : MonoBehaviour
         if (PlayerPrefs.HasKey("Hiscore"))
         {
             int hiscore = PlayerPrefs.GetInt("Hiscore");
-            _hiscore.text = "Highscore: " + hiscore;
+            _hiscore.text = "REWARD: " + hiscore;
         }
         else
         {
