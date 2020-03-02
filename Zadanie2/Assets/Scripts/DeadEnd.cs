@@ -26,15 +26,22 @@ public class DeadEnd : MonoBehaviour
         if (collision.transform.localScale.x <= 0.1f)
         {
             var bomb = collision.GetComponent<Bomb>();
-            if(bomb)
+            var gemContainer = collision.GetComponent<GemConteiner>();
+            if (bomb)
             {
                 bomb.transform.localScale = new Vector3(1, 1, 1);
                 DynamitePool.Instance.ReturnToPool(bomb);
             }
+            else if (gemContainer)
+            {
+                gemContainer.transform.localScale = new Vector3(2.5f, 2.5f, 2.5f);
+                StonePool.Instance.ReturnToPool(gemContainer);
+            }
             else
             {
                 GameManager.Instance.GameOver();
-            }                            
+            }
+
         }
     }
 }
