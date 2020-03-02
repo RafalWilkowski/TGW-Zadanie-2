@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour
 	private UIManager _uiManager;
 	[SerializeField]
 	public ScoreManager _scoreManager;
+    [SerializeField]
+    private Belt _belt;
 
 	private void Awake()
 	{
@@ -23,6 +25,7 @@ public class GameManager : MonoBehaviour
 		_scoreManager.OnComboChange += _uiManager.UpdateCombo;
 		_scoreManager.OnNewScoreChange += _uiManager.UpdateNewScore;
 		_scoreManager.OnMainScoreChange += _uiManager.UpdateScore;
+        _scoreManager.OnMainScoreChange += _belt.CheckPointsThreshold;
 		//update UI comboStripe             
 		ComboStripe.OnTimeout += _uiManager.GlideNewScore;
 		ComboStripe.OnTimeout += _scoreManager.BreakCombo;
@@ -61,19 +64,19 @@ public class GameManager : MonoBehaviour
 	}
 	private void OnDestroyScene()
 	{
-		//update UI callbacks
 		_scoreManager.OnComboChange -= _uiManager.UpdateCombo;
 		_scoreManager.OnNewScoreChange -= _uiManager.UpdateNewScore;
 		_scoreManager.OnMainScoreChange -= _uiManager.UpdateScore;
-		//update UI comboStripe             
-		ComboStripe.OnTimeout -= _uiManager.GlideNewScore;
+        _scoreManager.OnMainScoreChange -= _belt.CheckPointsThreshold;
+           
+        ComboStripe.OnTimeout -= _uiManager.GlideNewScore;
 		ComboStripe.OnTimeout -= _scoreManager.BreakCombo;
-		// UpdateTime combostripe
+
 		ComboStripe comboStripe = FindObjectOfType<ComboStripe>();
 		_scoreManager.OnTimeUpdate -= comboStripe.UpdateTime;
-		// container callback
+
 		Conteiner.OnColorMatch -= _scoreManager.CheckForCombo;
-		//adding newScore to mainScore callback        
+      
 		NewScoreText.OnGlideFinished -= _scoreManager.ScoreGlidedToMainScore;
 		NewScoreText.OnGlideFinished -= _uiManager.HideCombo;
 	}
