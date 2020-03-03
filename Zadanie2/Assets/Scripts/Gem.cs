@@ -53,7 +53,8 @@ public class Gem : MonoBehaviour , IInteractable
         //TODOchange after gobals
         _sprite.gameObject.SetActive(true);
         _objectColor = color;
-        transform.position = position;
+        float randX = Random.Range(-0.25f, 0.25f);
+        transform.position = new Vector3(position.x + randX, position.y,position.z);
         //add random rotation
         transform.rotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y, Random.Range(0, 360));
         _sprite.sprite = sprite;
