@@ -9610,6 +9610,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6813049315820262903, guid: c3d506336e879ec4f88305fa27c888ad,
+        type: 3}
+      propertyPath: m_Offset.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6813049315820262903, guid: c3d506336e879ec4f88305fa27c888ad,
+        type: 3}
+      propertyPath: m_Radius
+      value: 0.225
+      objectReference: {fileID: 0}
     - target: {fileID: 8326612205438031441, guid: c3d506336e879ec4f88305fa27c888ad,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -9639,7 +9649,12 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 8a58d43bd92e72241bf9f4bc2a8f6481, type: 2}
+      objectReference: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+    - target: {fileID: 8326612205438031442, guid: c3d506336e879ec4f88305fa27c888ad,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8326612205991940137, guid: c3d506336e879ec4f88305fa27c888ad,
         type: 3}
       propertyPath: m_Name
@@ -9700,6 +9715,26 @@ PrefabInstance:
       propertyPath: holdParticles
       value: 
       objectReference: {fileID: 2730145568153275388}
+    - target: {fileID: 8326612205991940139, guid: c3d506336e879ec4f88305fa27c888ad,
+        type: 3}
+      propertyPath: m_Mass
+      value: 0.0001
+      objectReference: {fileID: 0}
+    - target: {fileID: 8326612205991940139, guid: c3d506336e879ec4f88305fa27c888ad,
+        type: 3}
+      propertyPath: m_AngularDrag
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8326612205991940139, guid: c3d506336e879ec4f88305fa27c888ad,
+        type: 3}
+      propertyPath: m_Simulated
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8326612205991940139, guid: c3d506336e879ec4f88305fa27c888ad,
+        type: 3}
+      propertyPath: m_BodyType
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8326612205991940149, guid: c3d506336e879ec4f88305fa27c888ad,
         type: 3}
       propertyPath: m_LocalPosition.x

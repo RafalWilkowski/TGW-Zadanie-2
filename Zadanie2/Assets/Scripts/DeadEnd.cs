@@ -17,6 +17,8 @@ public class DeadEnd : MonoBehaviour
     {
         if (!collision.isTrigger)
         {
+            // damp velocity
+            collision.attachedRigidbody.velocity = new Vector2(1f, 0);
             collision.transform.localScale -= new Vector3(_fading, _fading, _fading);
             float newZ = collision.transform.rotation.z;
             newZ += _extraRotation * Time.deltaTime;
