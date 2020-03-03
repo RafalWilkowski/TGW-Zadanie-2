@@ -74,7 +74,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.34, y: 1.51}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -89,7 +89,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8326612205991940149}
-  - component: {fileID: 8326612205991940148}
+  - component: {fileID: 6813049315820262903}
   - component: {fileID: 8326612205991940139}
   - component: {fileID: 8326612205991940138}
   m_Layer: 8
@@ -114,8 +114,8 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &8326612205991940148
-BoxCollider2D:
+--- !u!58 &6813049315820262903
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -128,18 +128,8 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.5, y: 0.5}
-  m_EdgeRadius: 0
+  m_Radius: 0.37
 --- !u!50 &8326612205991940139
 Rigidbody2D:
   serializedVersion: 4

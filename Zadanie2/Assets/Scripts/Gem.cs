@@ -23,7 +23,7 @@ public class Gem : MonoBehaviour , IInteractable
     private bool _unmatched = false;
     #endregion
 
-    private BoxCollider2D _boxCollider2D;
+    private CircleCollider2D _circleCollider2D;
     private Rigidbody2D rb2D;
     private SpriteRenderer _sprite;
 
@@ -33,7 +33,7 @@ public class Gem : MonoBehaviour , IInteractable
     void Awake()
     {
         _sprite = GetComponentInChildren<SpriteRenderer>();
-        _boxCollider2D = GetComponent<BoxCollider2D>();
+        _circleCollider2D = GetComponent<CircleCollider2D>();
         rb2D = GetComponent<Rigidbody2D>();
         _audio = GetComponent<AudioSource>();
 		
@@ -54,8 +54,10 @@ public class Gem : MonoBehaviour , IInteractable
         _sprite.gameObject.SetActive(true);
         _objectColor = color;
         transform.position = position;
+        //add random rotation
+        transform.rotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y, Random.Range(0, 360));
         _sprite.sprite = sprite;
-        _boxCollider2D.enabled = true;
+        _circleCollider2D.enabled = true;
 
 		if (tapParticles)
 		{
@@ -79,7 +81,7 @@ public class Gem : MonoBehaviour , IInteractable
     public void Interact(int touchID)
     {
         _touchID = touchID;
-        _boxCollider2D.isTrigger = true;
+        _circleCollider2D.isTrigger = true;
         // subscribe to touchdetector
         TouchDetector.Instance.onFingerMovedDic.Add(_touchID, OnFingerPositionChanged);
         TouchDetector.Instance.onFingerReleasedDic.Add(_touchID, OnFingerReleased);
@@ -99,7 +101,7 @@ public class Gem : MonoBehaviour , IInteractable
     }
     private void OnFingerReleased(Vector2 lastPosition)
     {
-        _boxCollider2D.isTrigger = false;
+        _circleCollider2D.isTrigger = false;
         OnFingerPositionChanged(lastPosition);
         _unmatched = false;
         if (IsAboveGoodContainer())
@@ -107,7 +109,7 @@ public class Gem : MonoBehaviour , IInteractable
             ChangeClipAndPlay(_matchSound);
             //TODO change to some globals
             _sprite.gameObject.SetActive(false);
-            _boxCollider2D.enabled = false;
+            _circleCollider2D.enabled = false;
             StartCoroutine(ReturnToPoolAfterSound());
         }
         else if(_unmatched)
@@ -141,7 +143,7 @@ public class Gem : MonoBehaviour , IInteractable
         filter.layerMask = gameObject.layer;
         filter.useTriggers = true;
         List<Collider2D> results = new List<Collider2D>();
-        _boxCollider2D.OverlapCollider(filter,results);
+        _circleCollider2D.OverlapCollider(filter,results);
 
         foreach(Collider2D collider in results)
         {
