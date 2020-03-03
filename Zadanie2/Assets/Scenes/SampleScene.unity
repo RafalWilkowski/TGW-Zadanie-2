@@ -864,13 +864,13 @@ MonoBehaviour:
   _gemSpawnRate: 1
   gemSprites:
   - id: 1
-    sprite: {fileID: 21300000, guid: 773c764c8aa78d845bf9ba632b957fa0, type: 3}
+    sprite: {fileID: 21300000, guid: e414ebd681a255a48b8b50aeaff34a59, type: 3}
   - id: 2
-    sprite: {fileID: 21300000, guid: 7dddd316f65b8584ab11ef9ca3b76906, type: 3}
+    sprite: {fileID: 21300000, guid: 8117b9a9914044244b686c27e6564c4f, type: 3}
   - id: 4
-    sprite: {fileID: 21300000, guid: 62041e5ce3dbcaf4cb78f6375b263516, type: 3}
+    sprite: {fileID: 21300000, guid: 7a7ab8733cfd7a5459b5e134d23ecac0, type: 3}
   - id: 8
-    sprite: {fileID: 21300000, guid: 2fe528775b2267747972ab230c87365e, type: 3}
+    sprite: {fileID: 21300000, guid: 430f39f963398b246bb33afdedb253fd, type: 3}
 --- !u!4 &159683387
 Transform:
   m_ObjectHideFlags: 0
