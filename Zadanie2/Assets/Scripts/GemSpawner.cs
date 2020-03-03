@@ -16,7 +16,9 @@ public class GemSpawner : MonoBehaviour
     private float _gemSpawnRate = 1f;
     private float _spawnCooldown = 0;
 
-    private int _specialPackage = 0;
+    [SerializeField]
+    private float _spawnStoneProbability = 5f;
+    private bool _spawnStone = false;
     private int _dynamiteSpawnCounter = 0;
 
     [SerializeField]
@@ -42,14 +44,15 @@ public class GemSpawner : MonoBehaviour
         if(_spawnCooldown <= Time.time)
         {
             _spawnCooldown = Time.time + _gemSpawnRate;
-            _specialPackage += UnityEngine.Random.Range(20, 50);
+            float randomStone = UnityEngine.Random.Range(0f, 100f);
+            if (randomStone >= 100 - _spawnStoneProbability) _spawnStone = true;
             _dynamiteSpawnCounter += UnityEngine.Random.Range(10, 40);
             float randY = UnityEngine.Random.Range(-1, 1);
             Vector3 spawnPoint = new Vector3(transform.position.x, transform.position.y - randY, -1.5f);
 
-            if (_specialPackage > 100 && _spawnStones)
+            if (_spawnStone && _spawnStones)
             {
-              _specialPackage = 0;             
+              _spawnStone = false;             
               var gemConteiner = StonePool.Instance.GetObjectFromPool();
               gemConteiner.transform.position = spawnPoint;
               if(gemConteiner.OnBreak == null) gemConteiner.OnBreak += SpawnGems;
