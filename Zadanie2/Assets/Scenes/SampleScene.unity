@@ -7556,8 +7556,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _minBeltSpeed: 2
   _maxBeltSpeed: 6
-  _accelThreshold: 1
-  _pointsThreshold: 2500
+  _accelThreshold: 0.02
+  _pointsThreshold: 20000
 --- !u!61 &1904827209
 BoxCollider2D:
   m_ObjectHideFlags: 0
