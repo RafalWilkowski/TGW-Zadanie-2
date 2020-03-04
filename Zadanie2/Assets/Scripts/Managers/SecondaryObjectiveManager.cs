@@ -41,7 +41,7 @@ public class SecondaryObjectiveManager : MonoBehaviour
 
 	void CalculateRequiredScore()
 	{
-		nextScoreRequirement += secondaryObjectiveLevel * baseInterval + (totalCapacity - 2);
+		nextScoreRequirement += secondaryObjectiveLevel * baseInterval + (totalCapacity - 2)*intervalPerCapacity;
 	}
 
 	void CalculateRetryScore()
@@ -107,7 +107,7 @@ public class SecondaryObjectiveManager : MonoBehaviour
 
 		GameManager.Instance._scoreManager.AddMainScore( (totalCapacity - 2)* rewardPerCapacity + rewardPerLevel * secondaryObjectiveLevel);
 
-		maxSockets = Mathf.Min(9, Mathf.FloorToInt((2 + Mathf.FloorToInt((secondaryObjectiveLevel - 1) /maxSocketCountScaling)) / minCapacity));
+		maxSockets = Mathf.Min(9, Mathf.FloorToInt((3 + Mathf.FloorToInt((secondaryObjectiveLevel - 1) /maxSocketCountScaling)) / minCapacity));
 		secondaryObjectiveLevel += 1;
 		totalCapacity = 3 + Mathf.FloorToInt((secondaryObjectiveLevel - 1) / maxSocketCountScaling);
 		minCapacity = Mathf.FloorToInt(secondaryObjectiveLevel / minSocketCapacityScaling) + 1;
