@@ -9,6 +9,12 @@ public class Gem : MonoBehaviour , IInteractable
 
 	[SerializeField]
 	ParticleSystem tapParticles, holdParticles;
+    private bool _backOnBelt = false;
+    private Vector2 _startPosition;
+    private Vector2 _targetPosition;
+    private float _lerpT;
+    [SerializeField]
+    private float _lerpDuration = 0.25f;
 
     #region SOUNDS
     private AudioSource _audio;
@@ -43,6 +49,18 @@ public class Gem : MonoBehaviour , IInteractable
 	// Update is called once per frame
 	void Update()
     {
+        if(_backOnBelt)
+        {
+            _lerpT += Time.deltaTime;
+            float t = _lerpT / _lerpDuration;
+            transform.position = Vector2.Lerp(_startPosition, _targetPosition, t);
+            if(t >= 1)
+            {
+                _lerpT = 0;
+                _backOnBelt = false;
+                _circleCollider2D.isTrigger = false;
+            }
+        }
         if(transform.position.x > 8.5f)
         {
             GemPool.Instance.ReturnToPool(this);
@@ -102,7 +120,7 @@ public class Gem : MonoBehaviour , IInteractable
     }
     private void OnFingerReleased(Vector2 lastPosition)
     {
-        _circleCollider2D.isTrigger = false;
+        
         OnFingerPositionChanged(lastPosition);
         _unmatched = false;
         if (IsAboveGoodContainer())
@@ -113,16 +131,29 @@ public class Gem : MonoBehaviour , IInteractable
             _circleCollider2D.enabled = false;
             StartCoroutine(ReturnToPoolAfterSound());
         }
-        else if(_unmatched)
-        {
-            ChangeClipAndPlay(_wrongMatchSound);
-        }
         else
         {
-            ChangeClipAndPlay(_neutrallySound);
+            if (_unmatched)
+            {
+                ChangeClipAndPlay(_wrongMatchSound);
+            }
+            else
+            {
+                ChangeClipAndPlay(_neutrallySound);
+            }
+            // back on belt
+            _backOnBelt = true;
+            float posY = Mathf.Clamp(transform.position.y, -0.5f, 1.4f);
+            _targetPosition = new Vector2(transform.position.x, posY);
+            _startPosition = transform.position;
         }
+
+        if (!_backOnBelt)
+        {
+            _circleCollider2D.isTrigger = false;
+        }
+           
         
-    
         // unsubscribe from touchdetector
         TouchDetector.Instance.onFingerMovedDic.Remove(_touchID);
         TouchDetector.Instance.onFingerReleasedDic.Remove(_touchID);
