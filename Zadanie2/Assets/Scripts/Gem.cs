@@ -9,12 +9,28 @@ public class Gem : MonoBehaviour , IInteractable
 
 	[SerializeField]
 	ParticleSystem tapParticles, holdParticles;
+    #region BACKONBELT
+    [Header("Back On Belt Variables:")]
+    [SerializeField]
+    private float _lerpDuration = 0.25f;
+    [SerializeField]
+    private float _minXPosition = 0;
+    [SerializeField]
+    private float _maxXPosition = 0;
+    [SerializeField]
+    private float _minYPosition = 0;
+    [SerializeField]
+    private float _maxYPosition = 0;
+    [SerializeField]
+    private bool _randomizeX = false;
+    [SerializeField]
+    private bool _randomizeY = false;
+
     private bool _backOnBelt = false;
     private Vector2 _startPosition;
     private Vector2 _targetPosition;
-    private float _lerpT;
-    [SerializeField]
-    private float _lerpDuration = 0.25f;
+    private float _lerpElapsedTime;
+    #endregion
 
     #region SOUNDS
     private AudioSource _audio;
@@ -42,8 +58,6 @@ public class Gem : MonoBehaviour , IInteractable
         _circleCollider2D = GetComponent<CircleCollider2D>();
         rb2D = GetComponent<Rigidbody2D>();
         _audio = GetComponent<AudioSource>();
-		
-
 	}
 
 	// Update is called once per frame
@@ -51,12 +65,12 @@ public class Gem : MonoBehaviour , IInteractable
     {
         if(_backOnBelt)
         {
-            _lerpT += Time.deltaTime;
-            float t = _lerpT / _lerpDuration;
+            _lerpElapsedTime += Time.deltaTime;
+            float t = _lerpElapsedTime / _lerpDuration;
             transform.position = Vector2.Lerp(_startPosition, _targetPosition, t);
             if(t >= 1)
             {
-                _lerpT = 0;
+                _lerpElapsedTime = 0;
                 _backOnBelt = false;
                 _circleCollider2D.isTrigger = false;
             }
@@ -143,8 +157,26 @@ public class Gem : MonoBehaviour , IInteractable
             }
             // back on belt
             _backOnBelt = true;
-            float posY = Mathf.Clamp(transform.position.y, -0.5f, 1.4f);
-            _targetPosition = new Vector2(transform.position.x, posY);
+            float posY;
+            float posX;
+            if (!_randomizeY)
+            {
+                posY = Mathf.Clamp(transform.position.y, _minYPosition, _maxYPosition);
+            }
+            else
+            {
+                posY = Random.Range(_minYPosition, _maxYPosition);
+            }
+            if (!_randomizeX)
+            {
+                posX = Mathf.Clamp(transform.position.x, _minXPosition, _maxXPosition);
+            }
+            else
+            {
+                posX = Random.Range(_minXPosition, _maxXPosition);
+            }
+
+            _targetPosition = new Vector2(posX, posY);
             _startPosition = transform.position;
         }
 
