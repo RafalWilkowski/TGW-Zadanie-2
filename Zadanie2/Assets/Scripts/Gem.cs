@@ -75,10 +75,6 @@ public class Gem : MonoBehaviour , IInteractable
                 _circleCollider2D.isTrigger = false;
             }
         }
-        if(transform.position.x > 8.5f)
-        {
-            GemPool.Instance.ReturnToPool(this);
-        }
     }
     public void Init(ObjectColor color, Vector3 position, Sprite sprite)
     {
