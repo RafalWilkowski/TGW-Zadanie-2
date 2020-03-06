@@ -7,6 +7,9 @@ public class Bomb : MonoBehaviour , IInteractable
     private Fuse _fuse;
     private BombTrigger _bombTrigger;
 
+	public delegate void BombDelegate(Bomb bomb);
+	public event BombDelegate OnBombDisabled;
+
     private void OnEnable()
     {
         if(_fuse != null) _fuse.gameObject.SetActive(true);
@@ -27,5 +30,10 @@ public class Bomb : MonoBehaviour , IInteractable
             _bombTrigger.gameObject.SetActive(false);
         }       
     }
+
+	private void OnDisable()
+	{
+		OnBombDisabled?.Invoke(this);
+	}
 
 }

@@ -9,10 +9,26 @@ public class SecondaryObjectiveManager : MonoBehaviour
 	public static SecondaryObjectiveManager Instance { get; private set; }
 	public SecondaryObjectivePanel ObjectivePanel { get; private set; }
 
-	[SerializeField] int emergenceScoreStep = 50000;
-	[SerializeField] int completionScore = 20000;
+	[SerializeField] int baseInterval = 10000;
+	[SerializeField] int intervalPerCapacity = 10000;
+
+	[SerializeField] int baseRetryCost = 9000;
+	[SerializeField] int retryCostPerLevel = 1000;
+
+
+	[SerializeField] int rewardPerCapacity = 3000;
+	[SerializeField] int rewardPerLevel = 3000;
+
 	[SerializeField] float baseTimeToComplete = 10f;
 	[SerializeField] float extraTimeToCompletePerCapacity = 2.5f;
+
+	[SerializeField] float minSocketCapacityScaling = 26;
+	[SerializeField] float maxSocketCapacityScaling = 17;
+	[SerializeField] float maxSocketCountScaling = 4;
+	[SerializeField] float capacityProgressionRate = 2;
+	
+	int nextScoreRequirement = 0;
+
 	float objectiveTimer;
 	Slider objectiveTimeSlider;
 	int totalObjectives = 1;
@@ -21,6 +37,17 @@ public class SecondaryObjectiveManager : MonoBehaviour
 	int maxSockets = 3;
 	int minCapacity = 1;
 	int maxCapacity = 3;
+
+
+	void CalculateRequiredScore()
+	{
+		nextScoreRequirement += secondaryObjectiveLevel * baseInterval + (totalCapacity - 2)*intervalPerCapacity;
+	}
+
+	void CalculateRetryScore()
+	{
+		nextScoreRequirement += baseRetryCost + retryCostPerLevel * secondaryObjectiveLevel;
+	}
 
 	// Start is called before the first frame update
 	void Start()
@@ -33,6 +60,7 @@ public class SecondaryObjectiveManager : MonoBehaviour
 		}
 
 		StartCoroutine(WaitForGameManager());
+		CalculateRequiredScore();
 	}
 
 	IEnumerator WaitForGameManager()
@@ -51,7 +79,7 @@ public class SecondaryObjectiveManager : MonoBehaviour
 
 	void InitiateSecondaryObjective(int score)
 	{
-		if (!ObjectivePanel || IsActive || GameManager.Instance._scoreManager.CurrentScore < emergenceScoreStep * totalObjectives) return;
+		if (!ObjectivePanel || IsActive || GameManager.Instance._scoreManager.CurrentScore < nextScoreRequirement) return;
 		IsActive = true;
 		ObjectivePanel.Activate(IsActive);
 		List<int> indices = new List<int>(new int[9] { 0, 1, 2, 3, 4, 5, 6, 7, 8 });
@@ -77,20 +105,21 @@ public class SecondaryObjectiveManager : MonoBehaviour
 	{
 		if (!ObjectivePanel) return;
 
-		GameManager.Instance._scoreManager.AddMainScore(completionScore);
+		GameManager.Instance._scoreManager.AddMainScore( (totalCapacity - 2)* rewardPerCapacity + rewardPerLevel * secondaryObjectiveLevel);
 
-		maxSockets = Mathf.FloorToInt((3 + Mathf.FloorToInt((secondaryObjectiveLevel - 1) / 3)) / minCapacity);
+		maxSockets = Mathf.Min(9, Mathf.FloorToInt((3 + Mathf.FloorToInt((secondaryObjectiveLevel - 1) /maxSocketCountScaling)) / minCapacity));
 		secondaryObjectiveLevel += 1;
-		totalCapacity = 3 + Mathf.FloorToInt((secondaryObjectiveLevel - 1) / 2);
-		minCapacity = Mathf.FloorToInt(secondaryObjectiveLevel / 15) + 1;
-		maxCapacity = Mathf.FloorToInt(secondaryObjectiveLevel / 6) + 3;
-
+		totalCapacity = 3 + Mathf.FloorToInt((secondaryObjectiveLevel - 1) / maxSocketCountScaling);
+		minCapacity = Mathf.FloorToInt(secondaryObjectiveLevel / minSocketCapacityScaling) + 1;
+		maxCapacity = Mathf.FloorToInt(secondaryObjectiveLevel / maxSocketCapacityScaling) + 3;
+		CalculateRequiredScore();
 		EndSecondaryObjective("Secondary mission was COMPLETED!");
 	}
 
 	public void FailSecondaryObjective()
 	{
 		if (!ObjectivePanel) return;
+		CalculateRetryScore();
 		EndSecondaryObjective("Secondary mission was FAILED!");
 	}
 

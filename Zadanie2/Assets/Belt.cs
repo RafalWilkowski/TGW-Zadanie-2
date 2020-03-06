@@ -29,7 +29,16 @@ public class Belt : MonoBehaviour
         Rigidbody2D rb2D = collision.attachedRigidbody;
         if (rb2D)
         {
-            rb2D.velocity = new Vector3(_currentBeltSpeed, 0);
+            rb2D.velocity = new Vector2(_currentBeltSpeed, 0);
+        }
+    }
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        //add velocity
+        Rigidbody2D rb2D = collision.attachedRigidbody;
+        if (rb2D && rb2D.velocity.magnitude == 0)
+        {
+            rb2D.velocity = new Vector2(_currentBeltSpeed, 0);
         }
     }
 

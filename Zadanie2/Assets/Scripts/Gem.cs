@@ -9,6 +9,28 @@ public class Gem : MonoBehaviour , IInteractable
 
 	[SerializeField]
 	ParticleSystem tapParticles, holdParticles;
+    #region BACKONBELT
+    [Header("Back On Belt Variables:")]
+    [SerializeField]
+    private float _lerpDuration = 0.25f;
+    [SerializeField]
+    private float _minXPosition = 0;
+    [SerializeField]
+    private float _maxXPosition = 0;
+    [SerializeField]
+    private float _minYPosition = 0;
+    [SerializeField]
+    private float _maxYPosition = 0;
+    [SerializeField]
+    private bool _randomizeX = false;
+    [SerializeField]
+    private bool _randomizeY = false;
+
+    private bool _backOnBelt = false;
+    private Vector2 _startPosition;
+    private Vector2 _targetPosition;
+    private float _lerpElapsedTime;
+    #endregion
 
     #region SOUNDS
     private AudioSource _audio;
@@ -36,16 +58,22 @@ public class Gem : MonoBehaviour , IInteractable
         _circleCollider2D = GetComponent<CircleCollider2D>();
         rb2D = GetComponent<Rigidbody2D>();
         _audio = GetComponent<AudioSource>();
-		
-
 	}
 
 	// Update is called once per frame
 	void Update()
     {
-        if(transform.position.x > 8.5f)
+        if(_backOnBelt)
         {
-            GemPool.Instance.ReturnToPool(this);
+            _lerpElapsedTime += Time.deltaTime;
+            float t = _lerpElapsedTime / _lerpDuration;
+            transform.position = Vector2.Lerp(_startPosition, _targetPosition, t);
+            if(t >= 1)
+            {
+                _lerpElapsedTime = 0;
+                _backOnBelt = false;
+                _circleCollider2D.isTrigger = false;
+            }
         }
     }
     public void Init(ObjectColor color, Vector3 position, Sprite sprite)
@@ -53,7 +81,8 @@ public class Gem : MonoBehaviour , IInteractable
         //TODOchange after gobals
         _sprite.gameObject.SetActive(true);
         _objectColor = color;
-        transform.position = position;
+        float randX = Random.Range(-0.25f, 0.25f);
+        transform.position = new Vector3(position.x + randX, position.y,position.z);
         //add random rotation
         transform.rotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y, Random.Range(0, 360));
         _sprite.sprite = sprite;
@@ -101,7 +130,7 @@ public class Gem : MonoBehaviour , IInteractable
     }
     private void OnFingerReleased(Vector2 lastPosition)
     {
-        _circleCollider2D.isTrigger = false;
+        
         OnFingerPositionChanged(lastPosition);
         _unmatched = false;
         if (IsAboveGoodContainer())
@@ -112,16 +141,47 @@ public class Gem : MonoBehaviour , IInteractable
             _circleCollider2D.enabled = false;
             StartCoroutine(ReturnToPoolAfterSound());
         }
-        else if(_unmatched)
-        {
-            ChangeClipAndPlay(_wrongMatchSound);
-        }
         else
         {
-            ChangeClipAndPlay(_neutrallySound);
+            if (_unmatched)
+            {
+                ChangeClipAndPlay(_wrongMatchSound);
+            }
+            else
+            {
+                ChangeClipAndPlay(_neutrallySound);
+            }
+            // back on belt
+            _backOnBelt = true;
+            float posY;
+            float posX;
+            if (!_randomizeY)
+            {
+                posY = Mathf.Clamp(transform.position.y, _minYPosition, _maxYPosition);
+            }
+            else
+            {
+                posY = Random.Range(_minYPosition, _maxYPosition);
+            }
+            if (!_randomizeX)
+            {
+                posX = Mathf.Clamp(transform.position.x, _minXPosition, _maxXPosition);
+            }
+            else
+            {
+                posX = Random.Range(_minXPosition, _maxXPosition);
+            }
+
+            _targetPosition = new Vector2(posX, posY);
+            _startPosition = transform.position;
         }
+
+        if (!_backOnBelt)
+        {
+            _circleCollider2D.isTrigger = false;
+        }
+           
         
-    
         // unsubscribe from touchdetector
         TouchDetector.Instance.onFingerMovedDic.Remove(_touchID);
         TouchDetector.Instance.onFingerReleasedDic.Remove(_touchID);
