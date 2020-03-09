@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System;
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
@@ -128,6 +129,11 @@ public class UIManager : MonoBehaviour
             _finalText.text = "YOUR SCORE IS : " + finalScore;
         }
         
+    }
+    public void PauseGame()
+    {
+        Time.timeScale = 0;
+        SceneManager.LoadScene(3, LoadSceneMode.Additive);
     }
 }
 

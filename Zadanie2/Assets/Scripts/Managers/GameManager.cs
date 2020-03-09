@@ -62,7 +62,8 @@ public class GameManager : MonoBehaviour
 		SceneManager.LoadScene(0);
 
 	}
-	private void OnDestroyScene()
+
+    public void OnDestroyScene()
 	{
 		_scoreManager.OnComboChange -= _uiManager.UpdateCombo;
 		_scoreManager.OnNewScoreChange -= _uiManager.UpdateNewScore;
