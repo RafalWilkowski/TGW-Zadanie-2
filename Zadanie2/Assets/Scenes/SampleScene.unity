@@ -899,14 +899,18 @@ MonoBehaviour:
   _gemSpawnRate: 0.85
   _spawnStoneProbability: 5
   maxDynamitesCount: 0
-  dynamiteSpawnProbability: 33
+  dynamiteSpawnProbability: 25
+  maxDynamitesAsymptote: 4
+  dynamitesCountScoreScaling: 5000
+  dynamitesCountPaceScaling: 20
+  dynamitesCountXTranslation: 6
   gemSprites:
   - id: 1
-    sprite: {fileID: 21300000, guid: e414ebd681a255a48b8b50aeaff34a59, type: 3}
+    sprite: {fileID: 21300000, guid: c94c6d5927df3104fbee5937edee5e15, type: 3}
   - id: 2
     sprite: {fileID: 21300000, guid: 8117b9a9914044244b686c27e6564c4f, type: 3}
   - id: 4
-    sprite: {fileID: 21300000, guid: 7a7ab8733cfd7a5459b5e134d23ecac0, type: 3}
+    sprite: {fileID: 21300000, guid: 73739ea2f3c153e47a5f93a147691538, type: 3}
   - id: 8
     sprite: {fileID: 21300000, guid: 430f39f963398b246bb33afdedb253fd, type: 3}
 --- !u!4 &159683387
@@ -3072,14 +3076,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7331db33f585ed4ba81a8af76611b3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseInterval: 5000
-  intervalPerCapacity: 5000
-  baseRetryCost: 4000
-  retryCostPerLevel: 2000
-  rewardPerCapacity: 4000
-  rewardPerLevel: 4000
-  baseTimeToComplete: 12
-  extraTimeToCompletePerCapacity: 3
+  baseInterval: 3000
+  intervalPerCapacity: 3000
+  baseRetryCost: 3000
+  retryCostPerLevel: 1000
+  rewardPerCapacity: 2000
+  rewardPerLevel: 2000
+  baseTimeToComplete: 15
+  extraTimeToCompletePerCapacity: 5
   minSocketCapacityScaling: 26
   maxSocketCapacityScaling: 17
   maxSocketCountScaling: 5
@@ -5130,7 +5134,7 @@ MonoBehaviour:
   _layerToDetect:
     serializedVersion: 2
     m_Bits: 256
-  _tapSize: 0.25
+  _tapSize: 0.35
 --- !u!4 &1137630830
 Transform:
   m_ObjectHideFlags: 0
@@ -7826,7 +7830,7 @@ MonoBehaviour:
   _minBeltSpeed: 2
   _maxBeltSpeed: 6
   _accelThreshold: 0.02
-  _pointsThreshold: 20000
+  _pointsThreshold: 100
 --- !u!61 &1904827209
 BoxCollider2D:
   m_ObjectHideFlags: 0

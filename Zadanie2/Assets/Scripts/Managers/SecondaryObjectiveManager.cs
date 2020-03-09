@@ -147,7 +147,7 @@ public class SecondaryObjectiveManager : MonoBehaviour
 		return
 			new ObjectColor[4]
 			{ObjectColor.RED, ObjectColor.BLUE, ObjectColor.GREEN, ObjectColor.YELLOW}
-			[Random.Range(0, 3)];
+			[Random.Range(0, 4)];
 	}
 
 	void StartObjectiveTimer(float time)

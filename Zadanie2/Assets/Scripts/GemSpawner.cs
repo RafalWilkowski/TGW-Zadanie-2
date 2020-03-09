@@ -19,11 +19,16 @@ public class GemSpawner : MonoBehaviour
 	[SerializeField]
 	private float _spawnStoneProbability = 5f;
 	private bool _spawnStone = false;
+	[Header("Dynamite spawner")]
 	private int _dynamiteSpawnCounter = 0;
 	[SerializeField] int maxDynamitesCount = 0;
-	[SerializeField] float dynamiteSpawnProbability = 50f;
-	//[SerializeField] int nextMaxDynamitesCountIncreaseThreshold = 0;
-
+	[SerializeField] float dynamiteSpawnProbability = 33f;
+	[Header("Dynamite spawning progression")]
+	[SerializeField] int maxDynamitesAsymptote = 4;
+	[SerializeField] int dynamitesCountScoreScaling = 10000;
+	[SerializeField] float dynamitesCountPaceScaling = 40f;
+	[SerializeField] float dynamitesCountXTranslation = 12f;
+	
 	[SerializeField]
 	private GemSprite[] gemSprites;
 
@@ -45,7 +50,7 @@ public class GemSpawner : MonoBehaviour
 
 	void SetMaxDynamiteCount(int score)
 	{
-		maxDynamitesCount = Mathf.FloorToInt(-40f / (score / 10000 + 12f) + 4f);
+		maxDynamitesCount = Mathf.FloorToInt(-dynamitesCountPaceScaling / (score / dynamitesCountScoreScaling + dynamitesCountXTranslation) + maxDynamitesAsymptote);
 
 	}
 	IEnumerator WaitForGameManager()
