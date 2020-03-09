@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Experimental.Rendering.LWRP;
 
 public class Gem : MonoBehaviour , IInteractable
 {
@@ -86,6 +87,30 @@ public class Gem : MonoBehaviour , IInteractable
         //add random rotation
         transform.rotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y, Random.Range(0, 360));
         _sprite.sprite = sprite;
+        Light2D light = GetComponentInChildren<Light2D>();
+        if (!light)
+        {
+            Debug.Log("rbrak light");
+        }
+        else
+        {
+            switch (color)
+            {
+                case ObjectColor.BLUE:
+                    light.color = Color.blue;
+                    break;
+                case ObjectColor.RED:
+                    light.color = Color.red;
+                    break;
+                case ObjectColor.YELLOW:
+                    light.color = Color.yellow;
+                    break;
+                case ObjectColor.GREEN:
+                    light.color = Color.green;
+                    break;
+            }
+        }
+        
         _circleCollider2D.enabled = true;
 
 		if (tapParticles)
