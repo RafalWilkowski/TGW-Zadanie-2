@@ -48,7 +48,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -166,6 +166,13 @@ MonoBehaviour:
   _objectColor: 0
   tapParticles: {fileID: 0}
   holdParticles: {fileID: 0}
+  _lerpDuration: 0.25
+  _minXPosition: 0
+  _maxXPosition: 0
+  _minYPosition: 0
+  _maxYPosition: 0
+  _randomizeX: 0
+  _randomizeY: 0
   _liftingAudios: []
   _matchSound: {fileID: 0}
   _wrongMatchSound: {fileID: 0}
