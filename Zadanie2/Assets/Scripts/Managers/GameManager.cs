@@ -13,6 +13,8 @@ public class GameManager : MonoBehaviour
 	public ScoreManager _scoreManager;
     [SerializeField]
     private Belt _belt;
+    [SerializeField]
+    private GemSpawner _gemSpawner;
 
 	private void Awake()
 	{
@@ -26,6 +28,7 @@ public class GameManager : MonoBehaviour
 		_scoreManager.OnNewScoreChange += _uiManager.UpdateNewScore;
 		_scoreManager.OnMainScoreChange += _uiManager.UpdateScore;
         _scoreManager.OnMainScoreChange += _belt.CheckPointsThreshold;
+        _scoreManager.OnMainScoreChange += _gemSpawner.CheckPointsThreshold;
 		//update UI comboStripe             
 		ComboStripe.OnTimeout += _uiManager.GlideNewScore;
 		ComboStripe.OnTimeout += _scoreManager.BreakCombo;
@@ -69,7 +72,8 @@ public class GameManager : MonoBehaviour
 		_scoreManager.OnNewScoreChange -= _uiManager.UpdateNewScore;
 		_scoreManager.OnMainScoreChange -= _uiManager.UpdateScore;
         _scoreManager.OnMainScoreChange -= _belt.CheckPointsThreshold;
-           
+        _scoreManager.OnMainScoreChange -= _gemSpawner.CheckPointsThreshold;
+
         ComboStripe.OnTimeout -= _uiManager.GlideNewScore;
 		ComboStripe.OnTimeout -= _scoreManager.BreakCombo;
 
