@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -966,7 +966,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _spawnStones: 1
   _spawnDynamites: 1
-  _gemSpawnRate: 0.85
+  _gemStartSpawnRate: 1
+  _pointsThreshold: 1000
+  _accelThreshold: 0.01
   _spawnStoneProbability: 5
   maxDynamitesCount: 0
   dynamiteSpawnProbability: 25
@@ -1118,6 +1120,7 @@ MonoBehaviour:
     _baseComboScore: 1000
     _comboFactor: 0.25
   _belt: {fileID: 1904827208}
+  _gemSpawner: {fileID: 159683386}
 --- !u!1 &188251460
 GameObject:
   m_ObjectHideFlags: 0
@@ -8861,10 +8864,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: babf959791992ef48b47b754edc3c14d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _minBeltSpeed: 2
+  _minBeltSpeed: 1
   _maxBeltSpeed: 6
-  _accelThreshold: 0.02
-  _pointsThreshold: 100
+  _accelThreshold: 0.01
+  _pointsThreshold: 1000
 --- !u!61 &1904827209
 BoxCollider2D:
   m_ObjectHideFlags: 0

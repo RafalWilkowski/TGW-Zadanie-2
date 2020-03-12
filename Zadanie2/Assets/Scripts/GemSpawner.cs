@@ -12,11 +12,18 @@ public class GemSpawner : MonoBehaviour
 	private bool _spawnStones = true;
 	[SerializeField]
 	private bool _spawnDynamites = true;
+    [Header("SpawnRate Variables")]
 	[SerializeField]
-	private float _gemSpawnRate = 1f;
-	private float _spawnCooldown = 0;
+	private float _gemStartSpawnRate = 1f;
+    private float _currentGemSpawnRate;
+    [SerializeField]
+    private float _pointsThreshold = 1000;
+    private int _threshold = 0;
+    private float _spawnCooldown = 0;
+    [SerializeField]
+    private float _accelThreshold = 0.01f;
 
-	[SerializeField]
+    [SerializeField]
 	private float _spawnStoneProbability = 5f;
 	private bool _spawnStone = false;
 	[Header("Dynamite spawner")]
@@ -46,7 +53,9 @@ public class GemSpawner : MonoBehaviour
 			gemSpritesDic.Add(gemSprite.id, gemSprite.sprite);
 		}
 		StartCoroutine(WaitForGameManager());
-	}
+        _currentGemSpawnRate = _gemStartSpawnRate;
+
+    }
 
 	void SetMaxDynamiteCount(int score)
 	{
@@ -66,7 +75,7 @@ public class GemSpawner : MonoBehaviour
 	{
 		if (_spawnCooldown > Time.time) return;
 
-		_spawnCooldown = Time.time + _gemSpawnRate;
+		_spawnCooldown = Time.time + _currentGemSpawnRate;
 		float randY = UnityEngine.Random.Range(-1, 1);
 		Vector3 spawnPoint = new Vector3(transform.position.x, transform.position.y - randY, -1.5f);
 
@@ -117,7 +126,16 @@ public class GemSpawner : MonoBehaviour
 		}
 
 	}
-	private void OnDestroy()
+    public void CheckPointsThreshold(int points)
+    {
+        if (points / (_pointsThreshold * (_threshold + 1)) >= 1)
+        {
+            _threshold++;
+            _currentGemSpawnRate += _accelThreshold;
+        }
+
+    }
+    private void OnDestroy()
 	{
 		if (GameManager.Instance)
 		{
