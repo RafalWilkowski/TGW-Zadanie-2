@@ -11,12 +11,29 @@ public class GemConteiner : MonoBehaviour , IInteractable
     private int _currentHealth;
 
     private StoneBreakOdds _stoneBreakOdds;
-
-    private void Start()
+	[SerializeField] Sprite[] sprites;
+	SpriteRenderer ownSprite;
+	private void OnEnable()
+	{
+		if (ownSprite)
+		{
+			int index = UnityEngine.Random.Range(0, sprites.Length);
+			ownSprite.sprite = sprites[index];
+			Debug.LogFormat("Sprite at {0} set to {1}({2})", ownSprite, index, sprites[index] );
+		}
+	}
+	private void Start()
     {
         _stoneBreakOdds = FindObjectOfType<StoneBreakOdds>();
         _currentHealth = _maxHealth;
-    }
+		ownSprite = GetComponentInChildren<SpriteRenderer>();
+		if (ownSprite)
+		{
+			int index = UnityEngine.Random.Range(0, sprites.Length);
+			ownSprite.sprite = sprites[index];
+			Debug.LogFormat("Sprite at {0} set to {1}({2})", ownSprite, index, sprites[index]);
+		}
+	}
     public void Interact(int fingerID)
     {
         
