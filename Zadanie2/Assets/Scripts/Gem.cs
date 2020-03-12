@@ -80,7 +80,7 @@ public class Gem : MonoBehaviour , IInteractable
     public void Init(ObjectColor color, Vector3 position, Sprite sprite)
     {
         //TODOchange after gobals
-        _sprite.gameObject.SetActive(true);
+        _sprite.gameObject.SetActive(true);      
         _objectColor = color;
         float randX = Random.Range(-0.25f, 0.25f);
         transform.position = new Vector3(position.x + randX, position.y,position.z);
@@ -136,6 +136,10 @@ public class Gem : MonoBehaviour , IInteractable
     {
         _touchID = touchID;
         _circleCollider2D.isTrigger = true;
+        if(transform.localScale.x != 2)
+        {
+            transform.localScale = new Vector3(2f, 2f, 2f);
+        }
         // subscribe to touchdetector
         TouchDetector.Instance.onFingerMovedDic.Add(_touchID, OnFingerPositionChanged);
         TouchDetector.Instance.onFingerReleasedDic.Add(_touchID, OnFingerReleased);
