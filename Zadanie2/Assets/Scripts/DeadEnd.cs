@@ -36,7 +36,7 @@ public class DeadEnd : MonoBehaviour
             }
             else if (gemContainer)
             {
-                gemContainer.transform.localScale = new Vector3(2.5f, 2.5f, 2.5f);
+                gemContainer.transform.localScale = Vector3.one;
                 StonePool.Instance.ReturnToPool(gemContainer);
             }
             else
