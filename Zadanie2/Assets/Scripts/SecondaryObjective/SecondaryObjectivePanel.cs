@@ -4,6 +4,9 @@ using UnityEngine;
 public class SecondaryObjectivePanel : MonoBehaviour
 {
 	SecondaryObjectiveSocket[] allSockets = new SecondaryObjectiveSocket[0];
+	[SerializeField] Transform emergingPanel;
+	[SerializeField] Vector3 emergenceStartPoint, emergenceEndPoint;
+	[SerializeField] float emergenceTime, submergeDelay;
 	// Start is called before the first frame update
 	void Start()
 	{
@@ -29,7 +32,14 @@ public class SecondaryObjectivePanel : MonoBehaviour
 
 	public void Activate(bool status)
 	{
-		gameObject.SetActive(status);
+		if (status)
+		{
+			Emerge();
+		}
+		else
+		{
+			Submerge();
+		}
 	}
 
 	void VerifyCompletion(Gem gem, SecondaryObjectiveSocket socket)
@@ -39,7 +49,7 @@ public class SecondaryObjectivePanel : MonoBehaviour
 			if (s.IsActive && !s.IsFull)
 				return;
 		}
-		
+
 		SecondaryObjectiveManager.Instance?.CompleteSecondaryObjective();
 	}
 
@@ -63,4 +73,40 @@ public class SecondaryObjectivePanel : MonoBehaviour
 			socket.OnGemInstalled -= VerifyCompletion;
 		}
 	}
+
+	void Emerge()
+	{
+		if (!emergingPanel) return;
+		gameObject.SetActive(true);
+		StartCoroutine(AnimatePanelCoroutine(emergenceStartPoint, emergenceEndPoint));
+	}
+
+	void Submerge()
+	{
+
+		if (!emergingPanel)
+		{
+			gameObject.SetActive(false);
+			return;
+		}
+		StartCoroutine(AnimatePanelCoroutine(emergenceEndPoint, emergenceStartPoint, true, submergeDelay));
+	}
+
+	IEnumerator AnimatePanelCoroutine(Vector3 positionStart, Vector3 positionEnd, bool deactivatePanel = false, float delay = 0)
+	{
+		if ((emergingPanel.localPosition - positionEnd).sqrMagnitude > 1)
+		{
+			if (delay > 0) yield return new WaitForSeconds(delay);
+
+			float emergenceTimeStart = Time.time;
+			while (Time.time - emergenceTimeStart < emergenceTime)
+			{
+				emergingPanel.localPosition = Vector3.Lerp(positionStart, positionEnd, (Time.time - emergenceTimeStart) / emergenceTime);
+				yield return new WaitForEndOfFrame();
+			}
+		}
+		emergingPanel.localPosition = positionEnd;
+		if (deactivatePanel) gameObject.SetActive(false);
+	}
+
 }

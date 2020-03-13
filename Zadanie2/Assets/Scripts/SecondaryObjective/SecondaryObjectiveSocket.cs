@@ -14,7 +14,7 @@ public class SecondaryObjectiveSocket : MonoBehaviour
 
 	int socketedGems = 0;
 	Image socketFrameRenderer, socketGemRenderer;
-
+	AudioSource audioSource;
 	public bool IsFull { get => socketedGems == gemCapacity; }
 
 	private void Awake()
@@ -25,6 +25,12 @@ public class SecondaryObjectiveSocket : MonoBehaviour
 
 		socketFrameRenderer = spriteRenderers[0];
 		socketGemRenderer = spriteRenderers[2];
+		audioSource = GetComponent<AudioSource>();
+		if (audioSource)
+		{
+			audioSource.playOnAwake = false;
+			audioSource.loop = false;
+		}
 	}
 
 	public void InstallGem(Gem gem)
@@ -36,6 +42,9 @@ public class SecondaryObjectiveSocket : MonoBehaviour
 			socketGemRenderer.fillAmount = (float)socketedGems / gemCapacity;
 		}
 		OnGemInstalled?.Invoke(gem, this);
+
+		if (audioSource) audioSource.Play();
+
         //GemPool.Instance.ReturnToPool(gem);
 	}
 

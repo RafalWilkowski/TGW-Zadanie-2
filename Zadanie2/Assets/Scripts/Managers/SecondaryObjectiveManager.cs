@@ -15,7 +15,6 @@ public class SecondaryObjectiveManager : MonoBehaviour
 	[SerializeField] int baseRetryCost = 9000;
 	[SerializeField] int retryCostPerLevel = 1000;
 
-
 	[SerializeField] int rewardPerCapacity = 3000;
 	[SerializeField] int rewardPerLevel = 3000;
 
@@ -26,7 +25,9 @@ public class SecondaryObjectiveManager : MonoBehaviour
 	[SerializeField] float maxSocketCapacityScaling = 17;
 	[SerializeField] float maxSocketCountScaling = 4;
 	[SerializeField] float capacityProgressionRate = 2;
-	
+
+	[SerializeField] AudioClip emergenceClip, completionClip, failureClip;
+	[SerializeField] AudioSource audioSource;
 	int nextScoreRequirement = 0;
 
 	float objectiveTimer;
@@ -41,7 +42,7 @@ public class SecondaryObjectiveManager : MonoBehaviour
 
 	void CalculateRequiredScore()
 	{
-		nextScoreRequirement += secondaryObjectiveLevel * baseInterval + (totalCapacity - 2)*intervalPerCapacity;
+		nextScoreRequirement += secondaryObjectiveLevel * baseInterval + (totalCapacity - 2) * intervalPerCapacity;
 	}
 
 	void CalculateRetryScore()
@@ -53,14 +54,19 @@ public class SecondaryObjectiveManager : MonoBehaviour
 	void Start()
 	{
 		Instance = this;
-		
+
 		if (objectiveTimeSlider)
 		{
 			objectiveTimeSlider.value = objectiveTimeSlider.maxValue = baseTimeToComplete;
 		}
-
+		
 		StartCoroutine(WaitForGameManager());
 		CalculateRequiredScore();
+		if (audioSource)
+		{
+			audioSource.playOnAwake = false;
+			audioSource.loop = false;
+		}
 	}
 
 	IEnumerator WaitForGameManager()
@@ -80,6 +86,7 @@ public class SecondaryObjectiveManager : MonoBehaviour
 	void InitiateSecondaryObjective(int score)
 	{
 		if (!ObjectivePanel || IsActive || GameManager.Instance._scoreManager.CurrentScore < nextScoreRequirement) return;
+		ObjectivePanel.ResetAllActiveSockets();
 		IsActive = true;
 		ObjectivePanel.Activate(IsActive);
 		List<int> indices = new List<int>(new int[9] { 0, 1, 2, 3, 4, 5, 6, 7, 8 });
@@ -97,6 +104,7 @@ public class SecondaryObjectiveManager : MonoBehaviour
 			ObjectivePanel.ConfigureSocket(indices[index], targetCapacity, GetRandomGemColor());
 			indices.RemoveAt(index);
 		}
+		PlaySound(emergenceClip);
 
 		StartObjectiveTimer(baseTimeToComplete + (totalCapacity - 3) * extraTimeToCompletePerCapacity);
 	}
@@ -105,14 +113,17 @@ public class SecondaryObjectiveManager : MonoBehaviour
 	{
 		if (!ObjectivePanel) return;
 
-		GameManager.Instance._scoreManager.AddMainScore( (totalCapacity - 2)* rewardPerCapacity + rewardPerLevel * secondaryObjectiveLevel);
+		GameManager.Instance._scoreManager.AddMainScore((totalCapacity - 2) * rewardPerCapacity + rewardPerLevel * secondaryObjectiveLevel);
 
-		maxSockets = Mathf.Min(9, Mathf.FloorToInt((3 + Mathf.FloorToInt((secondaryObjectiveLevel - 1) /maxSocketCountScaling)) / minCapacity));
+		maxSockets = Mathf.Min(9, Mathf.FloorToInt((3 + Mathf.FloorToInt((secondaryObjectiveLevel - 1) / maxSocketCountScaling)) / minCapacity));
 		secondaryObjectiveLevel += 1;
 		totalCapacity = 3 + Mathf.FloorToInt((secondaryObjectiveLevel - 1) / maxSocketCountScaling);
 		minCapacity = Mathf.FloorToInt(secondaryObjectiveLevel / minSocketCapacityScaling) + 1;
 		maxCapacity = Mathf.FloorToInt(secondaryObjectiveLevel / maxSocketCapacityScaling) + 3;
 		CalculateRequiredScore();
+
+		PlaySound(completionClip);
+
 		EndSecondaryObjective("Secondary mission was COMPLETED!");
 	}
 
@@ -120,6 +131,9 @@ public class SecondaryObjectiveManager : MonoBehaviour
 	{
 		if (!ObjectivePanel) return;
 		CalculateRetryScore();
+
+		PlaySound(failureClip);
+		ObjectivePanel.ResetAllActiveSockets();
 		EndSecondaryObjective("Secondary mission was FAILED!");
 	}
 
@@ -129,7 +143,7 @@ public class SecondaryObjectiveManager : MonoBehaviour
 			Debug.Log(optionalMessage);
 
 		totalObjectives += 1;
-		ObjectivePanel.ResetAllActiveSockets();
+		
 		ObjectivePanel.Activate(false);
 		IsActive = false;
 	}
@@ -163,7 +177,7 @@ public class SecondaryObjectiveManager : MonoBehaviour
 		objectiveTimeSlider.maxValue = objectiveTimeSlider.value = toValue;
 	}
 
-	void UpdateSlider( float currentValue)
+	void UpdateSlider(float currentValue)
 	{
 		if (!objectiveTimeSlider) return;
 		objectiveTimeSlider.value = Mathf.Max(0, currentValue);
@@ -183,5 +197,13 @@ public class SecondaryObjectiveManager : MonoBehaviour
 			yield return new WaitForFixedUpdate();
 			UpdateSlider(time + startTime - Time.realtimeSinceStartup);
 		}
+	}
+
+	void PlaySound (AudioClip soundClip)
+	{
+		if (!audioSource || !soundClip) return;
+
+		audioSource.PlayOneShot(soundClip);
+
 	}
 }

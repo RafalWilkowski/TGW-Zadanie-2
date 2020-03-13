@@ -13,15 +13,7 @@ public class GemConteiner : MonoBehaviour , IInteractable
     private StoneBreakOdds _stoneBreakOdds;
 	[SerializeField] Sprite[] sprites;
 	SpriteRenderer ownSprite;
-	private void OnEnable()
-	{
-		if (ownSprite)
-		{
-			int index = UnityEngine.Random.Range(0, sprites.Length);
-			ownSprite.sprite = sprites[index];
-			Debug.LogFormat("Sprite at {0} set to {1}({2})", ownSprite, index, sprites[index] );
-		}
-	}
+	
 	private void Start()
     {
         _stoneBreakOdds = FindObjectOfType<StoneBreakOdds>();
