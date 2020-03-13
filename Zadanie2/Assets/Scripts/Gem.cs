@@ -49,6 +49,7 @@ public class Gem : MonoBehaviour , IInteractable
     private CircleCollider2D _circleCollider2D;
     private Rigidbody2D rb2D;
     private SpriteRenderer _sprite;
+    private Light2D _light;
 
     private int _touchID;
     
@@ -59,7 +60,8 @@ public class Gem : MonoBehaviour , IInteractable
         _circleCollider2D = GetComponent<CircleCollider2D>();
         rb2D = GetComponent<Rigidbody2D>();
         _audio = GetComponent<AudioSource>();
-	}
+        _light = GetComponentInChildren<Light2D>();
+    }
 
 	// Update is called once per frame
 	void Update()
@@ -87,8 +89,7 @@ public class Gem : MonoBehaviour , IInteractable
         //add random rotation
         transform.rotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y, Random.Range(0, 360));
         _sprite.sprite = sprite;
-        Light2D light = GetComponentInChildren<Light2D>();
-        if (!light)
+        if (!_light)
         {
             Debug.Log("rbrak light");
         }
@@ -97,16 +98,16 @@ public class Gem : MonoBehaviour , IInteractable
             switch (color)
             {
                 case ObjectColor.BLUE:
-                    light.color = Color.blue;
+                    _light.color = Color.blue;
                     break;
                 case ObjectColor.RED:
-                    light.color = Color.red;
+                    _light.color = Color.red;
                     break;
                 case ObjectColor.YELLOW:
-                    light.color = Color.yellow;
+                    _light.color = Color.yellow;
                     break;
                 case ObjectColor.GREEN:
-                    light.color = Color.green;
+                    _light.color = Color.green;
                     break;
             }
         }
