@@ -45,9 +45,6 @@ public class SecondaryObjectiveSocket : MonoBehaviour
 		if (audioSource) audioSource.Play();
 		if (IsFull && fullImage) fullImage.gameObject.SetActive(true);
 		OnGemInstalled?.Invoke(gem, this);
-
-
-        //GemPool.Instance.ReturnToPool(gem);
 	}
 
 	public void InitializeGemSocket(int capacity, ObjectColor color)
