@@ -28,6 +28,9 @@ public class SecondaryObjectiveManager : MonoBehaviour
 
 	[SerializeField] AudioClip emergenceClip, completionClip, failureClip;
 	[SerializeField] AudioSource audioSource;
+
+	[SerializeField] SpriteAssignment[] assignedSprites;
+
 	int nextScoreRequirement = 0;
 
 	float objectiveTimer;
@@ -59,7 +62,7 @@ public class SecondaryObjectiveManager : MonoBehaviour
 		{
 			objectiveTimeSlider.value = objectiveTimeSlider.maxValue = baseTimeToComplete;
 		}
-		
+
 		StartCoroutine(WaitForGameManager());
 		CalculateRequiredScore();
 		if (audioSource)
@@ -143,7 +146,7 @@ public class SecondaryObjectiveManager : MonoBehaviour
 			Debug.Log(optionalMessage);
 
 		totalObjectives += 1;
-		
+
 		ObjectivePanel.Activate(false);
 		IsActive = false;
 	}
@@ -199,11 +202,37 @@ public class SecondaryObjectiveManager : MonoBehaviour
 		}
 	}
 
-	void PlaySound (AudioClip soundClip)
+	void PlaySound(AudioClip soundClip)
 	{
 		if (!audioSource || !soundClip) return;
-
 		audioSource.PlayOneShot(soundClip);
+	}
 
+	public Sprite GetAssignedSprite(ObjectColor color)
+	{
+		if (assignedSprites == null || assignedSprites.Length == 0) return null;
+		foreach (SpriteAssignment spriteAssignment in assignedSprites)
+		{
+			if (color == spriteAssignment.Color)
+				return spriteAssignment.GetSpriteByColor(color);
+		}
+
+		return null;
+	}
+
+	[System.Serializable]
+	class SpriteAssignment
+	{
+		[SerializeField] ObjectColor color;
+		[SerializeField] Sprite assignedSprite;
+		public ObjectColor Color { get => color; }
+		public Sprite GetSpriteByColor(ObjectColor col)
+		{
+			if (col.Equals(color))
+			{
+				return assignedSprite;
+			}
+			return null;
+		}
 	}
 }

@@ -11,6 +11,7 @@ public class SecondaryObjectiveSocket : MonoBehaviour
 
 	[field: SerializeField] public ObjectColor SocketColor { get; private set; }
 	[SerializeField] int gemCapacity = 1;
+	[SerializeField] Image fullImage;
 
 	int socketedGems = 0;
 	Image socketFrameRenderer, socketGemRenderer;
@@ -41,9 +42,10 @@ public class SecondaryObjectiveSocket : MonoBehaviour
 			socketGemRenderer.color = GetSocketColor(gem.GemColor);
 			socketGemRenderer.fillAmount = (float)socketedGems / gemCapacity;
 		}
+		if (audioSource) audioSource.Play();
+		if (IsFull && fullImage) fullImage.gameObject.SetActive(true);
 		OnGemInstalled?.Invoke(gem, this);
 
-		if (audioSource) audioSource.Play();
 
         //GemPool.Instance.ReturnToPool(gem);
 	}
@@ -59,6 +61,11 @@ public class SecondaryObjectiveSocket : MonoBehaviour
 
 		if (socketGemRenderer)
 			socketGemRenderer.color = Color.black;
+
+		if (fullImage)
+		{
+			fullImage.sprite = SecondaryObjectiveManager.Instance.GetAssignedSprite(color);
+		}
 		IsActive = true;
 	}
 
@@ -92,6 +99,11 @@ public class SecondaryObjectiveSocket : MonoBehaviour
 			socketFrameRenderer.color = GetSocketColor(SocketColor);
 		if (socketGemRenderer)
 			socketFrameRenderer.color = Color.black;
+		if (fullImage)
+		{
+			fullImage.sprite = null;
+			fullImage.gameObject.SetActive(false);
+		}
 		gameObject.SetActive(false);
 		IsActive = false;
 	}
