@@ -102,7 +102,8 @@ public class GameManager : MonoBehaviour
 		private int _baseComboScore = 500;
 		[SerializeField]
 		private float _comboFactor = 0.25f;
-
+        [SerializeField]
+        private int _comboSoundInit = 3;
 		public int CurrentScore { get; private set; }
 		public int NewScore { get; private set; }
 		private Queue<int> _scoreToAddQueue = new Queue<int>();
@@ -130,7 +131,7 @@ public class GameManager : MonoBehaviour
 			if (combo && !_comboBreakedByTimeout)
 			{
 				Combo++;
-                if ((Combo + 1 )% 3 == 0) ComboSounds.Instance.PlayRandomComboSound();
+                if ((Combo + 1 )% _comboSoundInit == 0) ComboSounds.Instance.PlayRandomComboSound();
 				AddNewScore();
 				_lastGemColor = color;
 				// update time UI combostripe
