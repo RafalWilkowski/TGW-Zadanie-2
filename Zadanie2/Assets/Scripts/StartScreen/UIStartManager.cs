@@ -29,6 +29,10 @@ public class UIStartManager : MonoBehaviour
         SceneManager.LoadScene(2, LoadSceneMode.Additive);
     }
 
+    public void HowToPlay()
+    {
+        SceneManager.LoadScene(4);
+    }
     public void Credits()
     {
         creditsCanvas.SetActive(true);
