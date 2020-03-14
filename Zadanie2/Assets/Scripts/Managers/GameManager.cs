@@ -40,6 +40,7 @@ public class GameManager : MonoBehaviour
 		//adding newScore to mainScore callback        
 		NewScoreText.OnGlideFinished += _scoreManager.ScoreGlidedToMainScore;
 		NewScoreText.OnGlideFinished += _uiManager.HideCombo;
+        NewScoreText.OnGlideFinished += ComboSounds.Instance.PlayRandomComboSound;
 	}
 
 	public void GameOver()
@@ -84,7 +85,8 @@ public class GameManager : MonoBehaviour
       
 		NewScoreText.OnGlideFinished -= _scoreManager.ScoreGlidedToMainScore;
 		NewScoreText.OnGlideFinished -= _uiManager.HideCombo;
-	}
+        NewScoreText.OnGlideFinished -= ComboSounds.Instance.PlayRandomComboSound;
+    }
 
 	[System.Serializable]
 	public class ScoreManager
