@@ -3074,8 +3074,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0209d9ba2bb48b540aae991a07f6a201, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _firstTimeToAdd: 2
-  _nextTimetoAdd: 1
+  _firstTimeToAdd: 3
+  _nextTimetoAdd: 2
 --- !u!114 &511200643
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3120,7 +3120,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 0}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 4
+  m_MaxValue: 7
   m_WholeNumbers: 0
   m_Value: 0
   m_OnValueChanged:
