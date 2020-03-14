@@ -3933,12 +3933,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7331db33f585ed4ba81a8af76611b3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseInterval: 3000
-  intervalPerCapacity: 3000
+  baseInterval: 5000
+  intervalPerCapacity: 5000
   baseRetryCost: 3000
-  retryCostPerLevel: 1000
-  rewardPerCapacity: 2000
-  rewardPerLevel: 2000
+  retryCostPerLevel: 2000
+  rewardPerCapacity: 4000
+  rewardPerLevel: 4000
   baseTimeToComplete: 15
   extraTimeToCompletePerCapacity: 5
   minSocketCapacityScaling: 26
