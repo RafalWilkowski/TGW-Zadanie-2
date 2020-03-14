@@ -966,7 +966,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _spawnStones: 1
   _spawnDynamites: 1
-  _gemStartSpawnRate: 1
+  _gemStartSpawnRate: 0.9
   _pointsThreshold: 1000
   _accelThreshold: 0.004
   _spawnStoneProbability: 5
