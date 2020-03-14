@@ -40,7 +40,7 @@ public class GameManager : MonoBehaviour
 		//adding newScore to mainScore callback        
 		NewScoreText.OnGlideFinished += _scoreManager.ScoreGlidedToMainScore;
 		NewScoreText.OnGlideFinished += _uiManager.HideCombo;
-        NewScoreText.OnGlideFinished += ComboSounds.Instance.PlayRandomComboSound;
+        //NewScoreText.OnGlideFinished += ComboSounds.Instance.PlayRandomComboSound;
 	}
 
 	public void GameOver()
@@ -85,7 +85,7 @@ public class GameManager : MonoBehaviour
       
 		NewScoreText.OnGlideFinished -= _scoreManager.ScoreGlidedToMainScore;
 		NewScoreText.OnGlideFinished -= _uiManager.HideCombo;
-        NewScoreText.OnGlideFinished -= ComboSounds.Instance.PlayRandomComboSound;
+       // NewScoreText.OnGlideFinished -= ComboSounds.Instance.PlayRandomComboSound;
     }
 
 	[System.Serializable]
@@ -130,6 +130,7 @@ public class GameManager : MonoBehaviour
 			if (combo && !_comboBreakedByTimeout)
 			{
 				Combo++;
+                if ((Combo + 1 )% 3 == 0) ComboSounds.Instance.PlayRandomComboSound();
 				AddNewScore();
 				_lastGemColor = color;
 				// update time UI combostripe
