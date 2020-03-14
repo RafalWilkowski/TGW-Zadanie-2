@@ -75,7 +75,7 @@ public class GemSpawner : MonoBehaviour
 	{
 		if (_spawnCooldown > Time.time) return;
 
-		_spawnCooldown = Time.time + _currentGemSpawnRate;
+		_spawnCooldown = Time.time + 1f/_currentGemSpawnRate;
 		float randY = UnityEngine.Random.Range(-1, 1);
 		Vector3 spawnPoint = new Vector3(transform.position.x, transform.position.y - randY, -1.5f);
 
