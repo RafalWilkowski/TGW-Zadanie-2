@@ -16,7 +16,7 @@ public class SoundButton : MonoBehaviour
         soundIcon = GetComponent<Image>();
     }
 
-    public void ToggleSoundIcon()
+    public void ToggleMusicIcon()
     {
         sound = !sound;
 

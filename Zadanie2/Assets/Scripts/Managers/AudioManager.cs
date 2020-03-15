@@ -7,7 +7,7 @@ public class AudioManager : MonoBehaviour
 {
     public static AudioManager Instance;
     [SerializeField]
-    private AudioMixer masterMixer;
+    private AudioMixer _masterMixer;
     [SerializeField]
     private AudioSource clickSound;
 
@@ -25,21 +25,71 @@ public class AudioManager : MonoBehaviour
         
     }
 
-    public void ToggleSound()
+    private void Start()
     {
-        float masterVolume = 0f;
-        masterMixer.GetFloat("masterVol", out masterVolume);
-
-        if(masterVolume == -80)
+        if(!PlayerPrefs.HasKey("musicVol"))
         {
-            masterMixer.SetFloat("masterVol", 0f);
+            PlayerPrefs.SetFloat("musicVol", 0.0f);
+            PlayerPrefs.SetInt("musicVolInt", 0);
+            PlayerPrefs.SetInt("sfxVolInt", 0);
         }
         else
         {
-            masterMixer.SetFloat("masterVol", -80f);
+            bool musicMute = (PlayerPrefs.GetInt("musicVolInt") == 0) ? false : true;
+            if (musicMute)
+            {
+                _masterMixer.SetFloat("musicVol", -80.0f);
+            }
+            else
+            {
+                _masterMixer.SetFloat("musicVol", 0f);
+            }
+
+            bool sfxMute = (PlayerPrefs.GetInt("sfxVolInt") == 0) ? false : true;
+            if (musicMute)
+            {
+                _masterMixer.SetFloat("sfxVol", -80.0f);
+            }
+            else
+            {
+                _masterMixer.SetFloat("sfxVol", 0f);
+            }
         }
+        
     }
 
+    public void ToggleMusic()
+    {
+        float musicVolume = 0f;
+        _masterMixer.GetFloat("musicVol", out musicVolume);
+
+        if(musicVolume == -80)
+        {
+            _masterMixer.SetFloat("musicVol", 0f);
+            PlayerPrefs.SetInt("musicVolInt", 0);
+        }
+        else
+        {
+            _masterMixer.SetFloat("musicVol", -80f);
+            PlayerPrefs.SetInt("musicVolInt", 1);
+        }
+    }
+    public void ToggleSFX()
+    {
+        float sfxVolume = 0f;
+        _masterMixer.GetFloat("sfxVol", out sfxVolume);
+
+        if (sfxVolume == -80)
+        {
+            _masterMixer.SetFloat("sfxVol", 0f);
+            PlayerPrefs.SetInt("sfxVolInt", 0);
+        }
+        else
+        {
+            _masterMixer.SetFloat("sfxVol", -80f);
+            PlayerPrefs.SetInt("sfxVolInt", 1);
+        }
+    }
     public void Click()
     {
         clickSound.Play();
