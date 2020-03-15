@@ -9830,6 +9830,11 @@ PrefabInstance:
       propertyPath: _randomizeY
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8326612205991940138, guid: c3d506336e879ec4f88305fa27c888ad,
+        type: 3}
+      propertyPath: _fallingSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 6879be173974f4fd1b2834d19f5cde04, type: 3}
     - target: {fileID: 8326612205991940139, guid: c3d506336e879ec4f88305fa27c888ad,
         type: 3}
       propertyPath: m_Mass
