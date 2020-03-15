@@ -116,7 +116,7 @@ public class TouchDetector : MonoBehaviour
         }       
     }
 
-    public void IncreaseTapSize(float tapSizeThresholds)
+    public void IncreaseTapSize()
     {
         if(!(_currentTapSize >= _maxTapSize)) _currentTapSize += _tapSizeAccel;
     }
