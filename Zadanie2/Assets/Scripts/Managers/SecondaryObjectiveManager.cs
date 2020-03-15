@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class SecondaryObjectiveManager : MonoBehaviour
 {
-	public bool IsActive { get; private set; }
+	public bool IsActive { get => ObjectivePanel && ObjectivePanel.IsActive; }
 	public static SecondaryObjectiveManager Instance { get; private set; }
 	public SecondaryObjectivePanel ObjectivePanel { get; private set; }
 
@@ -89,9 +89,8 @@ public class SecondaryObjectiveManager : MonoBehaviour
 	void InitiateSecondaryObjective(int score)
 	{
 		if (!ObjectivePanel || IsActive || GameManager.Instance._scoreManager.CurrentScore < nextScoreRequirement) return;
+		ObjectivePanel.Activate(true);
 		ObjectivePanel.ResetAllActiveSockets();
-		IsActive = true;
-		ObjectivePanel.Activate(IsActive);
 		List<int> indices = new List<int>(new int[9] { 0, 1, 2, 3, 4, 5, 6, 7, 8 });
 		int availableCapacity = totalCapacity;
 
@@ -108,7 +107,6 @@ public class SecondaryObjectiveManager : MonoBehaviour
 			indices.RemoveAt(index);
 		}
 		PlaySound(emergenceClip);
-
 		StartObjectiveTimer(baseTimeToComplete + (totalCapacity - 3) * extraTimeToCompletePerCapacity);
 	}
 
@@ -148,7 +146,6 @@ public class SecondaryObjectiveManager : MonoBehaviour
 		totalObjectives += 1;
 
 		ObjectivePanel.Activate(false);
-		IsActive = false;
 	}
 	public void Subscribe(SecondaryObjectivePanel panel)
 	{

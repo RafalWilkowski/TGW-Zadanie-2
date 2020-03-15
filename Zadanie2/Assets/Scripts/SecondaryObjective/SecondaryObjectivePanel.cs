@@ -7,6 +7,11 @@ public class SecondaryObjectivePanel : MonoBehaviour
 	[SerializeField] Transform emergingPanel;
 	[SerializeField] Vector3 emergenceStartPoint, emergenceEndPoint;
 	[SerializeField] float emergenceTime, submergeDelay;
+	[SerializeField] GameObject[] artifacts;
+
+	public bool IsActive { get; private set; } = false;
+
+	int activeArtifactIndex = -1;
 	// Start is called before the first frame update
 	void Start()
 	{
@@ -77,12 +82,21 @@ public class SecondaryObjectivePanel : MonoBehaviour
 	void Emerge()
 	{
 		if (!emergingPanel) return;
+		IsActive = true;
 		gameObject.SetActive(true);
+		Debug.LogFormat("{0} was activated!", this);
+		if (artifacts != null && artifacts.Length > 0)
+		{
+			activeArtifactIndex = Random.Range(0, artifacts.Length);
+			artifacts[activeArtifactIndex]?.SetActive(true);
+			Debug.LogFormat("Active artifact index set to {0}, item: {1}", activeArtifactIndex, artifacts[activeArtifactIndex]);
+		}
 		StartCoroutine(AnimatePanelCoroutine(emergenceStartPoint, emergenceEndPoint));
 	}
 
 	void Submerge()
 	{
+		if (!gameObject.activeInHierarchy) return;
 
 		if (!emergingPanel)
 		{
@@ -106,7 +120,16 @@ public class SecondaryObjectivePanel : MonoBehaviour
 			}
 		}
 		emergingPanel.localPosition = positionEnd;
-		if (deactivatePanel) gameObject.SetActive(false);
+		if (deactivatePanel)
+		{
+			gameObject.SetActive(false);
+			if (artifacts != null && artifacts.Length > 0 && activeArtifactIndex >= 0)
+			{
+				artifacts[activeArtifactIndex]?.SetActive(false);
+			}
+			IsActive = false;
+			Debug.LogFormat("{0} was deactivated", this);
+		}
 	}
 
 }
