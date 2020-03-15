@@ -18,7 +18,12 @@ public class Belt : MonoBehaviour
 	Animator beltSpriteAnimator;
 	[SerializeField]
 	string beltAnimationSpeedProperty;
-
+	[SerializeField]
+	Renderer animatedBeltRenderer;
+	[SerializeField]
+	float scrollMultiplier = 1;
+	Material animatedBeltMaterial;
+	Vector2 currentTextureOffset = Vector2.zero;
     private int _threshold = 0;
 	private int beltAnimationSpeedHash = -1;
     private BoxCollider2D _boxCollider2D;
@@ -35,9 +40,26 @@ public class Belt : MonoBehaviour
 		{
 			beltAnimationSpeedHash = Animator.StringToHash(beltAnimationSpeedProperty);
 		}
+		if (animatedBeltRenderer)
+		{
+			animatedBeltMaterial = animatedBeltRenderer.materials[0];
+			/*animatedBeltRenderer.materials[0].EnableKeyword("_ALPHATEST_ON");
+			animatedBeltRenderer.material = animatedBeltMaterial;*/
+			//animatedBeltMaterial.EnableKeyword("_ALPHATEST_ON");
+		}
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+	private void FixedUpdate()
+	{
+		if (animatedBeltMaterial)
+		{
+			currentTextureOffset += Vector2.right * _currentBeltSpeed * scrollMultiplier * Time.fixedDeltaTime;
+			animatedBeltRenderer.material.SetTextureOffset("_BaseMap", currentTextureOffset );
+		}
+	}
+
+
+	private void OnTriggerEnter2D(Collider2D collision)
     {
         //add velocity
         Rigidbody2D rb2D = collision.attachedRigidbody;

@@ -1441,7 +1441,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 283083660}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 6fb72958ae6262d47849b90204d6539c, type: 2}
   m_CullingMode: 0
@@ -1513,7 +1513,7 @@ Transform:
   m_LocalScale: {x: 0.05, y: 0.35714284, z: 1}
   m_Children: []
   m_Father: {fileID: 1904827211}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &283141974
 GameObject:
@@ -4198,8 +4198,8 @@ MonoBehaviour:
   maxSocketCountScaling: 5
   capacityProgressionRate: 2
   emergenceClip: {fileID: 8300000, guid: c7a5a28e7a81e496db979124b6ff372f, type: 3}
-  completionClip: {fileID: 8300000, guid: 4714a2100b71148b6a83d61214459387, type: 3}
-  failureClip: {fileID: 8300000, guid: c7a5a28e7a81e496db979124b6ff372f, type: 3}
+  completionClip: {fileID: 8300000, guid: 1838e625ca889fb4a9ead8386b6c9238, type: 3}
+  failureClip: {fileID: 8300000, guid: 59a84b334fd374243810264613201358, type: 3}
   audioSource: {fileID: 627430936}
   assignedSprites:
   - color: 1
@@ -6037,6 +6037,85 @@ Light:
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!1001 &930973711
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1904827211}
+    m_Modifications:
+    - target: {fileID: -4216859302048453862, guid: f1863ec0bf80466439e2e5a35180104a,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.036000002
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: f1863ec0bf80466439e2e5a35180104a,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.078571424
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: f1863ec0bf80466439e2e5a35180104a,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.09
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: f1863ec0bf80466439e2e5a35180104a,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: f1863ec0bf80466439e2e5a35180104a,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: f1863ec0bf80466439e2e5a35180104a,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: f1863ec0bf80466439e2e5a35180104a,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: f1863ec0bf80466439e2e5a35180104a,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: f1863ec0bf80466439e2e5a35180104a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: f1863ec0bf80466439e2e5a35180104a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: f1863ec0bf80466439e2e5a35180104a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: f1863ec0bf80466439e2e5a35180104a,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.48000002
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: f1863ec0bf80466439e2e5a35180104a,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.9285713
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: f1863ec0bf80466439e2e5a35180104a,
+        type: 3}
+      propertyPath: m_Name
+      value: ConveyorBelTrick
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f1863ec0bf80466439e2e5a35180104a, type: 3}
 --- !u!1 &933049373
 GameObject:
   m_ObjectHideFlags: 0
@@ -12050,6 +12129,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1886813452}
   m_CullTransparentMesh: 0
+--- !u!23 &1887613718 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -1504981713932161579, guid: f1863ec0bf80466439e2e5a35180104a,
+    type: 3}
+  m_PrefabInstance: {fileID: 930973711}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1887613720 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: f1863ec0bf80466439e2e5a35180104a,
+    type: 3}
+  m_PrefabInstance: {fileID: 930973711}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1904827207
 GameObject:
   m_ObjectHideFlags: 0
@@ -12085,8 +12176,10 @@ MonoBehaviour:
   _maxBeltSpeed: 6
   _accelThreshold: 0.025
   _pointsThreshold: 1000
-  beltSpriteAnimator: {fileID: 283083661}
+  beltSpriteAnimator: {fileID: 0}
   beltAnimationSpeedProperty: BeltSpeed
+  animatedBeltRenderer: {fileID: 1887613718}
+  scrollMultiplier: 0.0285
 --- !u!61 &1904827209
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -12174,6 +12267,7 @@ Transform:
   m_LocalScale: {x: 20, y: 2.8, z: 1}
   m_Children:
   - {fileID: 744203755}
+  - {fileID: 1887613720}
   - {fileID: 283083663}
   m_Father: {fileID: 0}
   m_RootOrder: 6
