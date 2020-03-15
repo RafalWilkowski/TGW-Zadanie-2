@@ -11,7 +11,11 @@ public class DeadEnd : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        
+		Gem gem = collision.GetComponentInParent<Gem>();
+		if (gem && !gem.IsHeld)
+		{
+			gem.PlayFallingSound();
+		}
     }
     private void OnTriggerStay2D(Collider2D collision)
     {

@@ -5,6 +5,8 @@ using UnityEngine.Experimental.Rendering.LWRP;
 
 public class Gem : MonoBehaviour , IInteractable
 {
+	public bool IsHeld { get; private set; }
+
     [SerializeField]
     private ObjectColor _objectColor;
 
@@ -43,7 +45,9 @@ public class Gem : MonoBehaviour , IInteractable
     private AudioClip _wrongMatchSound;
     [SerializeField]
     private AudioClip _neutrallySound;
-    private bool _unmatched = false;
+	[SerializeField]
+	private AudioClip _fallingSound;
+	private bool _unmatched = false;
     #endregion
 
     private CircleCollider2D _circleCollider2D;
@@ -149,6 +153,7 @@ public class Gem : MonoBehaviour , IInteractable
         ChangeClipAndPlay(_liftingAudios[randomInt]);
 		
 		if (holdParticles) holdParticles.Play();
+		IsHeld = true;
     }
 
     private void OnFingerPositionChanged(Vector2 position)
@@ -217,6 +222,8 @@ public class Gem : MonoBehaviour , IInteractable
         TouchDetector.Instance.onFingerReleasedDic.Remove(_touchID);
 		if (holdParticles) holdParticles.Stop(true, ParticleSystemStopBehavior.StopEmitting);
 
+		IsHeld = false;
+
     }
 
     private IEnumerator ReturnToPoolAfterSound()
@@ -277,6 +284,11 @@ public class Gem : MonoBehaviour , IInteractable
         _audio.clip = clip;
         _audio.Play();
     }
+
+	public void PlayFallingSound()
+	{
+		if (_fallingSound) ChangeClipAndPlay(_fallingSound);
+	}
 
 	public ObjectColor GemColor { get => _objectColor; }
 }
