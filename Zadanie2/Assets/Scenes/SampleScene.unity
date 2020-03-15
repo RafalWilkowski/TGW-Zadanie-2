@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -1147,8 +1147,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 163210693}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.01229, y: -0.0958, z: 0}
-  m_LocalScale: {x: 0.08453421, y: 0.58776075, z: 1}
+  m_LocalPosition: {x: 0.02659, y: -0.09713, z: 0}
+  m_LocalScale: {x: 0.08192148, y: 0.58639127, z: 1}
   m_Children: []
   m_Father: {fileID: 1904827211}
   m_RootOrder: 3
@@ -1192,7 +1192,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 36
   m_Sprite: {fileID: 21300000, guid: 2f25bdbb6f43ae0498b92d9d2bc0c009, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.85490197}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
