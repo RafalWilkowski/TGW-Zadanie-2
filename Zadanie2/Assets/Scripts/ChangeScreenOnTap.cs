@@ -31,12 +31,14 @@ public class ChangeScreenOnTap : MonoBehaviour
             {
                 _tapCooldown = Time.time + _tapInactiveTime;
                 _anim.SetTrigger("ChangeScreen");
+                AudioManager.Instance.Click();
             }
         }
     }
 
     public void ChangeScreen()
     {
+        
         if (_currentScreen < _screens.Length)
         {
             _ownImage.sprite = _screens[_currentScreen];
