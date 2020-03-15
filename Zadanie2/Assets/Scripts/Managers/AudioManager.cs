@@ -30,6 +30,7 @@ public class AudioManager : MonoBehaviour
         if(!PlayerPrefs.HasKey("musicVol"))
         {
             PlayerPrefs.SetFloat("musicVol", 0.0f);
+            PlayerPrefs.SetFloat("sfxVol", 0.0f);
             PlayerPrefs.SetInt("musicVolInt", 0);
             PlayerPrefs.SetInt("sfxVolInt", 0);
         }
@@ -46,7 +47,7 @@ public class AudioManager : MonoBehaviour
             }
 
             bool sfxMute = (PlayerPrefs.GetInt("sfxVolInt") == 0) ? false : true;
-            if (musicMute)
+            if (sfxMute)
             {
                 _masterMixer.SetFloat("sfxVol", -80.0f);
             }
