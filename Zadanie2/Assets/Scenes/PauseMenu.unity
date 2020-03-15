@@ -353,18 +353,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 408322206}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1216883025}
-        m_MethodName: Unpause
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &408322206
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -410,9 +399,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 408322203}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bef57c5b261aab043a70b24a678583d2, type: 3}
+  m_Script: {fileID: 11500000, guid: c36f4ff5af6873c468232ae9c5a9a5ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  soundIcons:
+  - {fileID: 21300000, guid: b3d29af1630f2404785938c7d9f05a87, type: 3}
+  - {fileID: 21300000, guid: f50328252ee6fa6458e220e3afa930a4, type: 3}
 --- !u!1 &410811499
 GameObject:
   m_ObjectHideFlags: 0
@@ -614,6 +606,7 @@ GameObject:
   - component: {fileID: 1234836914}
   - component: {fileID: 1234836913}
   - component: {fileID: 1234836916}
+  - component: {fileID: 1234836917}
   m_Layer: 5
   m_Name: SFXOnOff
   m_TagString: Untagged
@@ -682,18 +675,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1234836914}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1216883025}
-        m_MethodName: Unpause
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1234836914
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -742,6 +724,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bef57c5b261aab043a70b24a678583d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1234836917
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1234836911}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6f9d22e848bda64b8fd53a43abab7b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundIcons:
+  - {fileID: 21300000, guid: d7c97bc43eaa1654283beebe4138fd0b, type: 3}
+  - {fileID: 21300000, guid: 1f824220780a7ae4bbf2a493369baeb9, type: 3}
 --- !u!1 &1320746356
 GameObject:
   m_ObjectHideFlags: 0

@@ -25,12 +25,16 @@ public class UIStartManager : MonoBehaviour
     }
     public void StartGame()
     {
+        AudioManager _audioManager = FindObjectOfType<AudioManager>();
+        DontDestroyOnLoad(_audioManager);
         SceneManager.LoadScene(1);
         SceneManager.LoadScene(2, LoadSceneMode.Additive);
     }
 
     public void HowToPlay()
     {
+        AudioManager _audioManager = FindObjectOfType<AudioManager>();
+        DontDestroyOnLoad(_audioManager);
         SceneManager.LoadScene(4);
     }
     public void Credits()
