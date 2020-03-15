@@ -7141,7 +7141,8 @@ MonoBehaviour:
   _layerToDetect:
     serializedVersion: 2
     m_Bits: 256
-  _tapSize: 0.35
+  _tapBaseSize: 0.25
+  _maxTapSize: 0.75
 --- !u!4 &1137630830
 Transform:
   m_ObjectHideFlags: 0

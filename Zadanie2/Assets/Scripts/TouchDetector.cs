@@ -12,11 +12,19 @@ public class TouchDetector : MonoBehaviour
 
     public LayerMask _layerToDetect;
     [SerializeField]
-    private float _tapSize = 0.25f;
+    private float _tapBaseSize = 0.25f;
+    [SerializeField]
+    private float _maxTapSize = 0.75f;
+    private float _currentTapSize = 0;
+    private float _tapSizeAccel;
 
     private void Awake()
     {
         Instance = this;
+    }
+    private void Start()
+    {
+        _currentTapSize = _tapBaseSize;
     }
     // Update is called once per frame
     void Update()
@@ -33,7 +41,7 @@ public class TouchDetector : MonoBehaviour
                     Vector3 rayOrigin = new Vector3(touchScreenToWorldPosition.x, touchScreenToWorldPosition.y, Camera.main.transform.position.z);
                     Ray ray = new Ray(rayOrigin, Vector3.forward);
                     // get collider info
-                    RaycastHit2D[] hitInfos = Physics2D.CircleCastAll(rayOrigin, _tapSize, Vector3.forward, Mathf.Infinity, _layerToDetect);
+                    RaycastHit2D[] hitInfos = Physics2D.CircleCastAll(rayOrigin, _currentTapSize, Vector3.forward, Mathf.Infinity, _layerToDetect);
                     RaycastHit2D closestHitObject;
                     
                     if(hitInfos.Length > 0)
@@ -91,49 +99,26 @@ public class TouchDetector : MonoBehaviour
                         onFingerReleasedDic[touchID]?.Invoke(touchScreenToWorldPosition);
                     }
                 }
-                
-            }
-            /*Touch touch = Input.GetTouch(0);            
-            // touch position to world
-            Vector2 touchScreenToWorldPosition = Camera.main.ScreenToWorldPoint(new Vector3(touch.position.x, touch.position.y, Camera.main.transform.position.z));
-            if (touch.phase == TouchPhase.Began)
-            {
-                // cr8 a ray from camera to world
-                Vector3 rayOrigin = new Vector3(touchScreenToWorldPosition.x, touchScreenToWorldPosition.y, Camera.main.transform.position.z);
-                Ray ray = new Ray(rayOrigin, Vector3.forward);
-                // get collider info
-                RaycastHit2D hitInfo = Physics2D.Raycast(ray.origin, ray.direction, Mathf.Infinity, _layerToDetect);
-
-                if (hitInfo.collider != null)
-                {
-                    IInteractable interactable = hitInfo.collider.GetComponent<IInteractable>();
-                    if(interactable != null)
-                    {
-                        interactable.Interact(touch.fingerId);
-                    }
-                    else
-                    {
-                        Debug.Log("Didnt hit anything");
-                    }
-                }
-
-                onFingerMoved?.Invoke(touchScreenToWorldPosition);
-            }
-            if(touch.phase == TouchPhase.Stationary)
-            {
-                onFingerMoved?.Invoke(touchScreenToWorldPosition);
-            }
-            if(touch.phase == TouchPhase.Moved)
-            {
-                onFingerMoved?.Invoke(touchScreenToWorldPosition);
-            }
-            if(touch.phase == TouchPhase.Ended)
-            {
-                onFingerMoved?.Invoke(touchScreenToWorldPosition);
-                onFingerReleased?.Invoke(touchScreenToWorldPosition);
-            }
-            */
-        }        
-
+                 
+            }          
+        }              
     }
+    public void SetTapSize(float tapSizeThresholds, float currentThresholds)
+    {
+        // tap size accel before game started
+        _tapSizeAccel = (_maxTapSize - _tapBaseSize) / tapSizeThresholds;
+        // set current tap before game started
+        _currentTapSize += _tapSizeAccel * (tapSizeThresholds - currentThresholds);
+        // tap size acceleratin left to maximum speed now
+        if(currentThresholds != 0)
+        {
+            _tapSizeAccel = (_maxTapSize - _currentTapSize) / currentThresholds;
+        }       
+    }
+
+    public void IncreaseTapSize(float tapSizeThresholds)
+    {
+        if(!(_currentTapSize >= _maxTapSize)) _currentTapSize += _tapSizeAccel;
+    }
+
 }
