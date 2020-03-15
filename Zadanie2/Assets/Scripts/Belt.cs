@@ -13,7 +13,14 @@ public class Belt : MonoBehaviour
     private float _accelThreshold = 0.02f;
     [SerializeField]
     private int _pointsThreshold = 20000;
+
+	[SerializeField]
+	Animator beltSpriteAnimator;
+	[SerializeField]
+	string beltAnimationSpeedProperty;
+
     private int _threshold = 0;
+	private int beltAnimationSpeedHash = -1;
     private BoxCollider2D _boxCollider2D;
 
     private void Start()
@@ -24,6 +31,10 @@ public class Belt : MonoBehaviour
         float tapSizeThresholds = (_maxBeltSpeed - 1f) / _accelThreshold;
         float currentThresholds = (_maxBeltSpeed - _minBeltSpeed) / _accelThreshold;
         TouchDetector.Instance.SetTapSize(tapSizeThresholds, currentThresholds);
+		if (!string.IsNullOrEmpty(beltAnimationSpeedProperty))
+		{
+			beltAnimationSpeedHash = Animator.StringToHash(beltAnimationSpeedProperty);
+		}
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -73,5 +84,7 @@ public class Belt : MonoBehaviour
     {
         _currentBeltSpeed += _accelThreshold;
         _currentBeltSpeed = Mathf.Clamp(_currentBeltSpeed, _minBeltSpeed, _maxBeltSpeed);
+
+		if (beltSpriteAnimator && beltAnimationSpeedHash!= -1) beltSpriteAnimator.SetFloat(beltAnimationSpeedHash, _currentBeltSpeed);
     }
 }
