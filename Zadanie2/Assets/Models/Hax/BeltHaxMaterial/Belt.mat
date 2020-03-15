@@ -49,7 +49,7 @@ Material:
     - _Surface: 1
     - _ZWrite: 0
     m_Colors:
-    - _BaseColor: {r: 0.636, g: 0.5870769, b: 0.48923072, a: 0.5019608}
+    - _BaseColor: {r: 0.3301887, g: 0.29937556, b: 0.23518157, a: 1}
     - _Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
 --- !u!114 &7016705764652992649
 MonoBehaviour:
