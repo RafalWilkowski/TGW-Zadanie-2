@@ -30,7 +30,9 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     private GemColors[] colors;
     [SerializeField]
-    private Canvas gameOverPanel;
+    private Canvas _gameOverPanel;
+    [SerializeField]
+    private Canvas _pauseCanvas;
     [SerializeField]
     private Text _finalText;
 
@@ -119,7 +121,7 @@ public class UIManager : MonoBehaviour
 
     public void ActivateGameOverPanel(int finalScore, bool newHiscore)
     {
-        gameOverPanel.gameObject.SetActive(true);
+        _gameOverPanel.gameObject.SetActive(true);
         if (newHiscore)
         {
             _finalText.text = "NEW HIGHSCORE IS : " + finalScore;
@@ -133,7 +135,7 @@ public class UIManager : MonoBehaviour
     public void PauseGame()
     {
         Time.timeScale = 0;
-        SceneManager.LoadScene(3, LoadSceneMode.Additive);
+        _pauseCanvas.gameObject.SetActive(true);
     }
 }
 

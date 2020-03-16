@@ -16,12 +16,11 @@ public class PauseMenu : MonoBehaviour
     {
         Time.timeScale = 1;
         GameManager.Instance.OnDestroyScene();
-        SceneManager.LoadScene(1);
-        SceneManager.LoadScene(2, LoadSceneMode.Additive);
+        SceneManager.LoadScene("GameScene");      
     }
     public void Unpause()
     {
-        SceneManager.UnloadScene(3);
+        this.gameObject.SetActive(false);
         Time.timeScale = 1;
     }
 }

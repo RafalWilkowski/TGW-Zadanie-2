@@ -4033,8 +4033,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8305345768688943004, guid: 5888bde24a8c53c488b7abc76352328e,
-          type: 3}
+      - m_Target: {fileID: 429339403961339299}
         m_MethodName: RestartGame
         m_Mode: 1
         m_Arguments:
@@ -5458,8 +5457,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8305345768688943004, guid: 5888bde24a8c53c488b7abc76352328e,
-          type: 3}
+      - m_Target: {fileID: 429339403961339299}
         m_MethodName: GoHome
         m_Mode: 1
         m_Arguments:
@@ -6551,7 +6549,8 @@ MonoBehaviour:
     color:
       serializedVersion: 2
       rgba: 4294021674
-  gameOverPanel: {fileID: 353064149}
+  _gameOverPanel: {fileID: 353064149}
+  _pauseCanvas: {fileID: 429339403961339325}
   _finalText: {fileID: 1198177255}
 --- !u!1 &913942194
 GameObject:
