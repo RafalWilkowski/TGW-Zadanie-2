@@ -2,13 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
-using System.Linq;
 
 public class GemSpawner : MonoBehaviour
 {
 	public static GemSpawner Instance;
 
-	[SerializeField]
+    [SerializeField]
+    private Transform _minY;
+    private float _minYf;
+    [SerializeField]
+    private Transform _maxY;
+    private float _maxYf;
+    [SerializeField]
 	private bool _spawnStones = true;
 	[SerializeField]
 	private bool _spawnDynamites = true;
@@ -47,6 +52,8 @@ public class GemSpawner : MonoBehaviour
 	}
 	private void Start()
 	{
+        _minYf = _minY.position.y;
+        _maxYf = _maxY.position.y;
 		//copying gemsprites array to dictionary
 		foreach (GemSprite gemSprite in gemSprites)
 		{
@@ -76,7 +83,7 @@ public class GemSpawner : MonoBehaviour
 		if (_spawnCooldown > Time.time) return;
 
 		_spawnCooldown = Time.time + 1f/_currentGemSpawnRate;
-		float randY = UnityEngine.Random.Range(-1, 1);
+		float randY = UnityEngine.Random.Range(_minYf, _maxYf);
 		Vector3 spawnPoint = new Vector3(transform.position.x, transform.position.y - randY, -1.5f);
 
 		if (_spawnDynamites && _dynamiteSpawnCounter < maxDynamitesCount && 100f * UnityEngine.Random.value < dynamiteSpawnProbability)
