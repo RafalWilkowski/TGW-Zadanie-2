@@ -9,7 +9,7 @@ public class PauseMenu : MonoBehaviour
     {
         Time.timeScale = 1;
         GameManager.Instance.OnDestroyScene();
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene("StartScreen");
     }
 
     public void RestartGame()
@@ -21,6 +21,7 @@ public class PauseMenu : MonoBehaviour
     public void Unpause()
     {
         this.gameObject.SetActive(false);
+        TouchDetector.Instance.EnableInGameTouch();
         Time.timeScale = 1;
     }
 }

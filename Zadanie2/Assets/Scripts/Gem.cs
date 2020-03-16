@@ -163,10 +163,10 @@ public class Gem : MonoBehaviour , IInteractable
         rb2D.freezeRotation = true;
         transform.position = new Vector3(position.x, position.y, transform.position.z);
     }
-    private void OnFingerReleased(Vector2 lastPosition)
+    private void OnFingerReleased()
     {
         
-        OnFingerPositionChanged(lastPosition);
+        OnFingerPositionChanged(transform.position);
         _unmatched = false;
         if (IsAboveGoodContainer())
         {
@@ -218,8 +218,11 @@ public class Gem : MonoBehaviour , IInteractable
            
         
         // unsubscribe from touchdetector
-        TouchDetector.Instance.onFingerMovedDic.Remove(_touchID);
-        TouchDetector.Instance.onFingerReleasedDic.Remove(_touchID);
+        if(TouchDetector.Instance.onFingerMovedDic.ContainsKey(_touchID))
+             TouchDetector.Instance.onFingerMovedDic.Remove(_touchID);
+        if(TouchDetector.Instance.onFingerReleasedDic.ContainsKey(_touchID))
+             TouchDetector.Instance.onFingerReleasedDic.Remove(_touchID);
+
 		if (holdParticles) holdParticles.Stop(true, ParticleSystemStopBehavior.StopEmitting);
 
 		IsHeld = false;

@@ -2,14 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using System.Linq;
 
 public class TouchDetector : MonoBehaviour
 {
     public static TouchDetector Instance;
 
     public Dictionary<int, Action<Vector2>> onFingerMovedDic = new Dictionary<int, Action<Vector2>>();
-    public Dictionary<int, Action<Vector2>> onFingerReleasedDic = new Dictionary<int, Action<Vector2>>();
+    public Dictionary<int, Action> onFingerReleasedDic = new Dictionary<int, Action>();
 
+    private bool _inGameTouch = true;
     public LayerMask _layerToDetect;
     [SerializeField]
     private float _tapBaseSize = 0.25f;
@@ -24,12 +26,13 @@ public class TouchDetector : MonoBehaviour
     }
     private void Start()
     {
+        _inGameTouch = true;
         _currentTapSize = _tapBaseSize;
     }
     // Update is called once per frame
     void Update()
     {
-        if(Input.touchCount > 0)
+        if(Input.touchCount > 0 && _inGameTouch)
         {
             foreach(Touch touch in Input.touches)
             {
@@ -96,7 +99,7 @@ public class TouchDetector : MonoBehaviour
                     if (touch.phase == TouchPhase.Ended)
                     {
                         onFingerMovedDic[touchID]?.Invoke(touchScreenToWorldPosition);
-                        onFingerReleasedDic[touchID]?.Invoke(touchScreenToWorldPosition);
+                        onFingerReleasedDic[touchID]?.Invoke();
                     }
                 }
                  
@@ -120,5 +123,18 @@ public class TouchDetector : MonoBehaviour
     {
         if(!(_currentTapSize >= _maxTapSize)) _currentTapSize += _tapSizeAccel;
     }
-
+    public void EnableInGameTouch()
+    {
+        _inGameTouch = true;
+    }
+    public void DisableInGameTouch()
+    {
+        Dictionary<int, Action>.KeyCollection keyCollection = onFingerReleasedDic.Keys;
+        List<int> keys = keyCollection.ToList<int>();
+        foreach(int k in keys)
+        {
+            onFingerReleasedDic[k]?.Invoke();
+        }
+        _inGameTouch = false;
+    }
 }

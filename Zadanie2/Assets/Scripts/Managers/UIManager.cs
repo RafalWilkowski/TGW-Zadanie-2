@@ -121,6 +121,7 @@ public class UIManager : MonoBehaviour
 
     public void ActivateGameOverPanel(int finalScore, bool newHiscore)
     {
+        TouchDetector.Instance.DisableInGameTouch();
         _gameOverPanel.gameObject.SetActive(true);
         if (newHiscore)
         {
@@ -135,6 +136,7 @@ public class UIManager : MonoBehaviour
     public void PauseGame()
     {
         Time.timeScale = 0;
+        TouchDetector.Instance.DisableInGameTouch();
         _pauseCanvas.gameObject.SetActive(true);
     }
 }
