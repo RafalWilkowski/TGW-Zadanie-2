@@ -135,10 +135,11 @@ public class GemSpawner : MonoBehaviour
 	}
     public void CheckPointsThreshold(int points)
     {
-        if (points / (_pointsThreshold * (_threshold + 1)) >= 1)
+        int correctThreshold = Mathf.FloorToInt(points / (_pointsThreshold));
+        if (correctThreshold >= 1 && correctThreshold != _threshold)
         {
-            _threshold++;
-            _currentGemSpawnRate += _accelThreshold;
+            _threshold = correctThreshold;
+            _currentGemSpawnRate = _gemStartSpawnRate + _accelThreshold * correctThreshold;
         }
 
     }

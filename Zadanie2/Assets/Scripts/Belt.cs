@@ -80,10 +80,12 @@ public class Belt : MonoBehaviour
 
     public void CheckPointsThreshold(int points)
     {
-        if (points / (_pointsThreshold * (_threshold + 1)) >= 1)
+        int correctThreshold = Mathf.FloorToInt(points / (_pointsThreshold));
+
+        if (correctThreshold >= 1 &&  correctThreshold != _threshold)
         {
-            _threshold++;
-            ChangeBeltSpeed();
+            _threshold = correctThreshold;
+            ChangeBeltSpeed(correctThreshold);
             TouchDetector.Instance.IncreaseTapSize();
             //change a velocity of all object on belt
             List<Collider2D> colliders = new List<Collider2D>();
@@ -102,9 +104,9 @@ public class Belt : MonoBehaviour
         
     }
 
-    private void ChangeBeltSpeed()
+    private void ChangeBeltSpeed(int threshold)
     {
-        _currentBeltSpeed += _accelThreshold;
+        _currentBeltSpeed = _minBeltSpeed + _accelThreshold * threshold;
         _currentBeltSpeed = Mathf.Clamp(_currentBeltSpeed, _minBeltSpeed, _maxBeltSpeed);
 
 		if (beltSpriteAnimator && beltAnimationSpeedHash!= -1) beltSpriteAnimator.SetFloat(beltAnimationSpeedHash, _currentBeltSpeed);
