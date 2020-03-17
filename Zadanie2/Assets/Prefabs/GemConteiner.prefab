@@ -94,7 +94,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rotateSpeed: -12
-  _maxZscale: 1.0025
+  _maxZscale: 1.001
   _vibrationSpeed: 0.25
 --- !u!1 &1508113958698976559
 GameObject:
