@@ -3927,7 +3927,6 @@ GameObject:
   - component: {fileID: 627238514}
   - component: {fileID: 627238513}
   - component: {fileID: 627238512}
-  - component: {fileID: 627238516}
   - component: {fileID: 627238515}
   m_Layer: 8
   m_Name: SecondaryScore
@@ -4023,19 +4022,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 627238510}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c98a35258bde37a44abd3edc90ee8545, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &627238516
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 627238510}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cde4b17fc60df984f8bdb00218b6195a, type: 3}
+  m_Script: {fileID: 11500000, guid: 5d22d52020896db4a8d25960d88f7c54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &627430933
@@ -4309,6 +4296,7 @@ MonoBehaviour:
     assignedSprite: {fileID: 21300000, guid: 4dd15dde0aef17844929a90a72a08e6e, type: 3}
   - color: 8
     assignedSprite: {fileID: 21300000, guid: b297628f6df55fe48a0aaecac8fcbdaa, type: 3}
+  _scoreText: {fileID: 627238515}
 --- !u!1 &637997734
 GameObject:
   m_ObjectHideFlags: 0
@@ -11086,6 +11074,7 @@ MonoBehaviour:
   - {fileID: 869026453}
   - {fileID: 615055331}
   - {fileID: 443662451}
+  scoreText: {fileID: 627238510}
 --- !u!1 &1816880276
 GameObject:
   m_ObjectHideFlags: 0
