@@ -16,7 +16,9 @@ public class SecondaryObjectivePanel : MonoBehaviour
 	// Start is called before the first frame update
 	void Start()
 	{
-		allSockets = GetComponentsInChildren<SecondaryObjectiveSocket>();
+        _secondaryScoreText.gameObject.SetActive(false);
+
+        allSockets = GetComponentsInChildren<SecondaryObjectiveSocket>();
 
 		StartCoroutine(WaitToSubscribe());
 	}
