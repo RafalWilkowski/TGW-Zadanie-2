@@ -8,7 +8,7 @@ public class SecondaryObjectivePanel : MonoBehaviour
 	[SerializeField] Vector3 emergenceStartPoint, emergenceEndPoint;
 	[SerializeField] float emergenceTime, submergeDelay;
 	[SerializeField] GameObject[] artifacts;
-    [SerializeField] GameObject scoreText;
+    [SerializeField] SecondaryScoreText _secondaryScoreText;
 
 	public bool IsActive { get; private set; } = false;
 
@@ -111,7 +111,7 @@ public class SecondaryObjectivePanel : MonoBehaviour
 	{
         if (!deactivatePanel)
         {
-            scoreText.gameObject.SetActive(true);
+            _secondaryScoreText.gameObject.SetActive(true);
         }
 		if ((emergingPanel.localPosition - positionEnd).sqrMagnitude > 1)
 		{
@@ -128,7 +128,8 @@ public class SecondaryObjectivePanel : MonoBehaviour
 		emergingPanel.localPosition = positionEnd;
 		if (deactivatePanel)
 		{
-            while (scoreText.activeSelf)
+            _secondaryScoreText.ShowScore();
+            while (_secondaryScoreText.gameObject.activeSelf)
             {
                 yield return null;
             }

@@ -30,6 +30,10 @@ public class SecondaryScoreText : MonoBehaviour
     {
         _pointsCarried = points;
         _ownText.text = points.ToString();
+    }
+
+    public void ShowScore()
+    {
         _anim.SetTrigger("Scored");
     }
 
