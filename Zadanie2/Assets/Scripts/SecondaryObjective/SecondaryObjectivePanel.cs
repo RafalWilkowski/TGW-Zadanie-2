@@ -1,8 +1,11 @@
 ﻿using System.Collections;
 using UnityEngine;
+using System;
 
 public class SecondaryObjectivePanel : MonoBehaviour
 {
+    public Action OnPanelDeactivated;
+
 	SecondaryObjectiveSocket[] allSockets = new SecondaryObjectiveSocket[0];
 	[SerializeField] Transform emergingPanel;
 	[SerializeField] Vector3 emergenceStartPoint, emergenceEndPoint;
@@ -87,7 +90,7 @@ public class SecondaryObjectivePanel : MonoBehaviour
 		Debug.LogFormat("{0} was activated!", this);
 		if (artifacts != null && artifacts.Length > 0)
 		{
-			activeArtifactIndex = Random.Range(0, artifacts.Length);
+			activeArtifactIndex = UnityEngine.Random.Range(0, artifacts.Length);
 			artifacts[activeArtifactIndex]?.SetActive(true);
 			Debug.LogFormat("Active artifact index set to {0}, item: {1}", activeArtifactIndex, artifacts[activeArtifactIndex]);
 		}
@@ -129,7 +132,9 @@ public class SecondaryObjectivePanel : MonoBehaviour
 			}
 			IsActive = false;
 			Debug.LogFormat("{0} was deactivated", this);
-		}
+            OnPanelDeactivated?.Invoke();
+
+        }
 	}
 
 }

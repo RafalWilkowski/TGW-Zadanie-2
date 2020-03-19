@@ -30,6 +30,7 @@ public class SecondaryObjectiveManager : MonoBehaviour
 	[SerializeField] AudioSource audioSource;
 
 	[SerializeField] SpriteAssignment[] assignedSprites;
+    [SerializeField] private SecondaryScoreText _secondaryScoreText;
 
 	int nextScoreRequirement = 0;
 
@@ -84,7 +85,9 @@ public class SecondaryObjectiveManager : MonoBehaviour
 	{
 		if (GameManager.Instance)
 			GameManager.Instance._scoreManager.OnNewScoreChange -= InitiateSecondaryObjective;
-	}
+        if(ObjectivePanel)
+            ObjectivePanel.OnPanelDeactivated -= _secondaryScoreText.ShowScore;
+    }
 
 	void InitiateSecondaryObjective(int score)
 	{
@@ -114,7 +117,7 @@ public class SecondaryObjectiveManager : MonoBehaviour
 	{
 		if (!ObjectivePanel) return;
 
-		GameManager.Instance._scoreManager.AddMainScore((totalCapacity - 2) * rewardPerCapacity + rewardPerLevel * secondaryObjectiveLevel);
+        _secondaryScoreText.MissionComleted((totalCapacity - 2) * rewardPerCapacity + rewardPerLevel * secondaryObjectiveLevel);
 
 		maxSockets = Mathf.Min(9, Mathf.FloorToInt((3 + Mathf.FloorToInt((secondaryObjectiveLevel - 1) / maxSocketCountScaling)) / minCapacity));
 		secondaryObjectiveLevel += 1;
@@ -153,6 +156,7 @@ public class SecondaryObjectiveManager : MonoBehaviour
 		if (ObjectivePanel)
 		{
 			objectiveTimeSlider = ObjectivePanel.GetComponentInChildren<Slider>();
+            ObjectivePanel.OnPanelDeactivated += _secondaryScoreText.ShowScore;
 		}
 	}
 

@@ -4186,6 +4186,7 @@ MonoBehaviour:
     assignedSprite: {fileID: 21300000, guid: 4dd15dde0aef17844929a90a72a08e6e, type: 3}
   - color: 8
     assignedSprite: {fileID: 21300000, guid: b297628f6df55fe48a0aaecac8fcbdaa, type: 3}
+  _secondaryScoreText: {fileID: 1416709245}
 --- !u!1 &637997734
 GameObject:
   m_ObjectHideFlags: 0

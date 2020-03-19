@@ -28,7 +28,8 @@ public class SecondaryScoreText : MonoBehaviour
 
     public void ShowScore()
     {
-        _anim.SetTrigger("Scored");
+        if(_pointsCarried != 0)
+            _anim.SetTrigger("Scored");
     }
 
     
