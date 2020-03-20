@@ -13,10 +13,14 @@ public class GemConteiner : MonoBehaviour , IInteractable
     private StoneBreakOdds _stoneBreakOdds;
 	[SerializeField] Sprite[] sprites;
 	SpriteRenderer ownSprite;
-	
+	Collider2D ownCollider;
+	ParticleSystem _crackOpenEffect;
+
 	private void Start()
     {
         _stoneBreakOdds = FindObjectOfType<StoneBreakOdds>();
+		_crackOpenEffect = GetComponentInChildren<ParticleSystem>();
+		ownCollider = GetComponentInChildren<Collider2D>();
         _currentHealth = _maxHealth;
 		ownSprite = GetComponentInChildren<SpriteRenderer>();
 		if (ownSprite)
@@ -39,10 +43,21 @@ public class GemConteiner : MonoBehaviour , IInteractable
         {
             int quantity = _stoneBreakOdds.GemQuantity();
             _stoneBreakOdds.PlayBreakSound(quantity);
-            OnBreak?.Invoke(quantity, transform.position);
-            _currentHealth = _maxHealth;
-            StonePool.Instance.ReturnToPool(this);
-        }
-        
+
+			if (ownSprite) ownSprite.enabled = false;
+			if (ownCollider) ownCollider.enabled = false;
+			if (_crackOpenEffect)_crackOpenEffect.Play();
+			
+            OnBreak?.Invoke(quantity, transform.position);  
+			
+        } 
     }
+
+	private void OnDisable()
+	{
+		_currentHealth = _maxHealth;
+		StonePool.Instance.ReturnToPool(this);
+		if (ownSprite) ownSprite.enabled = true;
+		if (ownCollider) ownCollider.enabled = false;
+	}
 }
