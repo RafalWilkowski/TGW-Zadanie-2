@@ -85,7 +85,8 @@ public class UIManager : MonoBehaviour
     }
     public void HideCombo()
     {
-        _comboAnim.Play("score_hidden");
+        if(GameManager.Instance._scoreManager.Combo == 0)
+            _comboAnim.Play("score_hidden");
     }
 
     private void UpdateNewScorePanelColor(ObjectColor color)
