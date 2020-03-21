@@ -4194,18 +4194,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7331db33f585ed4ba81a8af76611b3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseInterval: 2000
-  intervalPerCapacity: 2000
-  baseRetryCost: 3000
-  retryCostPerLevel: 2000
-  rewardPerCapacity: 4000
-  rewardPerLevel: 4000
+  baseInterval: 4000
+  intervalPerCapacity: 4000
+  baseRetryCost: 4000
+  retryCostPerLevel: 1000
+  rewardPerCapacity: 3000
+  rewardPerLevel: 3000
   baseTimeToComplete: 15
   extraTimeToCompletePerCapacity: 5
-  minSocketCapacityScaling: 26
-  maxSocketCapacityScaling: 17
-  maxSocketCountScaling: 5
-  capacityProgressionRate: 2
+  minSocketCapacityScaling: 8
+  maxSocketCapacityScaling: 4
+  maxSocketCountScaling: 2
+  capacityProgressionRate: 1
   emergenceClip: {fileID: 8300000, guid: c7a5a28e7a81e496db979124b6ff372f, type: 3}
   completionClip: {fileID: 8300000, guid: 1838e625ca889fb4a9ead8386b6c9238, type: 3}
   failureClip: {fileID: 8300000, guid: 59a84b334fd374243810264613201358, type: 3}
