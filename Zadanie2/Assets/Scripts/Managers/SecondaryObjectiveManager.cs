@@ -189,17 +189,17 @@ public class SecondaryObjectiveManager : MonoBehaviour
 
 	IEnumerator UpdateObjectiveTimer(float time)
 	{
-		float startTime = Time.realtimeSinceStartup;
+		float startTime = Time.time;
 		while (IsActive)
 		{
-			if (Time.realtimeSinceStartup >= startTime + time)
+			if (Time.time >= startTime + time)
 			{
 				objectiveTimeSlider.value = 0;
 				FailSecondaryObjective();
 				yield break;
 			}
-			yield return new WaitForFixedUpdate();
-			UpdateSlider(time + startTime - Time.realtimeSinceStartup);
+			yield return null;
+			UpdateSlider(time + startTime - Time.time);
 		}
 	}
 
