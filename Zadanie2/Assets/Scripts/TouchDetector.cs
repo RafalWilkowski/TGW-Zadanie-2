@@ -119,8 +119,9 @@ public class TouchDetector : MonoBehaviour
         }       
     }
 
-    public void IncreaseTapSize()
+    public void IncreaseTapSize(float points)
     {
+        _currentTapSize = _tapBaseSize + (points / 1000) * _tapSizeAccel;
         if(!(_currentTapSize >= _maxTapSize)) _currentTapSize += _tapSizeAccel;
     }
     public void EnableInGameTouch()

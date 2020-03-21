@@ -86,7 +86,7 @@ public class Belt : MonoBehaviour
         {
             _threshold = correctThreshold;
             ChangeBeltSpeed(correctThreshold);
-            TouchDetector.Instance.IncreaseTapSize();
+            TouchDetector.Instance.IncreaseTapSize(points);
             //change a velocity of all object on belt
             List<Collider2D> colliders = new List<Collider2D>();
             ContactFilter2D filter = new ContactFilter2D();
