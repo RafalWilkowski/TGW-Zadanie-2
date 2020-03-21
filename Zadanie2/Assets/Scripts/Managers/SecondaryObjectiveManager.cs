@@ -31,6 +31,7 @@ public class SecondaryObjectiveManager : MonoBehaviour
 
 	[SerializeField] SpriteAssignment[] assignedSprites;
     [SerializeField] private SecondaryScoreText _secondaryScoreText;
+    private AudioSource _clockAudio;
 
 	int nextScoreRequirement = 0;
 
@@ -62,7 +63,7 @@ public class SecondaryObjectiveManager : MonoBehaviour
 		if (objectiveTimeSlider)
 		{
 			objectiveTimeSlider.value = objectiveTimeSlider.maxValue = baseTimeToComplete;
-		}
+        }
 
 		StartCoroutine(WaitForGameManager());
 		CalculateRequiredScore();
@@ -93,9 +94,11 @@ public class SecondaryObjectiveManager : MonoBehaviour
 	{
 		if (!ObjectivePanel || IsActive || GameManager.Instance._scoreManager.CurrentScore < nextScoreRequirement) return;
         _missionCompleted = false;
+        
         ObjectivePanel.Activate(true);
 		ObjectivePanel.ResetAllActiveSockets();
-		List<int> indices = new List<int>(new int[9] { 0, 1, 2, 3, 4, 5, 6, 7, 8 });
+        _clockAudio.Play();
+        List<int> indices = new List<int>(new int[9] { 0, 1, 2, 3, 4, 5, 6, 7, 8 });
 		int availableCapacity = totalCapacity;
 
 		for (int i = 0; i < maxSockets && availableCapacity > 0; i++)
@@ -159,7 +162,8 @@ public class SecondaryObjectiveManager : MonoBehaviour
 		{
 			objectiveTimeSlider = ObjectivePanel.GetComponentInChildren<Slider>();
             ObjectivePanel.OnPanelDeactivated += _secondaryScoreText.ShowScore;
-		}
+            _clockAudio = objectiveTimeSlider.GetComponent<AudioSource>();
+        }
 	}
 
 	ObjectColor GetRandomGemColor()
@@ -203,9 +207,10 @@ public class SecondaryObjectiveManager : MonoBehaviour
 			yield return null;
 			UpdateSlider(time + startTime - Time.time);
 		}
-	}
+        _clockAudio.Stop();
+    }
 
-	void PlaySound(AudioClip soundClip)
+    void PlaySound(AudioClip soundClip)
 	{
 		if (!audioSource || !soundClip) return;
 		audioSource.PlayOneShot(soundClip);
