@@ -8,7 +8,7 @@ public class SecondaryObjectiveManager : MonoBehaviour
 	public bool IsActive { get => ObjectivePanel && ObjectivePanel.IsActive; }
 	public static SecondaryObjectiveManager Instance { get; private set; }
 	public SecondaryObjectivePanel ObjectivePanel { get; private set; }
-
+    private bool _missionCompleted = false;
 	[SerializeField] int baseInterval = 10000;
 	[SerializeField] int intervalPerCapacity = 10000;
 
@@ -31,6 +31,7 @@ public class SecondaryObjectiveManager : MonoBehaviour
 
 	[SerializeField] SpriteAssignment[] assignedSprites;
     [SerializeField] private SecondaryScoreText _secondaryScoreText;
+    private AudioSource _clockAudio;
 
 	int nextScoreRequirement = 0;
 
@@ -62,7 +63,7 @@ public class SecondaryObjectiveManager : MonoBehaviour
 		if (objectiveTimeSlider)
 		{
 			objectiveTimeSlider.value = objectiveTimeSlider.maxValue = baseTimeToComplete;
-		}
+        }
 
 		StartCoroutine(WaitForGameManager());
 		CalculateRequiredScore();
@@ -92,9 +93,12 @@ public class SecondaryObjectiveManager : MonoBehaviour
 	void InitiateSecondaryObjective(int score)
 	{
 		if (!ObjectivePanel || IsActive || GameManager.Instance._scoreManager.CurrentScore < nextScoreRequirement) return;
-		ObjectivePanel.Activate(true);
+        _missionCompleted = false;
+        
+        ObjectivePanel.Activate(true);
 		ObjectivePanel.ResetAllActiveSockets();
-		List<int> indices = new List<int>(new int[9] { 0, 1, 2, 3, 4, 5, 6, 7, 8 });
+        _clockAudio.Play();
+        List<int> indices = new List<int>(new int[9] { 0, 1, 2, 3, 4, 5, 6, 7, 8 });
 		int availableCapacity = totalCapacity;
 
 		for (int i = 0; i < maxSockets && availableCapacity > 0; i++)
@@ -117,6 +121,7 @@ public class SecondaryObjectiveManager : MonoBehaviour
 	{
 		if (!ObjectivePanel) return;
 
+        _missionCompleted = true;
         _secondaryScoreText.MissionComleted((totalCapacity - 2) * rewardPerCapacity + rewardPerLevel * secondaryObjectiveLevel);
 
 		maxSockets = Mathf.Min(9, Mathf.FloorToInt((3 + Mathf.FloorToInt((secondaryObjectiveLevel - 1) / maxSocketCountScaling)) / minCapacity));
@@ -157,7 +162,8 @@ public class SecondaryObjectiveManager : MonoBehaviour
 		{
 			objectiveTimeSlider = ObjectivePanel.GetComponentInChildren<Slider>();
             ObjectivePanel.OnPanelDeactivated += _secondaryScoreText.ShowScore;
-		}
+            _clockAudio = objectiveTimeSlider.GetComponent<AudioSource>();
+        }
 	}
 
 	ObjectColor GetRandomGemColor()
@@ -189,21 +195,22 @@ public class SecondaryObjectiveManager : MonoBehaviour
 
 	IEnumerator UpdateObjectiveTimer(float time)
 	{
-		float startTime = Time.realtimeSinceStartup;
-		while (IsActive)
+		float startTime = Time.time;
+		while (IsActive && !_missionCompleted)
 		{
-			if (Time.realtimeSinceStartup >= startTime + time)
+			if (Time.time >= startTime + time)
 			{
 				objectiveTimeSlider.value = 0;
 				FailSecondaryObjective();
 				yield break;
 			}
-			yield return new WaitForFixedUpdate();
-			UpdateSlider(time + startTime - Time.realtimeSinceStartup);
+			yield return null;
+			UpdateSlider(time + startTime - Time.time);
 		}
-	}
+        _clockAudio.Stop();
+    }
 
-	void PlaySound(AudioClip soundClip)
+    void PlaySound(AudioClip soundClip)
 	{
 		if (!audioSource || !soundClip) return;
 		audioSource.PlayOneShot(soundClip);
