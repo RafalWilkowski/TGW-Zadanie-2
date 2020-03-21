@@ -8,7 +8,7 @@ public class SecondaryObjectiveManager : MonoBehaviour
 	public bool IsActive { get => ObjectivePanel && ObjectivePanel.IsActive; }
 	public static SecondaryObjectiveManager Instance { get; private set; }
 	public SecondaryObjectivePanel ObjectivePanel { get; private set; }
-
+    private bool _missionCompleted = false;
 	[SerializeField] int baseInterval = 10000;
 	[SerializeField] int intervalPerCapacity = 10000;
 
@@ -92,7 +92,8 @@ public class SecondaryObjectiveManager : MonoBehaviour
 	void InitiateSecondaryObjective(int score)
 	{
 		if (!ObjectivePanel || IsActive || GameManager.Instance._scoreManager.CurrentScore < nextScoreRequirement) return;
-		ObjectivePanel.Activate(true);
+        _missionCompleted = false;
+        ObjectivePanel.Activate(true);
 		ObjectivePanel.ResetAllActiveSockets();
 		List<int> indices = new List<int>(new int[9] { 0, 1, 2, 3, 4, 5, 6, 7, 8 });
 		int availableCapacity = totalCapacity;
@@ -117,6 +118,7 @@ public class SecondaryObjectiveManager : MonoBehaviour
 	{
 		if (!ObjectivePanel) return;
 
+        _missionCompleted = true;
         _secondaryScoreText.MissionComleted((totalCapacity - 2) * rewardPerCapacity + rewardPerLevel * secondaryObjectiveLevel);
 
 		maxSockets = Mathf.Min(9, Mathf.FloorToInt((3 + Mathf.FloorToInt((secondaryObjectiveLevel - 1) / maxSocketCountScaling)) / minCapacity));
@@ -190,7 +192,7 @@ public class SecondaryObjectiveManager : MonoBehaviour
 	IEnumerator UpdateObjectiveTimer(float time)
 	{
 		float startTime = Time.time;
-		while (IsActive)
+		while (IsActive && !_missionCompleted)
 		{
 			if (Time.time >= startTime + time)
 			{
