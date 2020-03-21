@@ -11,6 +11,11 @@ public class AudioManager : MonoBehaviour
     [SerializeField]
     private AudioSource clickSound;
 
+    [SerializeField]
+    private float _maxMusicVolume;
+    [SerializeField]
+    private float _maxSFXVolume;
+
     private void Awake()
     {
         if(Instance == null)
@@ -29,8 +34,8 @@ public class AudioManager : MonoBehaviour
     {
         if(!PlayerPrefs.HasKey("musicVol"))
         {
-            PlayerPrefs.SetFloat("musicVol", 0.0f);
-            PlayerPrefs.SetFloat("sfxVol", 0.0f);
+            PlayerPrefs.SetFloat("musicVol", _maxMusicVolume);
+            PlayerPrefs.SetFloat("sfxVol", _maxSFXVolume);
             PlayerPrefs.SetInt("musicVolInt", 0);
             PlayerPrefs.SetInt("sfxVolInt", 0);
         }
@@ -43,7 +48,7 @@ public class AudioManager : MonoBehaviour
             }
             else
             {
-                _masterMixer.SetFloat("musicVol", 0f);
+                _masterMixer.SetFloat("musicVol", _maxMusicVolume);
             }
 
             bool sfxMute = (PlayerPrefs.GetInt("sfxVolInt") == 0) ? false : true;
@@ -53,7 +58,7 @@ public class AudioManager : MonoBehaviour
             }
             else
             {
-                _masterMixer.SetFloat("sfxVol", 0f);
+                _masterMixer.SetFloat("sfxVol", _maxSFXVolume);
             }
         }
         
@@ -66,7 +71,7 @@ public class AudioManager : MonoBehaviour
 
         if(musicVolume == -80)
         {
-            _masterMixer.SetFloat("musicVol", 0f);
+            _masterMixer.SetFloat("musicVol", _maxMusicVolume);
             PlayerPrefs.SetInt("musicVolInt", 0);
         }
         else
@@ -82,7 +87,7 @@ public class AudioManager : MonoBehaviour
 
         if (sfxVolume == -80)
         {
-            _masterMixer.SetFloat("sfxVol", 0f);
+            _masterMixer.SetFloat("sfxVol", _maxSFXVolume);
             PlayerPrefs.SetInt("sfxVolInt", 0);
         }
         else
