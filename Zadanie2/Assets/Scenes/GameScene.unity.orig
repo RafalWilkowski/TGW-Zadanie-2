@@ -235,11 +235,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _probabilityWeights:
+  - 13
+  - 8
   - 5
-  - 10
-  - 15
-  - 20
-  - 10
+  - 3
+  - 2
+  - 1
   - 1
   _noGems: {fileID: 22408204}
   _someGems: {fileID: 22408203}
@@ -993,10 +994,10 @@ MonoBehaviour:
   _maxY: {fileID: 862782895}
   _spawnStones: 1
   _spawnDynamites: 1
-  _gemStartSpawnRate: 0.7
+  _gemStartSpawnRate: 0.9
   _pointsThreshold: 1000
-  _accelThreshold: 0.007
-  _spawnStoneProbability: 10
+  _accelThreshold: 0.005
+  _spawnStoneProbability: 5
   maxDynamitesCount: 0
   dynamiteSpawnProbability: 25
   maxDynamitesAsymptote: 4
@@ -4124,12 +4125,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7331db33f585ed4ba81a8af76611b3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
   baseInterval: 4000
   intervalPerCapacity: 4000
-  baseRetryCost: 8000
+  baseRetryCost: 4000
   retryCostPerLevel: 1000
   rewardPerCapacity: 3000
   rewardPerLevel: 3000
+=======
+  baseInterval: 5000
+  intervalPerCapacity: 5000
+  baseRetryCost: 3000
+  retryCostPerLevel: 2000
+  rewardPerCapacity: 4000
+  rewardPerLevel: 4000
+>>>>>>> origin/master
   baseTimeToComplete: 15
   extraTimeToCompletePerCapacity: 5
   minSocketCapacityScaling: 8
@@ -5688,7 +5698,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 2100000, guid: f885109d12b5e4a4dbfe084a2e3a207e, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
@@ -10120,7 +10130,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1693444969
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11189,7 +11199,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _minBeltSpeed: 1.2
   _maxBeltSpeed: 6
-  _accelThreshold: 0.02
+  _accelThreshold: 0.025
   _pointsThreshold: 1000
   beltSpriteAnimator: {fileID: 0}
   beltAnimationSpeedProperty: BeltSpeed

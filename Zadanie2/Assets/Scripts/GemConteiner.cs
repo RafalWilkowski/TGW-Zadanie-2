@@ -56,8 +56,8 @@ public class GemConteiner : MonoBehaviour , IInteractable
 	private void OnDisable()
 	{
 		_currentHealth = _maxHealth;
-		StonePool.Instance.ReturnToPool(this);
 		if (ownSprite) ownSprite.enabled = true;
 		if (ownCollider) ownCollider.enabled = false;
+		StonePool.Instance.ReturnToPool(this);
 	}
 }
