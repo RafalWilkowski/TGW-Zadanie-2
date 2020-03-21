@@ -16,12 +16,17 @@ public class GemConteiner : MonoBehaviour , IInteractable
 	Collider2D ownCollider;
 	ParticleSystem _crackOpenEffect;
 
-	private void Start()
+    private void OnEnable()
+    {
+        _currentHealth = _maxHealth;
+        if (ownSprite) ownSprite.enabled = true;
+        if (ownCollider) ownCollider.enabled = true;
+    }
+    private void Start()
     {
         _stoneBreakOdds = FindObjectOfType<StoneBreakOdds>();
 		_crackOpenEffect = GetComponentInChildren<ParticleSystem>();
 		ownCollider = GetComponentInChildren<Collider2D>();
-        _currentHealth = _maxHealth;
 		ownSprite = GetComponentInChildren<SpriteRenderer>();
 		if (ownSprite)
 		{
@@ -30,6 +35,10 @@ public class GemConteiner : MonoBehaviour , IInteractable
 			Debug.LogFormat("Sprite at {0} set to {1}({2})", ownSprite, index, sprites[index]);
 		}
 	}
+    public void OnParticleSystemStopped()
+    {
+        StonePool.Instance.ReturnToPool(this);
+    }
     public void Interact(int fingerID)
     {
         
@@ -53,11 +62,4 @@ public class GemConteiner : MonoBehaviour , IInteractable
         } 
     }
 
-	private void OnDisable()
-	{
-		_currentHealth = _maxHealth;
-		if (ownSprite) ownSprite.enabled = true;
-		if (ownCollider) ownCollider.enabled = false;
-		StonePool.Instance.ReturnToPool(this);
-	}
 }
