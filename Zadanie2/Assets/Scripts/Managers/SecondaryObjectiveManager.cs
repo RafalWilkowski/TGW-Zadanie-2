@@ -47,12 +47,28 @@ public class SecondaryObjectiveManager : MonoBehaviour
 
 	void CalculateRequiredScore()
 	{
+		float previousReq = nextScoreRequirement;
 		nextScoreRequirement += secondaryObjectiveLevel * baseInterval + (totalCapacity - 2) * intervalPerCapacity;
+		Debug.LogFormat("Level: {0}\t base Interval: {1}\t capacity - 2: {2}\t interval per capacity {3}\t Previous requirement: {4}\tNext requirement: {5}",
+			secondaryObjectiveLevel, baseInterval, totalCapacity-2, intervalPerCapacity, previousReq, nextScoreRequirement);
 	}
 
 	void CalculateRetryScore()
 	{
 		nextScoreRequirement += baseRetryCost + retryCostPerLevel * secondaryObjectiveLevel;
+	}
+
+	/*private void Update()
+	{
+		DebugSecondaryProgress();
+	}*/
+	
+	void DebugSecondaryProgress()
+	{
+		if (Input.GetKeyDown(KeyCode.Space))
+		{ 
+			CompleteSecondaryObjective();
+		}
 	}
 
 	// Start is called before the first frame update
@@ -122,11 +138,14 @@ public class SecondaryObjectiveManager : MonoBehaviour
 		if (!ObjectivePanel) return;
 
         _missionCompleted = true;
-        _secondaryScoreText.MissionComleted((totalCapacity - 2) * rewardPerCapacity + rewardPerLevel * secondaryObjectiveLevel);
+		int reward = (totalCapacity - 2) * rewardPerCapacity + rewardPerLevel * secondaryObjectiveLevel;
+		Debug.LogFormat("Total capacity - 2: {0}\t rewardPerCapacity: {1}\t rewardPerLevel: {2}\t secondaryObjectiveLevel: {3}\t Reward {4}",
+			totalCapacity - 2, rewardPerCapacity, rewardPerLevel, secondaryObjectiveLevel, reward);
+        _secondaryScoreText.MissionComleted(reward);
 
 		maxSockets = Mathf.Min(9, Mathf.FloorToInt((3 + Mathf.FloorToInt((secondaryObjectiveLevel - 1) / maxSocketCountScaling)) / minCapacity));
 		secondaryObjectiveLevel += 1;
-		totalCapacity = 3 + Mathf.FloorToInt((secondaryObjectiveLevel - 1) / maxSocketCountScaling);
+		totalCapacity = 3 + Mathf.FloorToInt((secondaryObjectiveLevel - 1) / capacityProgressionRate);
 		minCapacity = Mathf.FloorToInt(secondaryObjectiveLevel / minSocketCapacityScaling) + 1;
 		maxCapacity = Mathf.FloorToInt(secondaryObjectiveLevel / maxSocketCapacityScaling) + 3;
 		CalculateRequiredScore();
