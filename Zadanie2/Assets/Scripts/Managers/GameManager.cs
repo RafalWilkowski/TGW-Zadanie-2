@@ -61,7 +61,9 @@ public class GameManager : MonoBehaviour
 		if (Time.time - _lastThresholdUpdate >= _updateThresholdInterval)
 		{
 			timeThresholdNumber++;
-			_belt.CheckPointsThreshold(timeThresholdNumber * 1000);
+			int timeToScore = timeThresholdNumber * 1000;
+			_belt.CheckPointsThreshold(timeToScore);
+			_gemSpawner.CheckPointsThreshold(timeToScore);
 			_lastThresholdUpdate = Time.time;
 		}	
 	}
