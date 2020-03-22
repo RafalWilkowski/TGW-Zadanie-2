@@ -1019,7 +1019,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1.2
-  m_Text: "Art:\nRafal Borowy\nTomasz Wi\u015Bniewski"
+  m_Text: "Art:\nRafa\u0142 Borowy\nTomasz Wi\u015Bniewski"
 --- !u!222 &828350700
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1487,9 +1487,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1.2
-  m_Text: 'Programmer:
-
-    Rafal Wilkowski'
+  m_Text: "Programmer:\nRafa\u0142 Wilkowski"
 --- !u!222 &1011265004
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1788,7 +1786,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1231622517}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f1aadd9be37a23a44983d6ea07efe1eb, type: 3}
   m_Name: 
