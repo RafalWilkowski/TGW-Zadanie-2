@@ -111,11 +111,11 @@ public class TouchDetector : MonoBehaviour
         // tap size accel before game started
         _tapSizeAccel = (_maxTapSize - _tapBaseSize) / tapSizeThresholds;
         // set current tap before game started
-        _currentTapSize += _tapSizeAccel * (tapSizeThresholds - currentThresholds);
+        _currentTapSize = _tapBaseSize;
         // tap size acceleratin left to maximum speed now
         if(currentThresholds != 0)
         {
-            _tapSizeAccel = (_maxTapSize - _currentTapSize) / currentThresholds;
+            _tapSizeAccel = (_maxTapSize - _currentTapSize) / tapSizeThresholds;
         }       
     }
 
