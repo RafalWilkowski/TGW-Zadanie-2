@@ -131,8 +131,8 @@ public class GemSpawner : MonoBehaviour
 			Sprite spriteType = gemSpritesDic[(int)colorType];
 			gem.Init(colorType, spawnPoint, spriteType);
 		}
-
 	}
+
     public void CheckPointsThreshold(int points)
     {
         int correctThreshold = Mathf.FloorToInt(points / (_pointsThreshold));
@@ -141,8 +141,8 @@ public class GemSpawner : MonoBehaviour
             _threshold = correctThreshold;
             _currentGemSpawnRate = _gemStartSpawnRate + _accelThreshold * correctThreshold;
         }
-
     }
+
     private void OnDestroy()
 	{
 		if (GameManager.Instance)

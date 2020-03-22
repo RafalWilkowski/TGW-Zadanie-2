@@ -1154,6 +1154,8 @@ MonoBehaviour:
     _comboSoundInit: 4
   _belt: {fileID: 1904827208}
   _gemSpawner: {fileID: 159683386}
+  _gameMode: 1
+  _updateThresholdInterval: 1
 --- !u!1 &163210693
 GameObject:
   m_ObjectHideFlags: 0

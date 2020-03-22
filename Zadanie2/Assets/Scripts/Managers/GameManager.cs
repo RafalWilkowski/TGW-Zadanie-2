@@ -11,11 +11,16 @@ public class GameManager : MonoBehaviour
 	private UIManager _uiManager;
 	[SerializeField]
 	public ScoreManager _scoreManager;
-    [SerializeField]
-    private Belt _belt;
-    [SerializeField]
-    private GemSpawner _gemSpawner;
-
+	[SerializeField]
+	private Belt _belt;
+	[SerializeField]
+	private GemSpawner _gemSpawner;
+	[SerializeField]
+	private GameMode _gameMode;
+	[SerializeField]
+	float _updateThresholdInterval = 1;
+	float _lastThresholdUpdate;
+	int timeThresholdNumber = 0;
 	private void Awake()
 	{
 		Instance = this;
@@ -27,8 +32,13 @@ public class GameManager : MonoBehaviour
 		_scoreManager.OnComboChange += _uiManager.UpdateCombo;
 		_scoreManager.OnNewScoreChange += _uiManager.UpdateNewScore;
 		_scoreManager.OnMainScoreChange += _uiManager.UpdateScore;
-        _scoreManager.OnMainScoreChange += _belt.CheckPointsThreshold;
-        _scoreManager.OnMainScoreChange += _gemSpawner.CheckPointsThreshold;
+
+		if (_gameMode.Equals(GameMode.ScoreDependent))
+		{
+			_scoreManager.OnMainScoreChange += _belt.CheckPointsThreshold;
+			_scoreManager.OnMainScoreChange += _gemSpawner.CheckPointsThreshold;
+		}
+
 		//update UI comboStripe             
 		ComboStripe.OnTimeout += _uiManager.GlideNewScore;
 		ComboStripe.OnTimeout += _scoreManager.BreakCombo;
@@ -40,15 +50,28 @@ public class GameManager : MonoBehaviour
 		//adding newScore to mainScore callback        
 		NewScoreText.OnGlideFinished += _scoreManager.ScoreGlidedToMainScore;
 		NewScoreText.OnGlideFinished += _uiManager.HideCombo;
-        //NewScoreText.OnGlideFinished += ComboSounds.Instance.PlayRandomComboSound;
+		//NewScoreText.OnGlideFinished += ComboSounds.Instance.PlayRandomComboSound;
+
 	}
 
+	private void FixedUpdate()
+	{
+		if (!_gameMode.Equals(GameMode.TimeDependent)) return;
+		
+		if (Time.time - _lastThresholdUpdate >= _updateThresholdInterval)
+		{
+			timeThresholdNumber++;
+			_belt.CheckPointsThreshold(timeThresholdNumber * 1000);
+			_lastThresholdUpdate = Time.time;
+		}	
+	}
 	public void GameOver()
 	{
 		//save highscore
 		int currentHighScore = PlayerPrefs.GetInt("Hiscore");
 		int currentGameScore = _scoreManager.CurrentScore;
 		bool newHiscore = false;
+		timeThresholdNumber = 0;
 		if (currentHighScore < currentGameScore)
 		{
 			//save new highscore
@@ -64,29 +87,34 @@ public class GameManager : MonoBehaviour
 		Time.timeScale = 1;
 		OnDestroyScene();
 		SceneManager.LoadScene(0);
+		_lastThresholdUpdate = Time.time;
 
 	}
 
-    public void OnDestroyScene()
+	public void OnDestroyScene()
 	{
 		_scoreManager.OnComboChange -= _uiManager.UpdateCombo;
 		_scoreManager.OnNewScoreChange -= _uiManager.UpdateNewScore;
 		_scoreManager.OnMainScoreChange -= _uiManager.UpdateScore;
-        _scoreManager.OnMainScoreChange -= _belt.CheckPointsThreshold;
-        _scoreManager.OnMainScoreChange -= _gemSpawner.CheckPointsThreshold;
 
-        ComboStripe.OnTimeout -= _uiManager.GlideNewScore;
+		if (_gameMode.Equals(GameMode.ScoreDependent))
+		{
+			_scoreManager.OnMainScoreChange -= _belt.CheckPointsThreshold;
+			_scoreManager.OnMainScoreChange -= _gemSpawner.CheckPointsThreshold;
+		}
+
+		ComboStripe.OnTimeout -= _uiManager.GlideNewScore;
 		ComboStripe.OnTimeout -= _scoreManager.BreakCombo;
 
 		ComboStripe comboStripe = FindObjectOfType<ComboStripe>();
 		_scoreManager.OnTimeUpdate -= comboStripe.UpdateTime;
 
 		Conteiner.OnColorMatch -= _scoreManager.CheckForCombo;
-      
+
 		NewScoreText.OnGlideFinished -= _scoreManager.ScoreGlidedToMainScore;
 		NewScoreText.OnGlideFinished -= _uiManager.HideCombo;
-       // NewScoreText.OnGlideFinished -= ComboSounds.Instance.PlayRandomComboSound;
-    }
+		// NewScoreText.OnGlideFinished -= ComboSounds.Instance.PlayRandomComboSound;
+	}
 
 	[System.Serializable]
 	public class ScoreManager
@@ -102,8 +130,8 @@ public class GameManager : MonoBehaviour
 		private int _baseComboScore = 500;
 		[SerializeField]
 		private float _comboFactor = 0.25f;
-        [SerializeField]
-        private int _comboSoundInit = 3;
+		[SerializeField]
+		private int _comboSoundInit = 3;
 		public int CurrentScore { get; private set; }
 		public int NewScore { get; private set; }
 		private Queue<int> _scoreToAddQueue = new Queue<int>();
@@ -131,7 +159,7 @@ public class GameManager : MonoBehaviour
 			if (combo && !_comboBreakedByTimeout)
 			{
 				Combo++;
-                if ((Combo + 1 )% _comboSoundInit == 0) ComboSounds.Instance.PlayRandomComboSound();
+				if ((Combo + 1) % _comboSoundInit == 0) ComboSounds.Instance.PlayRandomComboSound();
 				AddNewScore();
 				_lastGemColor = color;
 				// update time UI combostripe
@@ -171,6 +199,8 @@ public class GameManager : MonoBehaviour
 			AddMainScore(scoreGlided);
 		}
 	}
+
+	enum GameMode { ScoreDependent, TimeDependent }
 }
 
 [System.Flags]
